@@ -781,6 +781,22 @@
   }
 
 /style>
+
+  /* FOOTER */
+  .site-footer { max-width: 1100px; margin: 0 auto; padding: 4rem 2.5rem 2rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; border-top: 1px solid var(--border); padding-top: 3rem; }
+  .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 0.75rem; max-width: 280px; }
+  .footer-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul li a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .footer-bottom p { font-size: 12px; color: var(--text-faint); }
+  .footer-bottom a { font-size: 12px; color: var(--accent); text-decoration: none; }
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-brand { grid-column: span 2; }
+  }
 </style>
 </head>
 <body>
@@ -1004,6 +1020,7 @@
             </button>
           </div>
           <div class="url-hint">L'IA analysera automatiquement ta homepage, tes fiches produit et ton checkout</div>
+        
         </div>
       </div>
 
@@ -1076,9 +1093,44 @@
   </section>
 
   <footer>
-    <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
-    <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
-  </footer>
+  <div class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a></li>
+          <li><a href="/cro-calculator/ressources/checklist-ux.html">Checklist UX</a></li>
+          <li><a href="/cro-calculator/ressources/glossaire-cro.html">Glossaire CRO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Par niche</h4>
+        <ul>
+          <li><a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a></li>
+          <li><a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a></li>
+          <li><a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation</a></li>
+          <li><a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a></li>
+          <li><a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Déco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank">Prendre un appel</a></li>
+          <li><a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
+      <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+    </div>
+  </div>
+</footer>
 
 </div>
 
@@ -1252,67 +1304,31 @@
   }
 
   async function analyseWithClaude(homeContent, productContent, urlHome) {
-    const GROQ_KEY = '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';
-    const productSection = productContent ? 'PAGES PRODUIT:\n' + productContent.slice(0, 2000) : '';
+    const FUNCTION_URL = 'https://golden-bublanina-a09ce7.netlify.app/.netlify/functions/analyse';
 
-    const systemPrompt = 'Tu es un expert CRO e-commerce. Reponds UNIQUEMENT avec un objet JSON valide. '
-      + 'Pas de markdown, pas de backticks, pas de texte avant ou apres le JSON.';
-
-    const userPrompt = 'Analyse le site ' + urlHome + ' et retourne ce JSON exactement:\n'
-      + '{"scores":{"global":0,"copywriting":0,"ux_structure":0,"confiance":0,"conversion":0},'
-      + '"synthese":"string","sections":['
-      + '{"nom":"string","score":0,"statut":"critique",'
-      + '"recommandations":[{"titre":"string","probleme":"string","solution":"string","tags":["ux"],"impact":"eleve","effort":"faible"}]}'
-      + ']}\n\n'
-      + 'CONTENU HOMEPAGE:\n' + homeContent.slice(0, 4000) + '\n\n'
-      + productSection + '\n\n'
-      + 'Regles:\n'
-      + '- scores entre 0 et 100 bases sur le contenu reel\n'
-      + '- 5 sections: Hero & Accroche, Navigation & Structure, Fiches Produit, Reassurance & Confiance, CTA & Conversion\n'
-      + '- 2 recommandations par section\n'
-      + '- cite exactement les textes trouves sur le site\n'
-      + '- statut: critique, a-ameliorer, ou bon\n'
-      + '- tags parmi: copy, ux, confiance, urgence, seo, technique\n'
-      + '- impact et effort: eleve, moyen, ou faible\n'
-      + '- IMPORTANT: retourne uniquement le JSON, rien dautre';
-
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const response = await fetch(FUNCTION_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + GROQ_KEY
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        max_tokens: 3000,
-        temperature: 0.1,
-        response_format: { type: 'json_object' },
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
-        ]
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ homeContent, productContent, urlHome })
     });
 
     if (!response.ok) {
       const errData = await response.json().catch(() => ({}));
-      throw new Error('Erreur API Groq : ' + (errData.error?.message || response.status));
+      throw new Error('Erreur API : ' + (errData.error || response.status));
     }
 
     const data = await response.json();
-    const raw = data.choices?.[0]?.message?.content?.trim() || '';
 
-    console.log('[Groq raw]', raw.slice(0, 300));
+    if (data.error) throw new Error(data.error);
 
+    const raw = JSON.stringify(data);
     const firstBrace = raw.indexOf('{');
-    const lastBrace  = raw.lastIndexOf('}');
-    if (firstBrace === -1 || lastBrace === -1) throw new Error('Reponse IA invalide. Reessaie.');
+    const lastBrace = raw.lastIndexOf('}');
 
     try {
       return JSON.parse(raw.slice(firstBrace, lastBrace + 1));
     } catch(e) {
-      console.error('[Groq parse error]', e.message);
-      throw new Error('Reponse IA mal formee. Reessaie dans quelques secondes.');
+      throw new Error('Reponse invalide. Reessaie dans quelques secondes.');
     }
   }
 
