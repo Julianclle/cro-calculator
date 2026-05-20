@@ -1,183 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page principale -->
   <url>
-    <loc>https://julianclle.github.io/cro-calculator</loc>
-    <lastmod>2026-05-20</lastmod>
+    <loc>https://julianclle.github.io/cro-calculator/</loc>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/guides/calculer-taux-de-conversion.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/guides/reduire-abandon-panier.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/guides/optimiser-checkout-shopify.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/guides/ameliorer-fiches-produit.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/comparatifs/cro-vs-acquisition.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/comparatifs/shopify-vs-woocommerce.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://julianclle.github.io/cro-calculator/comparatifs/ab-testing-vs-audit-cro.html</loc>
-    <lastmod>2026-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
+  <!-- Ressources -->
   <url>
     <loc>https://julianclle.github.io/cro-calculator/ressources/benchmarks.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/ressources/checklist-ux.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/ressources/glossaire-cro.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Guides -->
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/guides/calculer-taux-de-conversion.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/guides/reduire-abandon-panier.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/guides/optimiser-checkout-shopify.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/guides/ameliorer-fiches-produit.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Comparatifs -->
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/comparatifs/cro-vs-acquisition.html</loc>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://julianclle.github.io/cro-calculator/niches/cro-mode-vetements.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <loc>https://julianclle.github.io/cro-calculator/comparatifs/shopify-vs-woocommerce.html</loc>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/comparatifs/ab-testing-vs-audit-cro.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Niches -->
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/niches/cro-mode-vetements.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-beaute-cosmetique.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-alimentation-nutrition.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-sante-bien-etre.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-maison-decoration.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-accessoires-tech.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-sport-fitness.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-animaux-compagnie.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-bebe.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-bricolage-outils.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-gaming-jeux-video.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-education-livres.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-voyage-bagages.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-jardinage-plantes.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-bijoux-accessoires.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-outdoor-aventure.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-auto-moto.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-enfants.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://julianclle.github.io/cro-calculator/niches/cro-audio-son.html</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2025-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
+
+  <!-- Légal -->
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/mentions-legales.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://julianclle.github.io/cro-calculator/politique-confidentialite.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
