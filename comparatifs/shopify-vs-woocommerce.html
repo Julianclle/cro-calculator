@@ -180,6 +180,9 @@ details[open] .faq-icon{transform:rotate(45deg)}
   .footer-niches-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shopify vs WooCommerce — Impact sur le taux de conversion e-commerce 2025 | Julian Caillé">
+  <meta property="og:description" content="Shopify ou WooCommerce : lequel convertit mieux ? Comparatif complet vitesse, UX, checkout, SEO et CVR réel. Choisir la bonne plateforme pour maximiser vos conversions.">
 </head>
 <body>
 <div class="page">
@@ -474,23 +477,23 @@ details[open] .faq-icon{transform:rotate(45deg)}
           <li><a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a></li>
           <li><a href="/cro-calculator/ressources/checklist-ux.html">Checklist UX</a></li>
           <li><a href="/cro-calculator/ressources/glossaire-cro.html">Glossaire CRO</a></li>
-          <li><a href="/cro-calculator/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
-          <li><a href="/cro-calculator/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Par niche</h4>
+        <h4>Guides</h4>
         <ul>
-          <li><a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a></li>
-          <li><a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a></li>
-          <li><a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation</a></li>
-          <li><a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a></li>
-          <li><a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Déco</a></li>
-          <li><a href="/cro-calculator/niches/cro-sport-fitness.html">Sport & Fitness</a></li>
-          <li><a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux</a></li>
-          <li><a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux</a></li>
-          <li><a href="/cro-calculator/niches/cro-auto-moto.html">Auto & Moto</a></li>
-          <li><a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming</a></li>
+          <li><a href="/cro-calculator/guides/calculer-taux-de-conversion.html">Calculer son taux de conversion</a></li>
+          <li><a href="/cro-calculator/guides/reduire-abandon-panier.html">Réduire l'abandon panier</a></li>
+          <li><a href="/cro-calculator/guides/optimiser-checkout-shopify.html">Optimiser le checkout Shopify</a></li>
+          <li><a href="/cro-calculator/guides/ameliorer-fiches-produit.html">Améliorer ses fiches produit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Comparatifs</h4>
+        <ul>
+          <li><a href="/cro-calculator/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
+          <li><a href="/cro-calculator/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a></li>
+          <li><a href="/cro-calculator/comparatifs/ab-testing-vs-audit-cro.html">A/B Testing vs Audit CRO</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -502,37 +505,41 @@ details[open] .faq-icon{transform:rotate(45deg)}
       </div>
     </div>
     <div class="footer-expand">
-      <button class="footer-expand-btn" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');document.getElementById('fn2').classList.toggle('open')" aria-expanded="false">
+      <button class="footer-expand-btn" onclick="toggleFooterExpand(this)" aria-expanded="false">
         <span>Toutes les niches e-commerce</span>
         <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div class="footer-expand-content" id="fn2">
+      <div class="footer-expand-content" id="footer-niches-expand">
         <div class="footer-niches-grid">
-          <a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a>
-          <a href="/cro-calculator/niches/cro-accessoires-tech.html">Accessoires & Tech</a>
-          <a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a>
-          <a href="/cro-calculator/niches/cro-sport-fitness.html">Sport & Fitness</a>
-          <a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Décoration</a>
+          <a href="/cro-calculator/niches/cro-mode-vetements.html">Mode &amp; Vêtements</a>
+          <a href="/cro-calculator/niches/cro-accessoires-tech.html">Accessoires &amp; Tech</a>
+          <a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté &amp; Cosmétique</a>
+          <a href="/cro-calculator/niches/cro-sport-fitness.html">Sport &amp; Fitness</a>
+          <a href="/cro-calculator/niches/cro-maison-decoration.html">Maison &amp; Décoration</a>
           <a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux de compagnie</a>
           <a href="/cro-calculator/niches/cro-bebe.html">Bébé</a>
-          <a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a>
-          <a href="/cro-calculator/niches/cro-bricolage-outils.html">Bricolage & Outils</a>
-          <a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation & Nutrition</a>
-          <a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming & Jeux vidéo</a>
-          <a href="/cro-calculator/niches/cro-education-livres.html">Éducation & Livres</a>
-          <a href="/cro-calculator/niches/cro-voyage-bagages.html">Voyage & Bagages</a>
-          <a href="/cro-calculator/niches/cro-jardinage-plantes.html">Jardinage & Plantes</a>
-          <a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux & Accessoires</a>
-          <a href="/cro-calculator/niches/cro-outdoor-aventure.html">Outdoor & Aventure</a>
-          <a href="/cro-calculator/niches/cro-auto-moto.html">Auto & Moto</a>
+          <a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé &amp; Bien-être</a>
+          <a href="/cro-calculator/niches/cro-bricolage-outils.html">Bricolage &amp; Outils</a>
+          <a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation &amp; Nutrition</a>
+          <a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming &amp; Jeux vidéo</a>
+          <a href="/cro-calculator/niches/cro-education-livres.html">Éducation &amp; Livres</a>
+          <a href="/cro-calculator/niches/cro-voyage-bagages.html">Voyage &amp; Bagages</a>
+          <a href="/cro-calculator/niches/cro-jardinage-plantes.html">Jardinage &amp; Plantes</a>
+          <a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux &amp; Accessoires</a>
+          <a href="/cro-calculator/niches/cro-outdoor-aventure.html">Outdoor &amp; Aventure</a>
+          <a href="/cro-calculator/niches/cro-auto-moto.html">Auto &amp; Moto</a>
           <a href="/cro-calculator/niches/cro-enfants.html">Enfants</a>
-          <a href="/cro-calculator/niches/cro-audio-son.html">Audio & Son</a>
+          <a href="/cro-calculator/niches/cro-audio-son.html">Audio &amp; Son</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
-      <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <a href="/cro-calculator/mentions-legales.html">Mentions légales</a>
+        <a href="/cro-calculator/politique-confidentialite.html">Confidentialité</a>
+        <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+      </div>
     </div>
   </div>
 </footer>
