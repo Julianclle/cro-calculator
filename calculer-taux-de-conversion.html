@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment calculer son taux de conversion e-commerce — Guide complet 2025 | Julian Caillé</title>
+<meta name="description" content="Formule, exemples concrets, benchmarks par niche et outils pour calculer et interpréter votre taux de conversion e-commerce. Le guide complet pour savoir où vous en êtes.">
+<link rel="canonical" href="https://julianclle.github.io/cro-calculator/guides/calculer-taux-de-conversion.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#181818;
+  --border:rgba(255,255,255,0.08);
+  --text:#f0ede8;--text-muted:rgba(240,237,232,0.5);--text-faint:rgba(240,237,232,0.28);
+  --accent:#e8d5a3;--accent-dim:rgba(232,213,163,0.12);--accent-dim2:rgba(232,213,163,0.06);
+  --green:#7dcea8;--green-dim:rgba(125,206,168,0.08);--green-border:rgba(125,206,168,0.2);
+  --orange:#e8a87c;--orange-dim:rgba(232,168,124,0.08);--orange-border:rgba(232,168,124,0.2);
+  --red:#e07070;--red-dim:rgba(200,60,60,0.08);--red-border:rgba(200,60,60,0.2);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 70% 50% at 15% -5%,rgba(232,213,163,0.05) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 85% 105%,rgba(125,206,168,0.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+.page{position:relative;z-index:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* NAV */
+.nav-wrapper{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:calc(100% - 3rem);max-width:1060px;z-index:100}
+nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.5rem;background:rgba(12,12,12,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:17px;color:var(--accent);text-decoration:none}
+.nav-tag{font-size:11px;color:var(--text-faint);letter-spacing:.1em;text-transform:uppercase}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;white-space:nowrap}
+.nav-cta:hover{opacity:.82}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.content-grid{display:grid;grid-template-columns:1fr 280px;gap:3rem;align-items:start}
+.main-content{min-width:0}
+
+/* BREADCRUMB */
+.breadcrumb{padding:7rem 0 0;font-size:12px;color:var(--text-faint)}
+.breadcrumb a{color:var(--text-faint);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}.breadcrumb span{margin:0 6px}
+
+/* HERO */
+.hero{padding:2rem 0 3rem;animation:fadeUp .6s ease both}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(232,213,163,0.2);border-radius:100px;padding:4px 14px;font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-desc{font-size:15px;line-height:1.75;color:var(--text-muted);max-width:650px;margin-bottom:1.5rem}
+.hero-meta{display:flex;gap:1.5rem;align-items:center}
+.meta-item{font-size:12px;color:var(--text-faint);display:flex;align-items:center;gap:5px}
+
+/* TABLE OF CONTENTS - STICKY SIDEBAR */
+.toc-sidebar{position:sticky;top:90px}
+.toc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;overflow:hidden;position:relative}
+.toc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.toc-title{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:1rem}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list li a{font-size:12px;color:var(--text-muted);text-decoration:none;padding:5px 8px;border-radius:6px;display:block;transition:all .15s;line-height:1.4}
+.toc-list li a:hover{color:var(--accent);background:var(--accent-dim)}
+.toc-list .toc-h3 a{padding-left:18px;font-size:11px;color:var(--text-faint)}
+.toc-list .toc-h3 a:hover{color:var(--accent);background:var(--accent-dim)}
+.toc-cta{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.toc-cta p{font-size:11px;color:var(--text-faint);line-height:1.5;margin-bottom:.75rem}
+.toc-btn{display:block;text-align:center;background:var(--accent);color:#0a0a0a;border-radius:8px;padding:9px 14px;font-size:11px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.toc-btn:hover{opacity:.85}
+
+/* SECTIONS */
+.guide-section{padding:3rem 0;border-top:1px solid var(--border)}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:.75rem}
+.guide-section h2{font-family:'Instrument Serif',serif;font-size:1.75rem;line-height:1.15;color:var(--text);margin-bottom:1rem;scroll-margin-top:90px}
+.guide-section h3{font-size:15px;font-weight:500;color:var(--text);margin:1.75rem 0 .75rem;scroll-margin-top:90px}
+.prose{font-size:14px;line-height:1.85;color:var(--text-muted);margin-bottom:1rem}
+.prose strong{color:var(--text);font-weight:500}
+.prose a{color:var(--accent);text-decoration:none}
+.prose a:hover{text-decoration:underline}
+
+/* FORMULA BOX */
+.formula-box{background:linear-gradient(135deg,rgba(232,213,163,0.07) 0%,rgba(125,206,168,0.04) 100%);border:1px solid rgba(232,213,163,0.2);border-radius:16px;padding:2rem;margin:1.5rem 0;text-align:center}
+.formula-box .fl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:1rem}
+.formula-text{font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--text);line-height:1.4;margin-bottom:.75rem}
+.formula-text em{color:var(--accent);font-style:normal}
+.formula-example{font-size:13px;color:var(--text-muted);line-height:1.7}
+.formula-example strong{color:var(--green)}
+
+/* CALC INTERACTIVE */
+.calc-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.calc-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.calc-box h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:1.25rem}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.calc-field label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-faint);display:block;margin-bottom:6px}
+.calc-field input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s}
+.calc-field input:focus{border-color:rgba(232,213,163,0.4)}
+.calc-result-row{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.calc-result-label{font-size:12px;color:var(--text-faint)}
+.calc-result-value{font-family:'Instrument Serif',serif;font-size:2rem;color:var(--accent)}
+.calc-result-context{font-size:11px;color:var(--text-faint);margin-top:4px}
+
+/* EXAMPLE CARDS */
+.example-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:1.5rem 0}
+.example-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem}
+.example-card .ec-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:.5rem}
+.example-card .ec-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:.75rem}
+.example-card .ec-row{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);padding:4px 0;border-bottom:1px solid var(--border)}
+.example-card .ec-row:last-of-type{border-bottom:none}
+.example-card .ec-row span:last-child{color:var(--text);font-weight:500}
+.example-card .ec-cvr{font-family:'Instrument Serif',serif;font-size:2rem;margin-top:.75rem;text-align:center;padding-top:.75rem;border-top:1px solid var(--border)}
+.ec-red .ec-cvr{color:var(--red)}
+.ec-orange .ec-cvr{color:var(--orange)}
+.ec-green .ec-cvr{color:var(--green)}
+.ec-badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:100px;display:inline-flex;margin-top:4px}
+.ec-red .ec-badge{background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)}
+.ec-orange .ec-badge{background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange-border)}
+.ec-green .ec-badge{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+
+/* BENCHMARK TABLE */
+.bench-table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0}
+.bench-table{width:100%;border-collapse:collapse}
+.bench-table th{padding:12px 18px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);font-weight:500;border-bottom:1px solid var(--border)}
+.bench-table td{padding:11px 18px;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.bench-table td:first-child{color:var(--text);font-weight:500}
+.bench-table tr:last-child td{border-bottom:none}
+.bench-table tr:hover td{background:rgba(255,255,255,0.02)}
+.cvr-red{color:var(--red);font-family:'Instrument Serif',serif;font-size:14px}
+.cvr-orange{color:var(--orange);font-family:'Instrument Serif',serif;font-size:14px}
+.cvr-green{color:var(--green);font-family:'Instrument Serif',serif;font-size:14px}
+
+/* STEP BLOCKS */
+.step-list{display:flex;flex-direction:column;gap:0;margin:1.5rem 0}
+.step-item{display:flex;gap:16px;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.step-item:last-child{border-bottom:none}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(232,213,163,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--accent);flex-shrink:0;margin-top:2px}
+.step-body h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:.4rem}
+.step-body p{font-size:13px;line-height:1.7;color:var(--text-muted)}
+.step-body p strong{color:var(--text);font-weight:500}
+.step-body code{background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 7px;font-size:12px;color:var(--accent);font-family:monospace}
+
+/* MISTAKE CARDS */
+.mistake-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:1.5rem 0}
+.mistake-card{background:var(--surface);border:1px solid var(--red-border);border-radius:14px;padding:1.25rem;position:relative;overflow:hidden}
+.mistake-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.mistake-card .mc-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.mistake-card .mc-desc{font-size:12px;line-height:1.65;color:var(--text-muted)}
+.mistake-card .mc-fix{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:11px;color:var(--green);display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+
+/* TOOL CARDS */
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.5rem 0}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:12px;align-items:flex-start}
+.tool-icon{font-size:20px;flex-shrink:0}
+.tool-body h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.tool-body p{font-size:12px;line-height:1.55;color:var(--text-muted)}
+.tool-tag{font-size:10px;padding:2px 7px;border-radius:100px;margin-top:5px;display:inline-flex}
+.tool-free{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+.tool-paid{background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange-border)}
+
+/* HIGHLIGHT */
+.highlight-box{background:linear-gradient(135deg,rgba(232,213,163,0.06) 0%,rgba(125,206,168,0.04) 100%);border:1px solid rgba(232,213,163,0.15);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.highlight-box p{font-size:14px;line-height:1.8;color:var(--text-muted)}
+.highlight-box p strong{color:var(--accent);font-weight:500}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);list-style:none;user-select:none;gap:12px}
+.faq-question::-webkit-details-marker{display:none}
+.faq-icon{font-size:20px;color:var(--accent);flex-shrink:0;transition:transform .25s ease}
+details[open] .faq-icon{transform:rotate(45deg)}
+.faq-answer{font-size:13px;color:var(--text-muted);line-height:1.8;padding-bottom:16px}
+.faq-answer strong{color:var(--text);font-weight:500}
+
+/* CTA */
+.cta-block{background:var(--accent-dim2);border:1px solid rgba(232,213,163,0.12);border-radius:16px;padding:2.5rem;text-align:center;margin:3rem 0}
+.cta-block h3{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:.5rem}
+.cta-block p{font-size:14px;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.65}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:13px 26px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.cta-btn:hover{opacity:.85}
+
+/* RELATED */
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:1.5rem 0}
+.related-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s;display:block}
+.related-card:hover{border-color:rgba(232,213,163,0.3)}
+.rc-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:5px}
+.rc-title{font-size:13px;color:var(--text);font-weight:500}
+.rc-arrow{font-size:12px;color:var(--accent);margin-top:5px}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);max-width:1100px;margin:0 auto;padding:4rem 2.5rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:.75rem;max-width:280px}
+.footer-col h4{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .15s}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-expand{border-top:1px solid var(--border);margin-bottom:2rem}
+.footer-expand-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 0;background:none;border:none;color:var(--text-faint);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:color .2s}
+.footer-expand-btn:hover{color:var(--text-muted)}
+.footer-expand-btn .chevron{transition:transform .3s ease}
+.footer-expand-btn[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.footer-expand-content{display:none;padding-bottom:1.5rem}
+.footer-expand-content.open{display:block}
+.footer-niches-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px 16px}
+.footer-niches-grid a{font-size:12px;color:var(--text-faint);text-decoration:none;padding:4px 0;transition:color .15s}
+.footer-niches-grid a:hover{color:var(--accent)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid var(--border)}
+.footer-bottom p{font-size:12px;color:var(--text-faint)}
+.footer-bottom a{font-size:12px;color:var(--accent);text-decoration:none}
+
+@media(max-width:1024px){.content-grid{grid-template-columns:1fr}.toc-sidebar{display:none}}
+@media(max-width:768px){
+  .nav-wrapper{width:calc(100% - 1.5rem)}.nav-tag{display:none}.wrap{padding:0 1.25rem}
+  .example-grid,.mistake-grid,.tool-grid,.related-grid{grid-template-columns:1fr}
+  .calc-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}.footer-brand{grid-column:span 2}
+  .footer-niches-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="/cro-calculator/" class="nav-logo">Julian Caillé</a>
+      <span class="nav-tag">UX/CRO Specialist</span>
+      <a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank" class="nav-cta">
+        <span style="width:5px;height:5px;background:rgba(10,10,10,0.5);border-radius:50%;animation:pulse 2s infinite"></span>
+        Prendre un rendez-vous
+      </a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/cro-calculator/">Accueil</a><span>→</span>
+      <a href="/cro-calculator/guides/calculer-taux-de-conversion.html">Comment calculer son taux de conversion</a>
+    </div>
+
+    <div class="hero">
+      <div class="hero-tag">✦ Guide pratique</div>
+      <h1>Comment calculer son<br><em>taux de conversion e-commerce</em></h1>
+      <p class="hero-desc">La formule, les exemples concrets, les benchmarks par niche et les pièges à éviter. Tout ce qu'il faut savoir pour mesurer et interpréter votre CVR correctement.</p>
+      <div class="hero-meta">
+        <span class="meta-item">📖 Lecture 8 min</span>
+        <span class="meta-item">🎯 Niveau débutant</span>
+        <span class="meta-item">📅 Mis à jour 2025</span>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="main-content">
+
+        <!-- SECTION 1 : DÉFINITION -->
+        <div class="guide-section">
+          <div class="section-label">01 — La base</div>
+          <h2 id="definition">Qu'est-ce que le taux de conversion ?</h2>
+          <p class="prose">Le taux de conversion (CVR — Conversion Rate) est le <strong>pourcentage de visiteurs de votre boutique qui réalisent l'action souhaitée</strong> — dans le cas d'un e-commerce, passer une commande. C'est la métrique la plus directement liée à votre chiffre d'affaires : un visiteur qui n'achète pas ne génère aucun revenu, peu importe le soin apporté à l'attirer sur votre site.</p>
+          <p class="prose">Le taux de conversion est aussi l'indicateur le plus révélateur de la qualité de votre expérience d'achat. <strong>Un CVR bas n'est pas un problème de trafic — c'est un problème de persuasion</strong>. Votre site reçoit des visiteurs mais ne parvient pas à les convaincre d'acheter. La cause peut être le design, le copywriting, le prix perçu, le manque de confiance ou la complexité du checkout.</p>
+
+          <h3 id="formule">La formule du taux de conversion</h3>
+          <div class="formula-box">
+            <div class="fl">✦ Formule CVR</div>
+            <div class="formula-text">CVR = (<em>Nombre de commandes</em> ÷ <em>Nombre de visiteurs</em>) × 100</div>
+            <div class="formula-example">
+              Exemple : 150 commandes ÷ 10 000 visiteurs × 100 = <strong>1.5%</strong>
+            </div>
+          </div>
+
+          <p class="prose">C'est aussi simple que ça. Si votre boutique reçoit 10 000 visiteurs par mois et génère 150 commandes, votre taux de conversion est de 1.5%. <strong>Chaque point de pourcentage supplémentaire représente 100 commandes additionnelles</strong> sur ce même volume de trafic.</p>
+        </div>
+
+        <!-- SECTION 2 : CALCULATRICE -->
+        <div class="guide-section">
+          <div class="section-label">02 — Calcul pratique</div>
+          <h2 id="calculer">Calculez votre CVR maintenant</h2>
+          <p class="prose">Entrez vos données des 30 derniers jours pour obtenir votre taux de conversion exact. Vous trouverez ces chiffres dans Google Analytics (Acquisition → Vue d'ensemble) ou dans le tableau de bord de votre plateforme e-commerce.</p>
+
+          <div class="calc-box">
+            <h4>🧮 Calculateur de taux de conversion</h4>
+            <div class="calc-row">
+              <div class="calc-field">
+                <label>Visiteurs (sessions) sur 30 jours</label>
+                <input type="number" id="visitors" placeholder="Ex: 10000" oninput="calcCVR()">
+              </div>
+              <div class="calc-field">
+                <label>Commandes sur 30 jours</label>
+                <input type="number" id="orders" placeholder="Ex: 150" oninput="calcCVR()">
+              </div>
+            </div>
+            <div class="calc-result-row">
+              <div>
+                <div class="calc-result-label">Votre taux de conversion</div>
+                <div class="calc-result-context" id="cvr-context">Entrez vos données ci-dessus</div>
+              </div>
+              <div class="calc-result-value" id="cvr-result">—</div>
+            </div>
+          </div>
+
+          <h3 id="ou-trouver">Où trouver ces chiffres ?</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-num">GA</div>
+              <div class="step-body">
+                <h4>Google Analytics 4</h4>
+                <p>Rapports → Monétisation → Vue d'ensemble. Vous trouverez le <code>Taux d'achat</code> qui correspond au CVR. Filtrez par période (30 derniers jours) pour une mesure fiable. <strong>Attention : GA4 utilise les "sessions" comme dénominateur, pas les utilisateurs uniques.</strong></p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">SH</div>
+              <div class="step-body">
+                <h4>Tableau de bord Shopify</h4>
+                <p>Analytiques → Tableau de bord → section "Taux de conversion de la boutique en ligne". Shopify calcule automatiquement le CVR mais utilise les <strong>sessions uniques</strong> comme base — ce qui peut légèrement différer de GA4.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">WC</div>
+              <div class="step-body">
+                <h4>WooCommerce + GA4</h4>
+                <p>WooCommerce n'a pas de CVR natif. Configurez <strong>le suivi e-commerce amélioré dans GA4</strong> via le plugin WooCommerce Google Analytics ou via Google Tag Manager. C'est indispensable pour mesurer vos conversions correctement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3 : EXEMPLES -->
+        <div class="guide-section">
+          <div class="section-label">03 — Mise en contexte</div>
+          <h2 id="exemples">Exemples concrets par type de boutique</h2>
+          <p class="prose">Le taux de conversion n'a de sens que mis en contexte. Voici trois boutiques fictives avec des CVR différents pour illustrer ce que chaque niveau signifie concrètement.</p>
+
+          <div class="example-grid">
+            <div class="example-card ec-red">
+              <div class="ec-label">Boutique A — Zone rouge</div>
+              <div class="ec-name">Mode & Vêtements</div>
+              <div class="ec-row"><span>Visiteurs/mois</span><span>8 000</span></div>
+              <div class="ec-row"><span>Commandes</span><span>72</span></div>
+              <div class="ec-row"><span>Panier moyen</span><span>65€</span></div>
+              <div class="ec-row"><span>CA mensuel</span><span>4 680€</span></div>
+              <div class="ec-cvr">0.9%</div>
+              <div class="ec-badge">En dessous du plancher niche</div>
+              <p style="font-size:12px;color:var(--text-muted);margin-top:.75rem;line-height:1.5">Problème UX certain. Frictions majeures à corriger en urgence — photos insuffisantes, checkout mal optimisé, manque de réassurance.</p>
+            </div>
+            <div class="example-card ec-orange">
+              <div class="ec-label">Boutique B — Zone orange</div>
+              <div class="ec-name">Mode & Vêtements</div>
+              <div class="ec-row"><span>Visiteurs/mois</span><span>8 000</span></div>
+              <div class="ec-row"><span>Commandes</span><span>160</span></div>
+              <div class="ec-row"><span>Panier moyen</span><span>65€</span></div>
+              <div class="ec-row"><span>CA mensuel</span><span>10 400€</span></div>
+              <div class="ec-cvr">2.0%</div>
+              <div class="ec-badge">Dans la moyenne du secteur</div>
+              <p style="font-size:12px;color:var(--text-muted);margin-top:.75rem;line-height:1.5">Performance correcte mais potentiel inexploité. Des optimisations ciblées peuvent atteindre les 3-4% — soit +16 000€/mois de CA supplémentaire.</p>
+            </div>
+            <div class="example-card ec-green">
+              <div class="ec-label">Boutique C — Zone verte</div>
+              <div class="ec-name">Mode & Vêtements</div>
+              <div class="ec-row"><span>Visiteurs/mois</span><span>8 000</span></div>
+              <div class="ec-row"><span>Commandes</span><span>320</span></div>
+              <div class="ec-row"><span>Panier moyen</span><span>65€</span></div>
+              <div class="ec-row"><span>CA mensuel</span><span>20 800€</span></div>
+              <div class="ec-cvr">4.0%</div>
+              <div class="ec-badge">Top performers</div>
+              <p style="font-size:12px;color:var(--text-muted);margin-top:.75rem;line-height:1.5">Expérience d'achat excellente. Photos portées, guide des tailles, checkout optimisé, réassurance forte. Peut maintenant scaler l'acquisition en toute confiance.</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <p>La boutique C génère <strong>4.4× plus de CA que la boutique A avec le même trafic et le même panier moyen</strong>. La différence entre 0.9% et 4% de CVR n'est pas une question de chance — c'est une question d'expérience d'achat.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 4 : BENCHMARKS -->
+        <div class="guide-section">
+          <div class="section-label">04 — Références sectorielles</div>
+          <h2 id="benchmarks">Benchmarks CVR par niche e-commerce</h2>
+          <p class="prose">Comparer votre CVR à la moyenne générale n'a pas de sens. <strong>Un CVR de 2% est excellent en bijoux mais alarmant en alimentation.</strong> Voici les benchmarks par secteur pour vous situer correctement.</p>
+
+          <div class="bench-table-wrap">
+            <table class="bench-table">
+              <thead>
+                <tr>
+                  <th>Niche</th>
+                  <th>Plancher</th>
+                  <th>Moyenne</th>
+                  <th>Top performers</th>
+                  <th>Votre cible</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Alimentation & Nutrition</td><td class="cvr-red">2.0%</td><td class="cvr-orange">3.8%</td><td class="cvr-green">7.0%</td><td style="font-size:12px;color:var(--text-faint)">Viser 3.8%+</td></tr>
+                <tr><td>Beauté & Cosmétique</td><td class="cvr-red">1.8%</td><td class="cvr-orange">3.3%</td><td class="cvr-green">6.0%</td><td style="font-size:12px;color:var(--text-faint)">Viser 3.3%+</td></tr>
+                <tr><td>Santé & Bien-être</td><td class="cvr-red">1.5%</td><td class="cvr-orange">3.0%</td><td class="cvr-green">5.8%</td><td style="font-size:12px;color:var(--text-faint)">Viser 3.0%+</td></tr>
+                <tr><td>Animaux de compagnie</td><td class="cvr-red">1.6%</td><td class="cvr-orange">3.0%</td><td class="cvr-green">5.5%</td><td style="font-size:12px;color:var(--text-faint)">Viser 3.0%+</td></tr>
+                <tr><td>Sport & Fitness</td><td class="cvr-red">1.4%</td><td class="cvr-orange">2.6%</td><td class="cvr-green">4.8%</td><td style="font-size:12px;color:var(--text-faint)">Viser 2.6%+</td></tr>
+                <tr><td>Maison & Décoration</td><td class="cvr-red">1.0%</td><td class="cvr-orange">2.1%</td><td class="cvr-green">4.2%</td><td style="font-size:12px;color:var(--text-faint)">Viser 2.1%+</td></tr>
+                <tr><td>Mode & Vêtements</td><td class="cvr-red">1.0%</td><td class="cvr-orange">2.0%</td><td class="cvr-green">4.0%</td><td style="font-size:12px;color:var(--text-faint)">Viser 2.0%+</td></tr>
+                <tr><td>Gaming & Jeux vidéo</td><td class="cvr-red">1.2%</td><td class="cvr-orange">2.4%</td><td class="cvr-green">4.5%</td><td style="font-size:12px;color:var(--text-faint)">Viser 2.4%+</td></tr>
+                <tr><td>Bijoux & Accessoires</td><td class="cvr-red">0.8%</td><td class="cvr-orange">1.8%</td><td class="cvr-green">3.8%</td><td style="font-size:12px;color:var(--text-faint)">Viser 1.8%+</td></tr>
+                <tr><td>Auto & Moto</td><td class="cvr-red">0.8%</td><td class="cvr-orange">1.6%</td><td class="cvr-green">3.2%</td><td style="font-size:12px;color:var(--text-faint)">Viser 1.6%+</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="prose">→ Tableau complet des 19 niches disponible sur la page <a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a>.</p>
+        </div>
+
+        <!-- SECTION 5 : CVR PAR SEGMENT -->
+        <div class="guide-section">
+          <div class="section-label">05 — Aller plus loin</div>
+          <h2 id="segments">Les CVR à segmenter absolument</h2>
+          <p class="prose">Le CVR global de votre boutique est un point de départ, mais il masque des disparités importantes. <strong>Analyser votre CVR par segment vous révèle où se cachent les vraies opportunités.</strong></p>
+
+          <h3 id="mobile-desktop">CVR Mobile vs Desktop</h3>
+          <p class="prose">C'est l'écart le plus révélateur. En moyenne, le CVR mobile est <strong>2 à 3 fois inférieur au CVR desktop</strong> sur un même site. Si votre CVR desktop est à 3% mais votre CVR mobile à 0.8%, vous avez un problème mobile urgent — d'autant que 65 à 75% de votre trafic vient probablement du mobile. Dans Google Analytics 4 : Rapports → Audience → Technologie → Appareil.</p>
+
+          <h3 id="sources-trafic">CVR par source de trafic</h3>
+          <p class="prose">Le trafic organique convertit généralement 2 à 3 fois mieux que le trafic payant — parce qu'il exprime une intention plus forte. Le trafic email est souvent le meilleur convertisseur (3 à 5%) car ce sont des clients déjà engagés. <strong>Si votre trafic Google Ads convertit à 0.5% pendant que votre organique convertit à 2.5%, vous dépensez en pub pour un trafic 5 fois moins qualifié.</strong></p>
+
+          <h3 id="nouvelles-recurrentes">Nouveaux vs clients récurrents</h3>
+          <p class="prose">Les clients récurrents convertissent en moyenne <strong>3 à 5 fois mieux</strong> que les nouveaux visiteurs. Ce n'est pas surprenant — ils connaissent déjà votre boutique et vous font confiance. Surveiller cet écart vous dit à quel point votre boutique est efficace pour convertir les nouveaux arrivants. Un écart très large (0.5% nouveaux vs 4% récurrents) signale souvent un problème de première impression ou de réassurance.
+
+          <h3 id="pages-produit">CVR par catégorie ou fiche produit</h3>
+          <p class="prose">Certaines fiches produit convertissent à 5% pendant que d'autres stagnent à 0.3%. <strong>Identifier vos fiches les plus performantes et reproduire ce qui fonctionne</strong> (type de photo, copywriting, réassurance spécifique) est l'un des quick wins les plus rapides en CRO.</p>
+        </div>
+
+        <!-- SECTION 6 : ERREURS -->
+        <div class="guide-section">
+          <div class="section-label">06 — Pièges fréquents</div>
+          <h2 id="erreurs">Les 4 erreurs de mesure du CVR</h2>
+          <p class="prose">Beaucoup d'e-commerçants croient avoir un bon CVR alors qu'ils mesurent mal. Voici les erreurs les plus courantes.</p>
+
+          <div class="mistake-grid">
+            <div class="mistake-card">
+              <div class="mc-title">📊 Confondre sessions et utilisateurs</div>
+              <div class="mc-desc">Un même visiteur peut générer plusieurs sessions en une journée. Utiliser les "utilisateurs" au lieu des "sessions" peut faire paraître votre CVR 20 à 30% plus élevé qu'il n'est réellement. Restez cohérent avec la même métrique dans le temps.</div>
+              <div class="mc-fix">✓ Correction : Utiliser toujours les sessions comme dénominateur — c'est la norme industrie.</div>
+            </div>
+            <div class="mistake-card">
+              <div class="mc-title">📅 Mesurer sur une période trop courte</div>
+              <div class="mc-desc">Un CVR mesuré sur 7 jours peut être fortement biaisé par un pic de trafic, une promotion ou un weekend. Les variations naturelles sont importantes — un CVR fiable se mesure sur <strong>minimum 30 jours</strong>, idéalement 90 jours.</div>
+              <div class="mc-fix">✓ Correction : Toujours comparer des périodes identiques (ex: mois vs même mois N-1).</div>
+            </div>
+            <div class="mistake-card">
+              <div class="mc-title">🤖 Inclure le trafic bot dans le calcul</div>
+              <div class="mc-desc">Les crawlers, bots et trafic spam peuvent représenter 10 à 30% du trafic total d'un site. Ils ne convertissent jamais mais gonflent le dénominateur, ce qui fait apparaître votre CVR plus bas qu'il n'est réellement.</div>
+              <div class="mc-fix">✓ Correction : Activer les filtres anti-bot dans GA4 et exclure les IP internes.</div>
+            </div>
+            <div class="mistake-card">
+              <div class="mc-title">🎯 Ne pas segmenter par source</div>
+              <div class="mc-desc">Un CVR global de 1.8% peut cacher un trafic paid à 0.7% et un trafic email à 4.2%. Sans segmentation, vous ne savez pas si votre site a un problème UX ou si c'est simplement votre mix de trafic qui tire le CVR vers le bas.</div>
+              <div class="mc-fix">✓ Correction : Analyser toujours le CVR par segment — device, source, nouveau/récurrent.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 7 : OUTILS -->
+        <div class="guide-section">
+          <div class="section-label">07 — Boîte à outils</div>
+          <h2 id="outils">Les outils pour mesurer et analyser votre CVR</h2>
+          <p class="prose">Mesurer le CVR ne suffit pas — il faut comprendre pourquoi il est à ce niveau. Ces outils couvrent les deux dimensions : la mesure quantitative et l'analyse qualitative.</p>
+
+          <div class="tool-grid">
+            <div class="tool-card">
+              <div class="tool-icon">📊</div>
+              <div class="tool-body">
+                <h4>Google Analytics 4</h4>
+                <p>La référence pour la mesure du CVR, des entonnoirs de conversion et la segmentation par source/device. Configuration e-commerce améliorée indispensable.</p>
+                <div class="tool-tag tool-free">Gratuit</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon">🔥</div>
+              <div class="tool-body">
+                <h4>Microsoft Clarity</h4>
+                <p>Heatmaps et enregistrements de sessions gratuits et illimités. Indispensable pour comprendre pourquoi les visiteurs n'achètent pas — voir où ils cliquent et où ils abandonnent.</p>
+                <div class="tool-tag tool-free">Gratuit</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon">🎯</div>
+              <div class="tool-body">
+                <h4>Hotjar</h4>
+                <p>Heatmaps, recordings, sondages de satisfaction. Version gratuite limitée à 35 sessions/jour — suffisante pour débuter l'analyse qualitative.</p>
+                <div class="tool-tag tool-free">Freemium</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon">🧪</div>
+              <div class="tool-body">
+                <h4>VWO / AB Tasty</h4>
+                <p>Plateformes d'A/B testing pour tester des variations de page. Nécessaire à partir de 10 000 visiteurs/mois pour valider statistiquement vos optimisations.</p>
+                <div class="tool-tag tool-paid">Payant — 300€+/mois</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon">⚡</div>
+              <div class="tool-body">
+                <h4>PageSpeed Insights</h4>
+                <p>Mesure les Core Web Vitals (LCP, FID, CLS) de votre boutique. Gratuit et indispensable — la vitesse impacte directement le CVR.</p>
+                <div class="tool-tag tool-free">Gratuit</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon">🛒</div>
+              <div class="tool-body">
+                <h4>Calculateur CRO Julian Caillé</h4>
+                <p>Calcule votre potentiel de revenus supplémentaires selon votre niche et votre CVR actuel. Identification immédiate de votre zone (rouge/orange/verte).</p>
+                <div class="tool-tag tool-free">Gratuit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 8 : AMÉLIORER -->
+        <div class="guide-section">
+          <div class="section-label">08 — Et maintenant ?</div>
+          <h2 id="ameliorer">Comment améliorer son CVR une fois qu'on l'a calculé ?</h2>
+          <p class="prose">Connaître son CVR est la première étape. L'améliorer est la suite logique. Voici les leviers d'action classés par impact.</p>
+
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h4>Identifier les pages qui drainent le plus de visiteurs sans convertir</h4>
+                <p>Dans GA4 → Parcours d'exploration → identifiez les étapes où vous perdez le plus de visiteurs. <strong>La fiche produit et le checkout sont généralement les deux points de friction majeurs.</strong></p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h4>Traiter les quick wins à fort impact en premier</h4>
+                <p><strong>Réassurance visible</strong> (politique de retour sur la fiche), <strong>CTA clair</strong> (couleur contrastée, texte orienté bénéfice), <strong>photos portées</strong> si vous êtes en mode. Ces 3 actions seules peuvent faire progresser le CVR de 15 à 30%.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h4>Optimiser le checkout</h4>
+                <p>Le checkout est responsable de 70% des abandons de panier. <strong>Commande invité obligatoire, nombre d'étapes réduit à 3 maximum, frais de livraison annoncés tôt</strong> — ce sont les trois leviers checkout avec le plus grand impact.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-body">
+                <h4>Mesurer l'impact sur 4 semaines</h4>
+                <p>Après chaque série d'optimisations, <strong>laisser 4 semaines minimum avant d'évaluer l'impact</strong>. Le CVR fluctue naturellement — une période trop courte donne des résultats non significatifs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-block">
+            <h3>Calculez votre potentiel de croissance</h3>
+            <p>Entrez votre CVR actuel, votre niche et votre trafic. Découvrez combien vous pourriez générer en atteignant la moyenne de votre secteur.</p>
+            <a href="/cro-calculator/" class="cta-btn">Utiliser le calculateur CRO →</a>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="guide-section">
+          <div class="section-label">09 — FAQ</div>
+          <h2 id="faq">Questions fréquentes</h2>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:.5rem 1.5rem">
+            <details class="faq-item">
+              <summary class="faq-question">Quel est un bon taux de conversion e-commerce en France ?<span class="faq-icon">+</span></summary>
+              <div class="faq-answer">La moyenne générale en e-commerce français est de <strong>1.5 à 2%</strong>. Mais cette moyenne cache des disparités énormes entre niches. En alimentation, 3.8% est la moyenne. En bijoux, 1.8% est déjà dans la norme. <strong>Le bon CVR est celui qui est au niveau ou au-dessus de la moyenne de votre secteur</strong> — pas de la moyenne générale.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-question">Pourquoi mon CVR Shopify diffère de mon CVR Google Analytics ?<span class="faq-icon">+</span></summary>
+              <div class="faq-answer">Deux raisons principales : <strong>1) La définition de "session"</strong> peut légèrement différer entre Shopify et GA4. <strong>2) Le tracking GA4</strong> peut rater certaines conversions si le tag n'est pas correctement configuré (ad blockers, problème de pixel). En règle générale, <strong>faites confiance à Shopify pour les chiffres de vente</strong> et à GA4 pour l'analyse comportementale.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-question">Mon CVR varie beaucoup selon les jours — est-ce normal ?<span class="faq-icon">+</span></summary>
+              <div class="faq-answer">Oui, c'est tout à fait normal. Le CVR fluctue naturellement : <strong>les weekends convertissent souvent mieux que la semaine</strong> en B2C, les promotions créent des pics, et les variations de trafic (notamment le trafic paid vs organique) changent le mix de qualité. <strong>Ne jamais interpréter le CVR sur une journée ou une semaine</strong> — prenez toujours une période de 30 jours minimum.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-question">Le taux de conversion est-il lié au prix des produits ?<span class="faq-icon">+</span></summary>
+              <div class="faq-answer">Indirectement, oui. <strong>Plus le prix est élevé, plus la décision d'achat prend du temps</strong> et plus le CVR est naturellement bas. Un consommateur achète un produit à 15€ en 2 minutes, un produit à 500€ en 2 semaines. C'est pourquoi comparer votre CVR à une boutique qui vend des produits 10 fois plus chers (ou moins chers) n'a pas de sens. Comparez-vous à des boutiques avec un panier moyen similaire.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-question">Doit-on inclure les ventes B2B dans le calcul du CVR ?<span class="faq-icon">+</span></summary>
+              <div class="faq-answer">Si votre boutique sert des deux, <strong>segmentez les deux CVR séparément</strong>. Les acheteurs B2B ont des comportements très différents (cycles d'achat plus longs, commandes plus importantes, processus de validation interne). Mélanger B2B et B2C dans un CVR global crée une métrique difficile à interpréter et à optimiser.</div>
+            </details>
+          </div>
+        </div>
+
+        <!-- RELATED -->
+        <div class="guide-section">
+          <div class="section-label">Pour aller plus loin</div>
+          <h2>Ressources complémentaires</h2>
+          <div class="related-grid">
+            <a href="/cro-calculator/ressources/benchmarks.html" class="related-card"><div class="rc-label">Ressource</div><div class="rc-title">Benchmarks CVR — 19 niches</div><div class="rc-arrow">→</div></a>
+            <a href="/cro-calculator/comparatifs/cro-vs-acquisition.html" class="related-card"><div class="rc-label">Comparatif</div><div class="rc-title">CRO vs Acquisition</div><div class="rc-arrow">→</div></a>
+            <a href="/cro-calculator/ressources/checklist-ux.html" class="related-card"><div class="rc-label">Ressource</div><div class="rc-title">Checklist UX e-commerce</div><div class="rc-arrow">→</div></a>
+          </div>
+        </div>
+
+      </div><!-- .main-content -->
+
+      <!-- SIDEBAR TOC -->
+      <aside class="toc-sidebar">
+        <div class="toc-card">
+          <div class="toc-title">Sommaire</div>
+          <ul class="toc-list">
+            <li><a href="#definition">Qu'est-ce que le taux de conversion ?</a></li>
+            <li class="toc-h3"><a href="#formule">La formule CVR</a></li>
+            <li><a href="#calculer">Calculez votre CVR</a></li>
+            <li class="toc-h3"><a href="#ou-trouver">Où trouver ces chiffres ?</a></li>
+            <li><a href="#exemples">Exemples concrets</a></li>
+            <li><a href="#benchmarks">Benchmarks par niche</a></li>
+            <li><a href="#segments">CVR à segmenter</a></li>
+            <li class="toc-h3"><a href="#mobile-desktop">Mobile vs Desktop</a></li>
+            <li class="toc-h3"><a href="#sources-trafic">Par source de trafic</a></li>
+            <li><a href="#erreurs">Erreurs de mesure</a></li>
+            <li><a href="#outils">Outils recommandés</a></li>
+            <li><a href="#ameliorer">Comment améliorer ?</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+          <div class="toc-cta">
+            <p>Calculez votre potentiel de conversion en 30 secondes</p>
+            <a href="/cro-calculator/" class="toc-btn">Calculateur CRO →</a>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- .content-grid -->
+  </div><!-- .wrap -->
+
+</div><!-- .page -->
+
+<footer>
+  <div class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Guides pratiques</h4>
+        <ul>
+          <li><a href="/cro-calculator/guides/calculer-taux-de-conversion.html">Calculer son CVR</a></li>
+        </ul>
+        <h4 style="margin-top:1.25rem">Comparatifs</h4>
+        <ul>
+          <li><a href="/cro-calculator/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
+          <li><a href="/cro-calculator/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a></li>
+          <li><a href="/cro-calculator/comparatifs/ab-testing-vs-audit-cro.html">A/B Testing vs Audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a></li>
+          <li><a href="/cro-calculator/ressources/checklist-ux.html">Checklist UX</a></li>
+          <li><a href="/cro-calculator/ressources/glossaire-cro.html">Glossaire CRO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank">Prendre un appel</a></li>
+          <li><a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-expand">
+      <button class="footer-expand-btn" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');document.getElementById('fn-g1').classList.toggle('open')" aria-expanded="false">
+        <span>Toutes les niches e-commerce</span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="footer-expand-content" id="fn-g1">
+        <div class="footer-niches-grid">
+          <a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a>
+          <a href="/cro-calculator/niches/cro-accessoires-tech.html">Accessoires & Tech</a>
+          <a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a>
+          <a href="/cro-calculator/niches/cro-sport-fitness.html">Sport & Fitness</a>
+          <a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Décoration</a>
+          <a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux de compagnie</a>
+          <a href="/cro-calculator/niches/cro-bebe.html">Bébé</a>
+          <a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a>
+          <a href="/cro-calculator/niches/cro-bricolage-outils.html">Bricolage & Outils</a>
+          <a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation & Nutrition</a>
+          <a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming & Jeux vidéo</a>
+          <a href="/cro-calculator/niches/cro-education-livres.html">Éducation & Livres</a>
+          <a href="/cro-calculator/niches/cro-voyage-bagages.html">Voyage & Bagages</a>
+          <a href="/cro-calculator/niches/cro-jardinage-plantes.html">Jardinage & Plantes</a>
+          <a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux & Accessoires</a>
+          <a href="/cro-calculator/niches/cro-outdoor-aventure.html">Outdoor & Aventure</a>
+          <a href="/cro-calculator/niches/cro-auto-moto.html">Auto & Moto</a>
+          <a href="/cro-calculator/niches/cro-enfants.html">Enfants</a>
+          <a href="/cro-calculator/niches/cro-audio-son.html">Audio & Son</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
+      <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function calcCVR() {
+  const v = parseFloat(document.getElementById('visitors').value) || 0;
+  const o = parseFloat(document.getElementById('orders').value) || 0;
+  const result = document.getElementById('cvr-result');
+  const context = document.getElementById('cvr-context');
+  if (!v || !o) { result.textContent = '—'; context.textContent = 'Entrez vos données ci-dessus'; return; }
+  const cvr = (o / v * 100);
+  result.textContent = cvr.toFixed(2) + '%';
+  result.style.color = cvr < 1 ? 'var(--red)' : cvr < 2.5 ? 'var(--orange)' : 'var(--green)';
+  const gain = Math.round((v * (2.5 - cvr) / 100));
+  if (cvr < 1) context.textContent = '⚠ En dessous du plancher — frictions urgentes à corriger';
+  else if (cvr < 2) context.textContent = '↗ En dessous de la moyenne — potentiel de ' + gain + ' commandes/mois supplémentaires à 2.5%';
+  else if (cvr < 3.5) context.textContent = '✓ Dans la moyenne — continuez à optimiser';
+  else context.textContent = '✦ Excellent — vous êtes parmi les top performers';
+}
+
+function toggleFooterExpand(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  document.getElementById('footer-niches-expand').classList.toggle('open', !expanded);
+}
+</script>
+</body>
+</html>
