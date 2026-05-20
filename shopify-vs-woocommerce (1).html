@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopify vs WooCommerce — Impact sur le taux de conversion e-commerce 2025 | Julian Caillé</title>
+<meta name="description" content="Shopify ou WooCommerce : lequel convertit mieux ? Comparatif complet vitesse, UX, checkout, SEO et CVR réel. Choisir la bonne plateforme pour maximiser vos conversions.">
+<link rel="canonical" href="https://julianclle.github.io/cro-calculator/comparatifs/shopify-vs-woocommerce.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#181818;
+  --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.16);
+  --text:#f0ede8;--text-muted:rgba(240,237,232,0.5);--text-faint:rgba(240,237,232,0.28);
+  --accent:#e8d5a3;--accent-dim:rgba(232,213,163,0.12);--accent-dim2:rgba(232,213,163,0.06);
+  --green:#7dcea8;--orange:#e8a87c;--red:#e07070;
+  --shopify:#96bf48;--shopify-dim:rgba(150,191,72,0.1);--shopify-border:rgba(150,191,72,0.25);
+  --woo:#7f54b3;--woo-dim:rgba(127,84,179,0.1);--woo-border:rgba(127,84,179,0.25);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 80% 50% at 20% -10%,rgba(150,191,72,0.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 110%,rgba(127,84,179,0.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+.page{position:relative;z-index:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+.nav-wrapper{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:calc(100% - 3rem);max-width:1060px;z-index:100}
+nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.5rem;background:rgba(12,12,12,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:17px;color:var(--accent);text-decoration:none}
+.nav-tag{font-size:11px;color:var(--text-faint);letter-spacing:0.1em;text-transform:uppercase}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;white-space:nowrap}
+.nav-cta:hover{opacity:.82}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.breadcrumb{padding:7rem 0 0;font-size:12px;color:var(--text-faint)}
+.breadcrumb a{color:var(--text-faint);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{margin:0 6px}
+
+/* HERO */
+.hero{padding:2.5rem 0 4rem;animation:fadeUp .6s ease both}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(232,213,163,0.2);border-radius:100px;padding:4px 14px;font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,3.5vw,3rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-desc{font-size:15px;line-height:1.75;color:var(--text-muted);max-width:700px}
+
+/* PLATFORM HEADERS */
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.platform-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;position:relative;overflow:hidden}
+.platform-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.shopify-card::before{background:linear-gradient(90deg,transparent,var(--shopify),transparent)}
+.woo-card::before{background:linear-gradient(90deg,transparent,var(--woo),transparent)}
+.platform-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;padding:4px 12px;border-radius:100px;margin-bottom:1rem}
+.shopify-badge{background:var(--shopify-dim);color:var(--shopify);border:1px solid var(--shopify-border)}
+.woo-badge{background:var(--woo-dim);color:var(--woo);border:1px solid var(--woo-border)}
+.platform-card h3{font-size:15px;font-weight:500;color:var(--text);margin-bottom:0.6rem}
+.platform-card p{font-size:13px;line-height:1.7;color:var(--text-muted)}
+.platform-card p strong{color:var(--text);font-weight:500}
+
+/* SECTION */
+.section{padding:4rem 0;border-top:1px solid var(--border)}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:1.5rem}
+.prose{font-size:14px;line-height:1.85;color:var(--text-muted);margin-bottom:1rem}
+.prose strong{color:var(--text);font-weight:500}
+
+/* STATS */
+.stats-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.sc-shopify::before{background:linear-gradient(90deg,transparent,var(--shopify),transparent)}
+.sc-woo::before{background:linear-gradient(90deg,transparent,var(--woo),transparent)}
+.sc-neutral::before{background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.stat-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:10px}
+.stat-value{font-family:'Instrument Serif',serif;font-size:2.6rem;line-height:1;margin-bottom:6px}
+.sc-shopify .stat-value{color:var(--shopify)}
+.sc-woo .stat-value{color:var(--woo)}
+.sc-neutral .stat-value{color:var(--accent)}
+.stat-sub{font-size:12px;color:var(--text-faint);line-height:1.5}
+
+/* COMP TABLE */
+.comp-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.comp-table{width:100%;border-collapse:collapse}
+.comp-table thead tr{border-bottom:1px solid var(--border)}
+.comp-table th{padding:14px 20px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);font-weight:500}
+.comp-table th:first-child{width:22%}
+.comp-table th:nth-child(2){color:var(--shopify)}
+.comp-table th:nth-child(3){color:var(--woo)}
+.comp-table td{padding:14px 20px;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.comp-table td:first-child{font-weight:500;color:var(--text);font-size:12px}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:rgba(255,255,255,0.02)}
+.tag-shopify{display:inline-flex;font-size:10px;font-weight:500;padding:2px 7px;border-radius:100px;background:var(--shopify-dim);color:var(--shopify);border:1px solid var(--shopify-border);margin-bottom:3px}
+.tag-woo{display:inline-flex;font-size:10px;font-weight:500;padding:2px 7px;border-radius:100px;background:var(--woo-dim);color:var(--woo);border:1px solid var(--woo-border);margin-bottom:3px}
+.tag-neutral{display:inline-flex;font-size:10px;font-weight:500;padding:2px 7px;border-radius:100px;background:rgba(255,255,255,0.04);color:var(--text-faint);border:1px solid var(--border);margin-bottom:3px}
+.cell-content{display:flex;flex-direction:column;gap:2px}
+
+/* CVR IMPACT BLOCKS */
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.impact-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.impact-card.shopify{border-top:2px solid var(--shopify)}
+.impact-card.woo{border-top:2px solid var(--woo)}
+.impact-card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:0.6rem}
+.impact-card p{font-size:13px;line-height:1.7;color:var(--text-muted)}
+.impact-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-muted);line-height:1.55}
+.impact-item:last-child{border-bottom:none;padding-bottom:0}
+.impact-icon{flex-shrink:0;font-size:15px;margin-top:1px}
+
+/* PROFIL TABLE */
+.profil-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.profil-table{width:100%;border-collapse:collapse}
+.profil-table th{padding:14px 20px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);font-weight:500;border-bottom:1px solid var(--border)}
+.profil-table td{padding:14px 20px;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.profil-table td:first-child{font-size:12px;color:var(--text);font-weight:500;width:28%}
+.profil-table tr:last-child td{border-bottom:none}
+.profil-table tr:hover td{background:rgba(255,255,255,0.02)}
+.rec-shopify{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--shopify-dim);color:var(--shopify);border:1px solid var(--shopify-border)}
+.rec-woo{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--woo-dim);color:var(--woo);border:1px solid var(--woo-border)}
+.rec-both{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(232,213,163,0.2)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;padding:18px 0;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);list-style:none;user-select:none;gap:12px}
+.faq-question::-webkit-details-marker{display:none}
+.faq-icon{font-size:20px;color:var(--accent);flex-shrink:0;transition:transform .25s ease}
+details[open] .faq-icon{transform:rotate(45deg)}
+.faq-answer{font-size:13px;color:var(--text-muted);line-height:1.8;padding-bottom:18px}
+.faq-answer strong{color:var(--text);font-weight:500}
+
+/* VERDICT */
+.verdict-final{background:linear-gradient(135deg,rgba(232,213,163,0.07) 0%,rgba(125,206,168,0.04) 100%);border:1px solid rgba(232,213,163,0.18);border-radius:16px;padding:2rem;position:relative;overflow:hidden}
+.verdict-final::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(232,213,163,0.4),transparent)}
+.verdict-final h3{font-family:'Instrument Serif',serif;font-size:1.4rem;margin-bottom:.75rem}
+.verdict-final p{font-size:14px;line-height:1.8;color:var(--text-muted)}
+.verdict-final strong{color:var(--accent);font-weight:500}
+
+.cta-block{background:var(--accent-dim2);border:1px solid rgba(232,213,163,0.12);border-radius:16px;padding:2.5rem;text-align:center;margin-top:3rem}
+.cta-block h3{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:.5rem}
+.cta-block p{font-size:14px;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.65}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:13px 26px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.cta-btn:hover{opacity:.85}
+
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.related-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s;display:block}
+.related-card:hover{border-color:rgba(232,213,163,0.3)}
+.rc-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:5px}
+.rc-title{font-size:13px;color:var(--text);font-weight:500}
+.rc-arrow{font-size:12px;color:var(--accent);margin-top:5px}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);max-width:1100px;margin:0 auto;padding:4rem 2.5rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:.75rem;max-width:280px}
+.footer-col h4{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .15s}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-expand{border-top:1px solid var(--border);margin-bottom:2rem}
+.footer-expand-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 0;background:none;border:none;color:var(--text-faint);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:color .2s}
+.footer-expand-btn:hover{color:var(--text-muted)}
+.footer-expand-btn .chevron{transition:transform .3s ease}
+.footer-expand-btn[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.footer-expand-content{display:none;padding-bottom:1.5rem}
+.footer-expand-content.open{display:block}
+.footer-niches-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px 16px}
+.footer-niches-grid a{font-size:12px;color:var(--text-faint);text-decoration:none;padding:4px 0;transition:color .15s}
+.footer-niches-grid a:hover{color:var(--accent)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid var(--border)}
+.footer-bottom p{font-size:12px;color:var(--text-faint)}
+.footer-bottom a{font-size:12px;color:var(--accent);text-decoration:none}
+
+@media(max-width:768px){
+  .nav-wrapper{width:calc(100% - 1.5rem)}
+  .nav-tag{display:none}
+  .wrap{padding:0 1.25rem}
+  .platform-grid,.impact-grid,.stats-3,.related-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-brand{grid-column:span 2}
+  .footer-niches-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="/cro-calculator/" class="nav-logo">Julian Caillé</a>
+      <span class="nav-tag">UX/CRO Specialist</span>
+      <a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank" class="nav-cta">
+        <span style="width:5px;height:5px;background:rgba(10,10,10,0.5);border-radius:50%;animation:pulse 2s infinite"></span>
+        Prendre un rendez-vous
+      </a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/cro-calculator/">Accueil</a><span>→</span>
+      <a href="/cro-calculator/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a>
+    </div>
+
+    <div class="hero">
+      <div class="hero-tag">✦ Comparatif plateforme</div>
+      <h1>Shopify vs WooCommerce<br><em>quel impact sur votre CVR ?</em></h1>
+      <p class="hero-desc">Le choix de votre plateforme e-commerce n'est pas neutre sur votre taux de conversion. Vitesse de chargement, qualité du checkout, flexibilité UX — Shopify et WooCommerce ont des performances très différentes sur les leviers qui font convertir.</p>
+    </div>
+  </div>
+
+  <!-- PLATFORM INTRO -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Les deux plateformes en bref</p>
+      <div class="platform-grid">
+        <div class="platform-card shopify-card">
+          <div class="platform-badge shopify-badge">🟢 Shopify</div>
+          <h3>SaaS clé en main — optimisé pour la conversion</h3>
+          <p>Shopify est une plateforme hébergée qui prend en charge l'infrastructure technique. <strong>Checkout natif ultra-optimisé, performance garantie, mises à jour automatiques.</strong> Idéal pour ceux qui veulent se concentrer sur la vente plutôt que sur la technique. Tarifs : 29 à 299€/mois selon le plan.</p>
+        </div>
+        <div class="platform-card woo-card">
+          <div class="platform-badge woo-badge">🟣 WooCommerce</div>
+          <h3>Plugin WordPress open source — flexibilité maximale</h3>
+          <p>WooCommerce est un plugin WordPress gratuit, mais nécessite un hébergement, une maintenance technique et des extensions payantes. <strong>Personnalisation totale, aucune contrainte de plateforme.</strong> Coût réel variable selon l'hébergement et les plugins : souvent 50 à 200€/mois pour une boutique sérieuse.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Les chiffres clés</p>
+      <div class="stats-3">
+        <div class="stat-card sc-shopify">
+          <div class="stat-label">CVR moyen Shopify</div>
+          <div class="stat-value">1.4%</div>
+          <div class="stat-sub">moyenne globale — les boutiques optimisées dépassent 3%</div>
+        </div>
+        <div class="stat-card sc-woo">
+          <div class="stat-label">CVR moyen WooCommerce</div>
+          <div class="stat-value">1.1%</div>
+          <div class="stat-sub">moyenne globale — très variable selon la qualité du thème</div>
+        </div>
+        <div class="stat-card sc-neutral">
+          <div class="stat-label">Impact vitesse sur CVR</div>
+          <div class="stat-value">-7%</div>
+          <div class="stat-sub">de conversion perdue par seconde de chargement supplémentaire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMP TABLE -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Comparatif détaillé — impact sur la conversion</p>
+      <div class="comp-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Critère</th>
+              <th>🟢 Shopify</th>
+              <th>🟣 WooCommerce</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vitesse de chargement</td>
+              <td><div class="cell-content"><span class="tag-shopify">✓ Avantage</span><span>Infrastructure CDN mondiale, LCP moyen 1.8s out of the box</span></div></td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Variable</span><span>Dépend de l'hébergement et des plugins — souvent 3-5s sans optimisation</span></div></td>
+            </tr>
+            <tr>
+              <td>Qualité du checkout</td>
+              <td><div class="cell-content"><span class="tag-shopify">✓ Avantage fort</span><span>Checkout natif 1-page testé sur des millions de transactions. Shop Pay augmente le CVR de 50%</span></div></td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Configurable</span><span>Checkout standard améliorable mais nécessite plugins (Cartflows, etc.) et dev</span></div></td>
+            </tr>
+            <tr>
+              <td>Optimisation mobile</td>
+              <td><div class="cell-content"><span class="tag-shopify">✓ Natif</span><span>Tous les thèmes Shopify sont mobile-first par obligation de la plateforme</span></div></td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Selon thème</span><span>Très variable — les thèmes gratuits sont souvent mal optimisés mobile</span></div></td>
+            </tr>
+            <tr>
+              <td>Flexibilité UX</td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Limitée</span><span>Sandbox Shopify — certaines customisations sont impossibles sans app tierce</span></div></td>
+              <td><div class="cell-content"><span class="tag-woo">✓ Avantage total</span><span>Code source ouvert — modifier n'importe quel élément de l'UX est possible</span></div></td>
+            </tr>
+            <tr>
+              <td>SEO technique</td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Bon</span><span>Bonne base SEO mais URLs pas toujours optimales (/collections/, /products/)</span></div></td>
+              <td><div class="cell-content"><span class="tag-woo">✓ Avantage</span><span>WordPress + Yoast = contrôle SEO total sur URLs, balises, schémas, vitesse</span></div></td>
+            </tr>
+            <tr>
+              <td>Coût réel mensuel</td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Prévisible</span><span>29-299€/mois + apps tierces. Souvent 100-400€/mois au total</span></div></td>
+              <td><div class="cell-content"><span class="tag-woo">✓ Potentiellement moins cher</span><span>Hébergement + plugins + maintenance. Variable : 30 à 300€/mois selon les besoins</span></div></td>
+            </tr>
+            <tr>
+              <td>Maintenance technique</td>
+              <td><div class="cell-content"><span class="tag-shopify">✓ Aucune</span><span>Mises à jour, sécurité, sauvegardes — tout est géré par Shopify</span></div></td>
+              <td><div class="cell-content"><span class="tag-neutral">~ À gérer</span><span>Mises à jour WordPress/plugins, sécurité et sauvegardes à votre charge</span></div></td>
+            </tr>
+            <tr>
+              <td>Scalabilité trafic</td>
+              <td><div class="cell-content"><span class="tag-shopify">✓ Automatique</span><span>Gère les pics de trafic sans configuration (Black Friday, soldes)</span></div></td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Selon hébergement</span><span>Peut nécessiter une montée en puissance manuelle du serveur lors des pics</span></div></td>
+            </tr>
+            <tr>
+              <td>Personnalisation produit</td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Via apps</span><span>Configurateurs produit via apps tierces (souvent 20-80€/mois)</span></div></td>
+              <td><div class="cell-content"><span class="tag-woo">✓ Natif</span><span>Possibilité de développer des configurateurs sur mesure sans contrainte</span></div></td>
+            </tr>
+            <tr>
+              <td>Facilité de prise en main</td>
+              <td><div class="cell-content"><span class="tag-shopify">✓ Très simple</span><span>Interface intuitive — une boutique de base en quelques heures sans dev</span></div></td>
+              <td><div class="cell-content"><span class="tag-neutral">~ Technique</span><span>Courbe d'apprentissage plus longue — nécessite des bases WordPress</span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT CVR -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Impact concret sur le taux de conversion</p>
+      <p class="prose">La plateforme seule ne fait pas le CVR — mais elle crée les conditions pour convertir. Voilà où chaque plateforme a un <strong>impact direct et mesurable sur les conversions</strong>.</p>
+      <div class="impact-grid">
+        <div class="impact-card shopify">
+          <div class="platform-badge shopify-badge" style="margin-bottom:1rem">🟢 Shopify — Avantages CVR</div>
+          <div class="impact-item"><span class="impact-icon">⚡</span><div><strong>Shop Pay</strong> — le wallet natif Shopify augmente le CVR checkout de 50% sur les clients récurrents. 100M+ de wallets actifs en Europe.</div></div>
+          <div class="impact-item"><span class="impact-icon">📱</span><div><strong>Checkout 1-page natif</strong> — 3 champs seulement sur mobile. Réduit le taux d'abandon checkout de 15-20% vs un checkout multi-étapes mal configuré.</div></div>
+          <div class="impact-item"><span class="impact-icon">🚀</span><div><strong>Vitesse out-of-the-box</strong> — pas besoin d'optimiser l'hébergement. LCP moyen sous 2s sans configuration.</div></div>
+          <div class="impact-item"><span class="impact-icon">🔒</span><div><strong>SSL + PCI compliance automatiques</strong> — les badges de sécurité sont toujours à jour. La réassurance paiement ne demande aucune action.</div></div>
+        </div>
+        <div class="impact-card woo">
+          <div class="platform-badge woo-badge" style="margin-bottom:1rem">🟣 WooCommerce — Avantages CVR</div>
+          <div class="impact-item"><span class="impact-icon">🎨</span><div><strong>UX entièrement personnalisable</strong> — impossible de buter sur une limitation Shopify. Chaque élément de la fiche produit, du panier et du checkout peut être optimisé sans contrainte.</div></div>
+          <div class="impact-item"><span class="impact-icon">🔍</span><div><strong>SEO sans compromis</strong> — URLs propres, schémas structurés complets, vitesse optimisable à 100%. Un WooCommerce bien configuré peut outperformer Shopify en SEO organique.</div></div>
+          <div class="impact-item"><span class="impact-icon">📊</span><div><strong>A/B testing natif plus flexible</strong> — intégration directe avec Google Optimize, VWO ou AB Tasty sans passer par les apps Shopify.</div></div>
+          <div class="impact-item"><span class="impact-icon">🔧</span><div><strong>Pas de frais de transaction</strong> — Shopify prélève 0.5 à 2% sur les paiements hors Shopify Payments. WooCommerce n'a aucun frais de plateforme sur les ventes.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFIL TABLE -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Quelle plateforme selon votre profil ?</p>
+      <div class="profil-wrap">
+        <table class="profil-table">
+          <thead>
+            <tr><th>Votre profil</th><th>Recommandation</th><th>Pourquoi</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lancement rapide, sans ressource dev</td>
+              <td><span class="rec-shopify">Shopify</span></td>
+              <td>Boutique en ligne en 48h, checkout optimisé natif, aucune maintenance technique à gérer.</td>
+            </tr>
+            <tr>
+              <td>Catalogue WordPress existant</td>
+              <td><span class="rec-woo">WooCommerce</span></td>
+              <td>Migration naturelle, SEO préservé, pas de reconstruction du contenu éditorial.</td>
+            </tr>
+            <tr>
+              <td>Produits avec configurateur complexe</td>
+              <td><span class="rec-woo">WooCommerce</span></td>
+              <td>Personnalisation produit sur mesure sans contrainte de plateforme ni coût d'app mensuel.</td>
+            </tr>
+            <tr>
+              <td>Fort volume de ventes (100k€+/mois)</td>
+              <td><span class="rec-shopify">Shopify Plus</span></td>
+              <td>Infrastructure garantie pour les pics, checkout scripts personnalisables, support prioritaire.</td>
+            </tr>
+            <tr>
+              <td>Budget limité, tech interne disponible</td>
+              <td><span class="rec-woo">WooCommerce</span></td>
+              <td>Pas de frais de plateforme, coût maîtrisable, flexibilité totale si vous avez la compétence.</td>
+            </tr>
+            <tr>
+              <td>Priorité maximale sur le CVR checkout</td>
+              <td><span class="rec-shopify">Shopify</span></td>
+              <td>Shop Pay + checkout 1-page natif = meilleure performance checkout out of the box.</td>
+            </tr>
+            <tr>
+              <td>Stratégie SEO organique forte</td>
+              <td><span class="rec-woo">WooCommerce</span></td>
+              <td>Contrôle total des URLs, schémas structurés, vitesse optimisable — avantage SEO technique.</td>
+            </tr>
+            <tr>
+              <td>International multi-devises</td>
+              <td><span class="rec-both">Les deux</span></td>
+              <td>Shopify Markets vs WooCommerce WPML + Aelia Currency Switcher — les deux gèrent bien l'international.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Questions fréquentes</p>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:.5rem 1.5rem">
+        <details class="faq-item">
+          <summary class="faq-question">Shopify convertit-il vraiment mieux que WooCommerce ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">En moyenne, oui — mais pas parce que la plateforme est magique. <strong>Shopify offre un meilleur CVR par défaut</strong> grâce à son checkout optimisé et à Shop Pay, qui réduit la friction de paiement de manière significative. Mais un WooCommerce bien configuré par un expert CRO peut outperformer un Shopify standard. <strong>La plateforme crée les conditions — l'optimisation fait la différence.</strong></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Faut-il migrer de WooCommerce vers Shopify pour améliorer son CVR ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Pas nécessairement. Une migration est coûteuse (développement, risque SEO, temps) et le gain de CVR n'est pas garanti. <strong>Commencez par optimiser ce que vous avez</strong> — checkout, vitesse, réassurance. Une boutique WooCommerce bien optimisée convertit souvent mieux qu'un Shopify standard non optimisé. Migrer uniquement si vous butez sur des limitations techniques bloquantes.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Qu'est-ce que Shop Pay et pourquoi ça impacte le CVR ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Shop Pay est le wallet de paiement natif de Shopify. Il pré-remplit les informations de paiement et d'adresse des clients qui ont déjà acheté sur n'importe quelle boutique Shopify — soit plus de 100 millions de comptes actifs. <strong>Le checkout se réduit à 2 clics</strong> pour ces clients. Shopify reporte +50% de CVR checkout pour les sessions Shop Pay vs checkout classique.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">WooCommerce peut-il atteindre la même vitesse que Shopify ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Oui, avec le bon hébergement et la bonne configuration. Un WooCommerce sur <strong>un hébergement premium (Kinsta, WP Engine, Cloudways) avec un CDN configuré</strong> peut atteindre des LCP sous 1.5s — meilleur que la moyenne Shopify. Le problème : ça demande une expertise technique et un investissement que Shopify rend inutile.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Les apps Shopify ont-elles un impact négatif sur le CVR ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Oui, potentiellement. <strong>Chaque app Shopify charge du JavaScript supplémentaire</strong> qui ralentit le site. Une boutique avec 30 apps active peut perdre 20-30% de performance vs une boutique avec 5 apps bien choisies. L'audit régulier des apps installées (et la suppression des inutilisées) est une pratique CRO de base sur Shopify.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Quels outils CRO sont disponibles sur chaque plateforme ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Les deux plateformes supportent les mêmes outils CRO externes : <strong>Hotjar, Microsoft Clarity, Google Analytics 4, VWO, AB Tasty</strong>. La différence est dans l'intégration : Shopify nécessite souvent de passer par une app tierce pour certaines customisations de checkout, tandis que WooCommerce permet une intégration directe dans le code. Pour la plupart des besoins CRO standards, les deux plateformes sont équivalentes.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="section">
+    <div class="wrap">
+      <div class="verdict-final">
+        <h3>Le verdict</h3>
+        <p><strong>Pour la majorité des e-commerçants sans ressource technique, Shopify est le meilleur choix pour le CVR</strong> — son checkout natif, Shop Pay et la performance out-of-the-box créent les meilleures conditions de conversion sans effort. <strong>WooCommerce est le meilleur choix pour ceux qui ont une expertise WordPress existante</strong>, qui ont besoin d'une personnalisation poussée ou dont la stratégie est centrée sur le SEO organique. Dans les deux cas, la plateforme n't est que le point de départ — c'est l'optimisation qui fait la vraie différence.</p>
+      </div>
+
+      <div style="margin-top:2rem">
+        <p class="section-label">Ressources liées</p>
+        <div class="related-grid">
+          <a href="/cro-calculator/comparatifs/cro-vs-acquisition.html" class="related-card"><div class="rc-label">Comparatif</div><div class="rc-title">CRO vs Acquisition</div><div class="rc-arrow">→</div></a>
+          <a href="/cro-calculator/ressources/checklist-ux.html" class="related-card"><div class="rc-label">Ressource</div><div class="rc-title">Checklist UX e-commerce</div><div class="rc-arrow">→</div></a>
+          <a href="/cro-calculator/" class="related-card"><div class="rc-label">Outil gratuit</div><div class="rc-title">Calculateur CRO</div><div class="rc-arrow">→</div></a>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Quelle que soit votre plateforme, votre CVR peut progresser</h3>
+        <p>Calculez votre potentiel de conversion et identifiez les frictions à corriger en priorité — indépendamment de votre CMS.</p>
+        <a href="/cro-calculator/" class="cta-btn">Analyser mon taux de conversion →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a></li>
+          <li><a href="/cro-calculator/ressources/checklist-ux.html">Checklist UX</a></li>
+          <li><a href="/cro-calculator/ressources/glossaire-cro.html">Glossaire CRO</a></li>
+          <li><a href="/cro-calculator/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
+          <li><a href="/cro-calculator/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Par niche</h4>
+        <ul>
+          <li><a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a></li>
+          <li><a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a></li>
+          <li><a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation</a></li>
+          <li><a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a></li>
+          <li><a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Déco</a></li>
+          <li><a href="/cro-calculator/niches/cro-sport-fitness.html">Sport & Fitness</a></li>
+          <li><a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux</a></li>
+          <li><a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux</a></li>
+          <li><a href="/cro-calculator/niches/cro-auto-moto.html">Auto & Moto</a></li>
+          <li><a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank">Prendre un appel</a></li>
+          <li><a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-expand">
+      <button class="footer-expand-btn" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');document.getElementById('fn2').classList.toggle('open')" aria-expanded="false">
+        <span>Toutes les niches e-commerce</span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="footer-expand-content" id="fn2">
+        <div class="footer-niches-grid">
+          <a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a>
+          <a href="/cro-calculator/niches/cro-accessoires-tech.html">Accessoires & Tech</a>
+          <a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a>
+          <a href="/cro-calculator/niches/cro-sport-fitness.html">Sport & Fitness</a>
+          <a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Décoration</a>
+          <a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux de compagnie</a>
+          <a href="/cro-calculator/niches/cro-bebe.html">Bébé</a>
+          <a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a>
+          <a href="/cro-calculator/niches/cro-bricolage-outils.html">Bricolage & Outils</a>
+          <a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation & Nutrition</a>
+          <a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming & Jeux vidéo</a>
+          <a href="/cro-calculator/niches/cro-education-livres.html">Éducation & Livres</a>
+          <a href="/cro-calculator/niches/cro-voyage-bagages.html">Voyage & Bagages</a>
+          <a href="/cro-calculator/niches/cro-jardinage-plantes.html">Jardinage & Plantes</a>
+          <a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux & Accessoires</a>
+          <a href="/cro-calculator/niches/cro-outdoor-aventure.html">Outdoor & Aventure</a>
+          <a href="/cro-calculator/niches/cro-auto-moto.html">Auto & Moto</a>
+          <a href="/cro-calculator/niches/cro-enfants.html">Enfants</a>
+          <a href="/cro-calculator/niches/cro-audio-son.html">Audio & Son</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
+      <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
