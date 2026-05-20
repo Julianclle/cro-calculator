@@ -1105,9 +1105,9 @@
           <li><a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a></li>
           <li><a href="/cro-calculator/ressources/checklist-ux.html">Checklist UX</a></li>
           <li><a href="/cro-calculator/ressources/glossaire-cro.html">Glossaire CRO</a></li>
+          <li><a href="/cro-calculator/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Par niche</h4>
         <ul>
@@ -1131,12 +1131,109 @@
         </ul>
       </div>
     </div>
+
+    <!-- Expandable all niches -->
+    <div class="footer-expand">
+      <button class="footer-expand-btn" onclick="toggleFooterExpand(this)" aria-expanded="false">
+        <span>Toutes les niches e-commerce</span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="footer-expand-content" id="footer-niches-expand">
+        <div class="footer-niches-grid">
+          <a href="/cro-calculator/niches/cro-mode-vetements.html">Mode & Vêtements</a>
+          <a href="/cro-calculator/niches/cro-accessoires-tech.html">Accessoires & Tech</a>
+          <a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté & Cosmétique</a>
+          <a href="/cro-calculator/niches/cro-sport-fitness.html">Sport & Fitness</a>
+          <a href="/cro-calculator/niches/cro-maison-decoration.html">Maison & Décoration</a>
+          <a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux de compagnie</a>
+          <a href="/cro-calculator/niches/cro-bebe.html">Bébé</a>
+          <a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé & Bien-être</a>
+          <a href="/cro-calculator/niches/cro-bricolage-outils.html">Bricolage & Outils</a>
+          <a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation & Nutrition</a>
+          <a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming & Jeux vidéo</a>
+          <a href="/cro-calculator/niches/cro-education-livres.html">Éducation & Livres</a>
+          <a href="/cro-calculator/niches/cro-voyage-bagages.html">Voyage & Bagages</a>
+          <a href="/cro-calculator/niches/cro-jardinage-plantes.html">Jardinage & Plantes</a>
+          <a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux & Accessoires</a>
+          <a href="/cro-calculator/niches/cro-outdoor-aventure.html">Outdoor & Aventure</a>
+          <a href="/cro-calculator/niches/cro-auto-moto.html">Auto & Moto</a>
+          <a href="/cro-calculator/niches/cro-enfants.html">Enfants</a>
+          <a href="/cro-calculator/niches/cro-audio-son.html">Audio & Son</a>
+        </div>
+      </div>
+    </div>
+
     <div class="footer-bottom">
       <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
       <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-expand {
+    border-top: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .footer-expand-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 0;
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .footer-expand-btn:hover { color: var(--text-muted); }
+  .footer-expand-btn .chevron {
+    transition: transform 0.3s ease;
+    color: var(--text-faint);
+  }
+  .footer-expand-btn[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+  .footer-expand-content {
+    display: none;
+    padding-bottom: 1.5rem;
+    animation: fadeUp 0.3s ease both;
+  }
+  .footer-expand-content.open { display: block; }
+  .footer-niches-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px 16px;
+    padding: 0 0 0.5rem;
+  }
+  .footer-niches-grid a {
+    font-size: 12px;
+    color: var(--text-faint);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .footer-niches-grid a:hover { color: var(--accent); }
+  @media (max-width: 768px) {
+    .footer-niches-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script>
+  function toggleFooterExpand(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const content = document.getElementById('footer-niches-expand');
+    content.classList.toggle('open', !expanded);
+  }
+</script>
 
 </div>
 
