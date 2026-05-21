@@ -7,7 +7,7 @@
 <meta name="description" content="CRO ou acquisition payante : quel investissement est le plus rentable pour votre boutique e-commerce ? Comparatif complet avec calculs, tableau et recommandations selon votre situation.">
 <link rel="canonical" href="https://julianclle.github.io/cro-calculator/comparatifs/cro-vs-acquisition.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -29,7 +29,7 @@ body::before { content: ''; position: fixed; inset: 0; background-image: radial-
 /* NAV */
 .nav-wrapper { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); width: calc(100% - 3rem); max-width: 1060px; z-index: 100; }
 nav { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1.5rem; background: rgba(12,12,12,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-.nav-logo { font-family: 'Instrument Serif', serif; font-size: 17px; color: var(--accent); text-decoration: none; }
+.nav-logo { font-family: 'Inter', sans-serif; font-size: 17px; color: var(--accent); text-decoration: none; }
 .nav-tag { font-size: 11px; color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase; }
 .nav-cta { display: inline-flex; align-items: center; gap: 7px; background: var(--accent); color: #0a0a0a; border: none; border-radius: 10px; padding: 8px 16px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: opacity 0.15s; white-space: nowrap; }
 .nav-cta:hover { opacity: 0.82; }
@@ -46,7 +46,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 /* HERO */
 .hero { padding: 2.5rem 0 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; animation: fadeUp 0.6s ease both; }
 .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(232,213,163,0.2); border-radius: 100px; padding: 4px 14px; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
-.hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2.2rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.hero h1 { font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1rem; }
 .hero h1 em { font-style: italic; color: var(--accent); }
 .hero-desc { font-size: 15px; line-height: 1.75; color: var(--text-muted); }
 .hero-right { display: flex; flex-direction: column; gap: 12px; }
@@ -60,7 +60,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 /* SECTION */
 .section { padding: 4rem 0; border-top: 1px solid var(--border); }
 .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 1.5rem; }
-h2.section-title { font-family: 'Instrument Serif', serif; font-size: 1.8rem; line-height: 1.15; color: var(--text); margin-bottom: 1rem; }
+h2.section-title { font-family: 'Inter', sans-serif; font-size: 1.8rem; line-height: 1.15; background: linear-gradient(160deg, #ffffff 0%, rgba(240,237,232,0.55) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; }
 .prose { font-size: 14px; line-height: 1.85; color: var(--text-muted); margin-bottom: 1rem; }
 .prose strong { color: var(--text); font-weight: 500; }
 
@@ -72,7 +72,7 @@ h2.section-title { font-family: 'Instrument Serif', serif; font-size: 1.8rem; li
 .stat-card.orange::before { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
 .stat-card.green::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
 .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 10px; }
-.stat-value { font-family: 'Instrument Serif', serif; font-size: 2.8rem; line-height: 1; margin-bottom: 6px; }
+.stat-value { font-family: 'Inter', sans-serif; font-size: 2.8rem; line-height: 1; margin-bottom: 6px; }
 .stat-card.red .stat-value { color: var(--red); }
 .stat-card.orange .stat-value { color: var(--orange); }
 .stat-card.green .stat-value { color: var(--green); }
@@ -178,13 +178,13 @@ details[open] .faq-icon { transform: rotate(45deg); }
 /* VERDICT FINAL */
 .verdict-final { background: linear-gradient(135deg, rgba(232,213,163,0.07) 0%, rgba(125,206,168,0.04) 100%); border: 1px solid rgba(232,213,163,0.18); border-radius: 16px; padding: 2rem; position: relative; overflow: hidden; }
 .verdict-final::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,213,163,0.4), transparent); }
-.verdict-final h3 { font-family: 'Instrument Serif', serif; font-size: 1.4rem; margin-bottom: 0.75rem; }
+.verdict-final h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 0.75rem; }
 .verdict-final p { font-size: 14px; line-height: 1.8; color: var(--text-muted); }
 .verdict-final strong { color: var(--accent); font-weight: 500; }
 
 /* CTA */
 .cta-block { background: var(--accent-dim2); border: 1px solid rgba(232,213,163,0.12); border-radius: 16px; padding: 2.5rem; text-align: center; margin-top: 3rem; }
-.cta-block h3 { font-family: 'Instrument Serif', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+.cta-block h3 { font-family: 'Inter', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
 .cta-block p { font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.65; }
 .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #0a0a0a; border: none; border-radius: 10px; padding: 13px 26px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; transition: opacity 0.15s; }
 .cta-btn:hover { opacity: 0.85; }
@@ -613,7 +613,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   <div class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <span style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;color:var(--accent)">Julian Caillé</span>
         <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
       </div>
       <div class="footer-col">
