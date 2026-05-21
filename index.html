@@ -18,9 +18,9 @@
     --text: #f0ede8;
     --text-muted: rgba(240,237,232,0.5);
     --text-faint: rgba(240,237,232,0.28);
-    --accent: #e8d5a3;
-    --accent-dim: rgba(232,213,163,0.12);
-    --accent-dim2: rgba(232,213,163,0.06);
+    --accent: #e8e8e8;
+    --accent-dim: rgba(255,255,255,0.08);
+    --accent-dim2: rgba(255,255,255,0.04);
     --green: #7dcea8;
     --green-dim: rgba(125,206,168,0.1);
     --orange: #e8a87c;
@@ -39,7 +39,7 @@
     position: fixed;
     inset: 0;
     background-image:
-      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(232,213,163,0.07) 0%, transparent 60%);
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255,255,255,0.05) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -76,7 +76,7 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: var(--accent);
+    background: linear-gradient(135deg, #ffffff 0%, #d8d8d8 100%);
     color: #0a0a0a;
     border: none;
     border-radius: 10px;
@@ -99,7 +99,7 @@
   .hero { max-width: 1100px; margin: 0 auto; padding: 7.5rem 2.5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .hero-left { padding-top: 1rem; }
 
-  .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(232,213,163,0.2); border-radius: 100px; padding: 5px 14px; font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.75rem; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 5px 14px; font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.75rem; }
   .badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
 
   @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
@@ -115,7 +115,7 @@
   .proof-divider { width: 1px; height: 32px; background: var(--border); }
 
   .calc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; }
-  .calc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,213,163,0.3), transparent); }
+  .calc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); }
   .calc-title { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
 
   .inputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
@@ -268,7 +268,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232,213,163,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
   }
 
   .analyse-header {
@@ -285,8 +285,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(232,213,163,0.08);
-    border: 1px solid rgba(232,213,163,0.15);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 100px;
     padding: 4px 12px;
     font-size: 10px;
@@ -313,6 +313,22 @@
 
   .analyse-inputs-single { margin-bottom: 1.5rem; }
 
+  .url-niche-row { display: grid; grid-template-columns: 200px 1fr; gap: 10px; align-items: end; margin-bottom: 8px; }
+  .niche-field-main { display: flex; flex-direction: column; gap: 8px; }
+  .niche-field-main label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .niche-select-wrap {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0 14px; height: 52px;
+  }
+  .niche-select-wrap:focus-within { border-color: rgba(255,255,255,0.2); }
+  .niche-select-wrap select {
+    background: none; border: none; outline: none; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer;
+    width: 100%; height: 100%; appearance: none; -webkit-appearance: none;
+  }
+  .niche-select-wrap select option { background: #181818; color: var(--text); }
+
   .url-field-main { display: flex; flex-direction: column; gap: 8px; }
   .url-field-main label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
 
@@ -322,12 +338,13 @@
     gap: 10px;
     background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 8px 8px 8px 14px;
+    border-radius: 10px;
+    padding: 0 8px 0 14px;
+    height: 52px;
     transition: border-color 0.2s;
   }
 
-  .url-input-main-wrap:focus-within { border-color: rgba(232,213,163,0.3); }
+  .url-input-main-wrap:focus-within { border-color: rgba(255,255,255,0.2); }
   .url-icon { font-size: 13px; color: var(--text-faint); flex-shrink: 0; }
 
   .url-input-main-wrap input {
@@ -410,7 +427,7 @@
     transition: all 0.3s;
   }
 
-  .loading-step.active .step-indicator { border-color: var(--accent); background: rgba(232,213,163,0.1); }
+  .loading-step.active .step-indicator { border-color: var(--accent); background: rgba(255,255,255,0.08); }
   .loading-step.done .step-indicator { background: var(--green); border-color: var(--green); color: #0a0a0a; }
 
   /* RAPPORT */
@@ -482,7 +499,7 @@
   .tag-important { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
   .tag-quick-win { background: var(--green-dim); color: var(--green); border: 1px solid rgba(125,206,168,0.2); }
   .tag-copy { background: rgba(160,140,220,0.1); color: #a08cdc; border: 1px solid rgba(160,140,220,0.2); }
-  .tag-ux { background: rgba(232,213,163,0.08); color: var(--accent); border: 1px solid rgba(232,213,163,0.15); }
+  .tag-ux { background: rgba(255,255,255,0.06); color: var(--accent); border: 1px solid rgba(255,255,255,0.12); }
 
   .reco-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
   .reco-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
@@ -519,8 +536,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(232,213,163,0.1);
-    border: 1px solid rgba(232,213,163,0.2);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 100px;
     padding: 5px 14px;
     font-size: 11px;
@@ -566,8 +583,8 @@
   }
 
   .price-option.selected, .price-option:hover {
-    border-color: rgba(232,213,163,0.3);
-    background: rgba(232,213,163,0.06);
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.04);
   }
 
   .price-option .p-amount {
@@ -753,7 +770,7 @@
   .tag-important { background: var(--orange-dim);       color: var(--orange); border: 1px solid var(--orange-border); }
   .tag-quick-win { background: var(--green-dim);        color: var(--green);  border: 1px solid rgba(125,206,168,0.2); }
   .tag-copy      { background: rgba(160,140,220,0.1);  color: #a08cdc;       border: 1px solid rgba(160,140,220,0.2); }
-  .tag-ux        { background: rgba(232,213,163,0.08); color: var(--accent); border: 1px solid rgba(232,213,163,0.15); }
+  .tag-ux        { background: rgba(255,255,255,0.06); color: var(--accent); border: 1px solid rgba(255,255,255,0.12); }
   .tag-confiance { background: rgba(100,160,240,0.1);  color: #6fa0e0;       border: 1px solid rgba(100,160,240,0.2); }
   .tag-urgence   { background: rgba(232,100,80,0.1);   color: #e86450;       border: 1px solid rgba(232,100,80,0.2); }
   .tag-seo       { background: rgba(160,120,220,0.1);  color: #a078dc;       border: 1px solid rgba(160,120,220,0.2); }
@@ -1257,7 +1274,7 @@
       <div class="calendly-wrap" id="calendly-wrap">
         <iframe
           class="calendly-inline-widget"
-          src="https://calendly.com/juliancaille/appel-decouverte?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=111111&text_color=f0ede8&primary_color=e8d5a3"
+          src="https://calendly.com/juliancaille/appel-decouverte?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=111111&text_color=f0ede8&primary_color=e8e8e8"
           frameborder="0"
           allowtransparency="true"
         ></iframe>
@@ -1278,19 +1295,47 @@
       </div>
 
       <div class="analyse-inputs-single">
-        <div class="url-field-main">
-          <label>URL de ta boutique</label>
-          <div class="url-input-main-wrap">
-            <span class="url-icon">🔗</span>
-            <input type="url" id="url-home" placeholder="https://maboutique.fr" />
-            <button class="analyse-btn" id="analyse-btn" onclick="startAnalyse()">
-              <span id="btn-icon">✦</span>
-              <span id="btn-text">Analyser ma boutique</span>
-            </button>
+        <div class="url-niche-row">
+          <div class="niche-field-main">
+            <label>Niche e-commerce</label>
+            <div class="niche-select-wrap">
+              <select id="niche-select">
+                <option value="">— Sélectionne —</option>
+                <option value="Mode & Vêtements">Mode & Vêtements</option>
+                <option value="Beauté & Cosmétique">Beauté & Cosmétique</option>
+                <option value="Alimentation & Nutrition">Alimentation & Nutrition</option>
+                <option value="Santé & Bien-être">Santé & Bien-être</option>
+                <option value="Maison & Décoration">Maison & Décoration</option>
+                <option value="Accessoires & Tech">Accessoires & Tech</option>
+                <option value="Sport & Fitness">Sport & Fitness</option>
+                <option value="Animaux de compagnie">Animaux de compagnie</option>
+                <option value="Bébé & Enfants">Bébé & Enfants</option>
+                <option value="Bricolage & Outils">Bricolage & Outils</option>
+                <option value="Gaming & Jeux vidéo">Gaming & Jeux vidéo</option>
+                <option value="Éducation & Livres">Éducation & Livres</option>
+                <option value="Voyage & Bagages">Voyage & Bagages</option>
+                <option value="Jardinage & Plantes">Jardinage & Plantes</option>
+                <option value="Bijoux & Accessoires">Bijoux & Accessoires</option>
+                <option value="Outdoor & Aventure">Outdoor & Aventure</option>
+                <option value="Auto & Moto">Auto & Moto</option>
+                <option value="Audio & Son">Audio & Son</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
           </div>
-          <div class="url-hint">L'IA analysera automatiquement ta homepage, tes fiches produit et ton checkout</div>
-        
+          <div class="url-field-main">
+            <label>URL de ta boutique</label>
+            <div class="url-input-main-wrap">
+              <span class="url-icon">🔗</span>
+              <input type="url" id="url-home" placeholder="https://maboutique.fr" />
+              <button class="analyse-btn" id="analyse-btn" onclick="startAnalyse()">
+                <span id="btn-icon">✦</span>
+                <span id="btn-text">Analyser ma boutique</span>
+              </button>
+            </div>
+          </div>
         </div>
+        <div class="url-hint">L'IA analysera automatiquement ta homepage, tes fiches produit et ton checkout</div>
       </div>
 
       <!-- LOADING -->
@@ -1686,7 +1731,7 @@
     const response = await fetch(FUNCTION_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ homeContent, productContent, urlHome })
+      body: JSON.stringify({ homeContent, productContent, urlHome, niche })
     });
 
     if (!response.ok) {
@@ -1711,8 +1756,13 @@
 
   async function startAnalyse() {
     let urlHome = el('url-home').value.trim();
+    const niche = el('niche-select').value;
     if (!urlHome) {
       el('url-home').closest('.url-input-main-wrap').style.borderColor = 'rgba(200,60,60,0.4)';
+      return;
+    }
+    if (!niche) {
+      el('niche-select').closest('.niche-select-wrap').style.borderColor = 'rgba(200,60,60,0.4)';
       return;
     }
     urlHome = normalizeUrl(urlHome);
