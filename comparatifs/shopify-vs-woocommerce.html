@@ -14,7 +14,7 @@
   --bg:#0a0a0a;--surface:#111111;--surface2:#181818;
   --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.16);
   --text:#f0ede8;--text-muted:rgba(240,237,232,0.5);--text-faint:rgba(240,237,232,0.28);
-  --accent:#e8d5a3;--accent-dim:rgba(232,213,163,0.12);--accent-dim2:rgba(232,213,163,0.06);
+  --accent:#e8e8e8;--accent-dim:rgba(255,255,255,0.08);--accent-dim2:rgba(255,255,255,0.04);
   --green:#7dcea8;--orange:#e8a87c;--red:#e07070;
   --shopify:#96bf48;--shopify-dim:rgba(150,191,72,0.1);--shopify-border:rgba(150,191,72,0.25);
   --woo:#7f54b3;--woo-dim:rgba(127,84,179,0.1);--woo-border:rgba(127,84,179,0.25);
@@ -30,7 +30,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.5rem;background:rgba(12,12,12,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
 .nav-logo{font-family:'Inter',sans-serif;font-weight:300;font-size:17px;color:var(--accent);text-decoration:none}
 .nav-tag{font-size:11px;color:var(--text-faint);letter-spacing:0.1em;text-transform:uppercase}
-.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;white-space:nowrap}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#ffffff 0%,#d0d0d0 100%);color:#0a0a0a;border:none;border-radius:10px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;white-space:nowrap}
 .nav-cta:hover{opacity:.82}
 
 .wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem}
@@ -41,7 +41,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem
 
 /* HERO */
 .hero{padding:2.5rem 0 4rem;animation:fadeUp .6s ease both}
-.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(232,213,163,0.2);border-radius:100px;padding:4px 14px;font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:4px 14px;font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem}
 .hero h1{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(2.2rem,3.5vw,3rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:1rem}
 .hero h1 em{font-style:italic;color:var(--accent)}
 .hero-desc{font-size:15px;line-height:1.75;color:var(--text-muted);max-width:700px}
@@ -117,7 +117,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem
 .profil-table tr:hover td{background:rgba(255,255,255,0.02)}
 .rec-shopify{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--shopify-dim);color:var(--shopify);border:1px solid var(--shopify-border)}
 .rec-woo{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--woo-dim);color:var(--woo);border:1px solid var(--woo-border)}
-.rec-both{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(232,213,163,0.2)}
+.rec-both{display:inline-flex;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(255,255,255,0.15)}
 
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--border)}
@@ -129,21 +129,21 @@ details[open] .faq-icon{transform:rotate(45deg)}
 .faq-answer strong{color:var(--text);font-weight:500}
 
 /* VERDICT */
-.verdict-final{background:linear-gradient(135deg,rgba(232,213,163,0.07) 0%,rgba(125,206,168,0.04) 100%);border:1px solid rgba(232,213,163,0.18);border-radius:16px;padding:2rem;position:relative;overflow:hidden}
-.verdict-final::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(232,213,163,0.4),transparent)}
+.verdict-final{background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(125,206,168,0.04) 100%);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:2rem;position:relative;overflow:hidden}
+.verdict-final::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent)}
 .verdict-final h3{font-family:'Inter',sans-serif;font-weight:300;font-size:1.4rem;margin-bottom:.75rem}
 .verdict-final p{font-size:14px;line-height:1.8;color:var(--text-muted)}
 .verdict-final strong{color:var(--accent);font-weight:500}
 
-.cta-block{background:var(--accent-dim2);border:1px solid rgba(232,213,163,0.12);border-radius:16px;padding:2.5rem;text-align:center;margin-top:3rem}
+.cta-block{background:var(--accent-dim2);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2.5rem;text-align:center;margin-top:3rem}
 .cta-block h3{font-family:'Inter',sans-serif;font-weight:300;font-size:1.5rem;margin-bottom:.5rem}
 .cta-block p{font-size:14px;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.65}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:13px 26px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ffffff 0%,#d0d0d0 100%);color:#0a0a0a;border:none;border-radius:10px;padding:13px 26px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .15s}
 .cta-btn:hover{opacity:.85}
 
 .related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .related-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s;display:block}
-.related-card:hover{border-color:rgba(232,213,163,0.3)}
+.related-card:hover{border-color:rgba(255,255,255,0.2)}
 .rc-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:5px}
 .rc-title{font-size:13px;color:var(--text);font-weight:500}
 .rc-arrow{font-size:12px;color:var(--accent);margin-top:5px}
@@ -468,7 +468,7 @@ details[open] .faq-icon{transform:rotate(45deg)}
   <div class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <span style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;color:#e8e8e8">Julian Caillé</span>
         <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
       </div>
       <div class="footer-col">
