@@ -18,13 +18,13 @@
     --bg: #0a0a0a; --surface: #111111; --surface2: #181818;
     --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.16);
     --text: #f0ede8; --text-muted: rgba(240,237,232,0.5); --text-faint: rgba(240,237,232,0.28);
-    --accent: #e8d5a3; --accent-dim: rgba(232,213,163,0.12); --accent-dim2: rgba(232,213,163,0.06);
+    --accent: #e8e8e8; --accent-dim: rgba(255,255,255,0.08); --accent-dim2: rgba(255,255,255,0.04);
     --green: #7dcea8; --green-dim: rgba(125,206,168,0.1);
     --orange: #e8a87c; --red: #e07070;
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(ellipse 80% 50% at 20% -10%, rgba(232,213,163,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 110%, rgba(125,206,168,0.04) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255,255,255,0.04) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 110%, rgba(125,206,168,0.04) 0%, transparent 50%); pointer-events: none; z-index: 0; }
   .page { position: relative; z-index: 1; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
@@ -45,7 +45,7 @@
 
   /* HERO PAGE */
   .page-hero { max-width: 1100px; margin: 0 auto; padding: 2rem 2.5rem 3rem; }
-  .page-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(232,213,163,0.2); border-radius: 100px; padding: 4px 12px; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .page-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 4px 12px; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
   .page-hero h1 { font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
   .page-hero h1 em { font-style: italic; color: var(--accent); }
   .page-hero p { font-size: 15px; line-height: 1.75; color: var(--text-muted); max-width: 600px; }
@@ -60,10 +60,10 @@
 
   /* CARD SURFACE */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden; margin-bottom: 12px; }
-  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,213,163,0.2), transparent); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); }
 
   /* CTA BLOCK */
-  .cta-block { background: var(--accent-dim2); border: 1px solid rgba(232,213,163,0.12); border-radius: 16px; padding: 2rem; text-align: center; margin-top: 3rem; animation: fadeUp 0.6s ease both; }
+  .cta-block { background: var(--accent-dim2); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; text-align: center; margin-top: 3rem; animation: fadeUp 0.6s ease both; }
   .cta-block h3 { font-family: 'Inter', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
   .cta-block p { font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.65; }
   .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #0a0a0a; border: none; border-radius: 10px; padding: 12px 24px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
@@ -260,7 +260,7 @@
   <div class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <span style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;color:#e8e8e8">Julian Caillé</span>
         <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
       </div>
       <div class="footer-col">
