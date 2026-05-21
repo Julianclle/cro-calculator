@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads vs Facebook Ads — Quel canal choisir pour votre e-commerce ? | Julian Caillé</title>
+<meta name="description" content="Google Ads ou Facebook Ads : quel levier d'acquisition est le plus rentable pour votre boutique e-commerce ? Comparatif complet CVR, coûts, ciblage et recommandations.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Google Ads vs Facebook Ads — Quel canal choisir pour votre e-commerce ? | Julian Caillé">
+<meta property="og:description" content="Google Ads ou Facebook Ads : quel levier d'acquisition est le plus rentable pour votre boutique e-commerce ? Comparatif complet CVR, coûts, ciblage et recommandations.">
+<link rel="canonical" href="https://julianclle.github.io/cro-calculator/comparatifs/google-ads-vs-facebook-ads.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --surface: #111111; --surface2: #181818;
+  --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.16);
+  --text: #f0ede8; --text-muted: rgba(240,237,232,0.5); --text-faint: rgba(240,237,232,0.28);
+  --accent: #e8d5a3; --accent-dim: rgba(232,213,163,0.12); --accent-dim2: rgba(232,213,163,0.06);
+  --green: #7dcea8; --green-dim: rgba(125,206,168,0.1); --green-border: rgba(125,206,168,0.25);
+  --orange: #e8a87c; --orange-dim: rgba(232,168,124,0.08); --orange-border: rgba(232,168,124,0.25);
+  --red: #e07070; --red-dim: rgba(200,60,60,0.08); --red-border: rgba(200,60,60,0.25);
+  --blue: #7eb8e8; --blue-dim: rgba(126,184,232,0.1); --blue-border: rgba(126,184,232,0.25);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(ellipse 80% 50% at 20% -10%, rgba(232,213,163,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 110%, rgba(125,206,168,0.04) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+.page { position: relative; z-index: 1; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
+.nav-wrapper { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); width: calc(100% - 3rem); max-width: 1060px; z-index: 100; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1.5rem; background: rgba(12,12,12,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+.nav-logo { font-family: 'Instrument Serif', serif; font-size: 17px; color: var(--accent); text-decoration: none; }
+.nav-tag { font-size: 11px; color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+.nav-cta { display: inline-flex; align-items: center; gap: 7px; background: var(--accent); color: #0a0a0a; border: none; border-radius: 10px; padding: 8px 16px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: opacity 0.15s; white-space: nowrap; }
+.nav-cta:hover { opacity: 0.82; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+.breadcrumb { padding: 7rem 0 0; font-size: 12px; color: var(--text-faint); }
+.breadcrumb a { color: var(--text-faint); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span { margin: 0 6px; }
+.hero { padding: 2.5rem 0 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; animation: fadeUp 0.6s ease both; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(232,213,163,0.2); border-radius: 100px; padding: 4px 14px; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2.2rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-desc { font-size: 15px; line-height: 1.75; color: var(--text-muted); }
+.verdict-hero { background: linear-gradient(135deg, rgba(232,213,163,0.08) 0%, rgba(125,206,168,0.05) 100%); border: 1px solid rgba(232,213,163,0.2); border-radius: 16px; padding: 1.5rem; }
+.verdict-hero .vl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 10px; }
+.verdict-hero p { font-size: 13px; line-height: 1.75; color: var(--text-muted); }
+.verdict-hero strong { color: var(--accent); font-weight: 500; }
+.section { padding: 4rem 0; border-top: 1px solid var(--border); }
+.section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 1.5rem; }
+h2.section-title { font-family: 'Instrument Serif', serif; font-size: 1.8rem; line-height: 1.15; color: var(--text); margin-bottom: 1rem; }
+.prose { font-size: 14px; line-height: 1.85; color: var(--text-muted); margin-bottom: 1rem; }
+.prose strong { color: var(--text); font-weight: 500; }
+.stats-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; text-align: center; position: relative; overflow: hidden; }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.stat-card.blue::before { background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+.stat-card.orange::before { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+.stat-card.green::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+.stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 10px; }
+.stat-value { font-family: 'Instrument Serif', serif; font-size: 2.8rem; line-height: 1; margin-bottom: 6px; }
+.stat-card.blue .stat-value { color: var(--blue); }
+.stat-card.orange .stat-value { color: var(--orange); }
+.stat-card.green .stat-value { color: var(--green); }
+.stat-sub { font-size: 12px; color: var(--text-faint); line-height: 1.5; }
+.def-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.def-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+.def-card.google { border-top: 2px solid var(--blue); }
+.def-card.meta { border-top: 2px solid var(--orange); }
+.def-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 100px; margin-bottom: 1rem; }
+.def-card.google .def-badge { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
+.def-card.meta .def-badge { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
+.def-card h3 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 0.75rem; }
+.def-card p { font-size: 13px; line-height: 1.75; color: var(--text-muted); }
+.def-card p strong { color: var(--text); font-weight: 500; }
+.comp-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.comp-table { width: 100%; border-collapse: collapse; }
+.comp-table thead tr { border-bottom: 1px solid var(--border); }
+.comp-table th { padding: 14px 20px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); font-weight: 500; }
+.comp-table th:first-child { width: 22%; }
+.comp-table td { padding: 14px 20px; font-size: 13px; color: var(--text-muted); border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.comp-table td:first-child { font-weight: 500; color: var(--text); font-size: 12px; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:hover td { background: rgba(255,255,255,0.02); }
+.tag-win { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 100px; background: rgba(125,206,168,0.1); color: var(--green); border: 1px solid var(--green-border); margin-bottom: 3px; }
+.tag-neutral { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 100px; background: rgba(255,255,255,0.04); color: var(--text-faint); border: 1px solid var(--border); margin-bottom: 3px; }
+.cell-content { display: flex; flex-direction: column; gap: 2px; }
+.pc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pc-block { border-radius: 14px; padding: 1.25rem 1.5rem; }
+.pc-pro { background: rgba(125,206,168,0.05); border: 1px solid rgba(125,206,168,0.15); }
+.pc-con { background: rgba(200,60,60,0.05); border: 1px solid rgba(200,60,60,0.15); }
+.pc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+.pc-icon-wrap { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.pc-pro .pc-icon-wrap { background: rgba(125,206,168,0.15); }
+.pc-con .pc-icon-wrap { background: rgba(200,60,60,0.12); }
+.pc-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; }
+.pc-pro .pc-title { color: var(--green); }
+.pc-con .pc-title { color: var(--red); }
+.pc-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+.pc-item:last-child { border-bottom: none; }
+.pc-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-faint); margin-top: 7px; flex-shrink: 0; }
+.sit-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 1.5rem; }
+.sit-table { width: 100%; border-collapse: collapse; }
+.sit-table th { padding: 14px 20px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); background: var(--surface2); border-bottom: 1px solid var(--border); }
+.sit-table td { padding: 14px 20px; font-size: 13px; color: var(--text-muted); border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.sit-table tr:last-child td { border-bottom: none; }
+.sit-table tr:hover td { background: rgba(255,255,255,0.02); }
+.rec-badge { display: inline-flex; font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 100px; white-space: nowrap; }
+.rec-google { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
+.rec-meta { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
+.rec-both { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-border); }
+.verdict-final { background: linear-gradient(135deg, rgba(232,213,163,0.07) 0%, rgba(125,206,168,0.04) 100%); border: 1px solid rgba(232,213,163,0.15); border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; }
+.verdict-final h3 { font-family: 'Instrument Serif', serif; font-size: 1.5rem; margin-bottom: 1rem; color: var(--text); }
+.verdict-final p { font-size: 14px; line-height: 1.85; color: var(--text-muted); }
+.verdict-final strong { color: var(--accent); font-weight: 500; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 1.5rem 0; }
+.related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-decoration: none; transition: border-color 0.2s; display: flex; align-items: center; justify-content: space-between; }
+.related-card:hover { border-color: var(--border-hover); }
+.rc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 4px; }
+.rc-title { font-size: 13px; font-weight: 500; color: var(--text); }
+.rc-arrow { font-size: 16px; color: var(--accent); }
+.cta-block { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; text-align: center; margin-top: 2rem; }
+.cta-block h3 { font-family: 'Instrument Serif', serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
+.cta-block p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #0a0a0a; border-radius: 10px; padding: 12px 24px; font-size: 13px; font-weight: 500; text-decoration: none; transition: opacity 0.15s; }
+.cta-btn:hover { opacity: 0.85; }
+details.faq-item { border-bottom: 1px solid var(--border); }
+details.faq-item:last-child { border-bottom: none; }
+summary.faq-question { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--text); list-style: none; }
+summary.faq-question::-webkit-details-marker { display: none; }
+.faq-icon { width: 20px; height: 20px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+details[open] .faq-icon { transform: rotate(45deg); }
+.faq-answer { font-size: 13px; line-height: 1.85; color: var(--text-muted); padding-bottom: 1.25rem; }
+.faq-answer strong { color: var(--text); font-weight: 500; }
+/* FOOTER */
+.site-footer{max-width:1100px;margin:0 auto;padding:4rem 2.5rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem;border-top:1px solid var(--border);padding-top:3rem}
+.footer-brand p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:.75rem;max-width:280px}
+.footer-col h4{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;padding-left:0}
+.footer-col ul li a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .15s}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid var(--border)}
+.footer-bottom p{font-size:12px;color:var(--text-faint)}
+.footer-bottom a{font-size:12px;color:var(--accent);text-decoration:none}
+.footer-expand{border-top:1px solid var(--border);margin-bottom:2rem}
+.footer-expand-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 0;background:none;border:none;color:var(--text-faint);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:color .2s}
+.footer-expand-btn:hover{color:var(--text-muted)}
+.footer-expand-btn .chevron{transition:transform .3s ease;color:var(--text-faint)}
+.footer-expand-btn[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.footer-expand-content{display:none;padding-bottom:2rem}
+.footer-expand-content.open{display:block}
+.footer-niches-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px 16px}
+.footer-niches-grid a{font-size:12px;color:var(--text-faint);text-decoration:none;transition:color .15s;line-height:1.8}
+.footer-niches-grid a:hover{color:var(--accent)}
+@media(max-width:768px){
+  nav{padding:1.25rem}.nav-tag{display:none}
+  .hero{grid-template-columns:1fr;gap:2rem}
+  .def-grid,.pc-grid,.stats-3,.related-grid{grid-template-columns:1fr}
+  .wrap{padding:0 1.25rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-brand{grid-column:span 2}
+  .footer-niches-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="nav-wrapper">
+  <nav>
+    <a href="/cro-calculator/" class="nav-logo">Julian Caillé</a>
+    <span class="nav-tag">UX/CRO Specialist</span>
+    <a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank" class="nav-cta">Prendre un rendez-vous</a>
+  </nav>
+</div>
+
+<div class="page">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/cro-calculator/">Accueil</a><span>›</span>
+      <a href="/cro-calculator/comparatifs/">Comparatifs</a><span>›</span>
+      Google Ads vs Facebook Ads
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <div class="hero-tag">Comparatif</div>
+        <h1>Google Ads vs <em>Facebook Ads</em> — Quel canal pour votre e-commerce ?</h1>
+        <p class="hero-desc">Intention d'achat vs découverte produit, Search vs Social — les deux plateformes sont complémentaires mais ne fonctionnent pas de la même façon. Voici comment choisir.</p>
+      </div>
+      <div class="verdict-hero">
+        <div class="vl">✦ Verdict rapide</div>
+        <p><strong>Google Ads</strong> capte une demande existante — vos prospects cherchent déjà ce que vous vendez. <strong>Facebook/Meta Ads</strong> crée la demande — vous touchez des personnes qui ne vous cherchaient pas encore. Les deux sont nécessaires à maturité, mais le <strong>bon point d'entrée dépend de votre niche et de votre stade</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Les chiffres clés</p>
+      <h2 class="section-title">Performances moyennes e-commerce</h2>
+      <div class="stats-3">
+        <div class="stat-card blue">
+          <div class="stat-label">CVR moyen Google Shopping</div>
+          <div class="stat-value">3.8%</div>
+          <div class="stat-sub">vs 1.9% pour Facebook Ads e-commerce</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-label">CPC moyen Facebook Ads</div>
+          <div class="stat-value">0.94€</div>
+          <div class="stat-sub">vs 1.20€ à 2.50€ pour Google Search</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-label">ROAS moyen e-commerce</div>
+          <div class="stat-value">4.2x</div>
+          <div class="stat-sub">Google Shopping — meilleur canal e-commerce</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÉFINITIONS -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Les deux approches</p>
+      <h2 class="section-title">Demand capture vs Demand generation</h2>
+      <p class="prose">La différence fondamentale entre Google Ads et Facebook Ads n'est pas technique — c'est <strong>une question d'intention</strong>.</p>
+      <div class="def-grid">
+        <div class="def-card google">
+          <div class="def-badge">🔵 Google Ads</div>
+          <h3>Capter la demande existante</h3>
+          <p>Quelqu'un tape "chaussures de running homme taille 42" sur Google — il sait ce qu'il veut. Vous apparaissez au bon moment avec le bon produit. <strong>Le taux de conversion est naturellement plus élevé</strong> car l'intention d'achat est déjà là.</p>
+        </div>
+        <div class="def-card meta">
+          <div class="def-badge">🟠 Facebook/Meta Ads</div>
+          <h3>Créer la demande</h3>
+          <p>Quelqu'un scrolle son feed Instagram sans intention d'acheter — votre pub interrompt son parcours. Le ciblage par intérêts et comportements permet de toucher <strong>des audiences que vous ne pourriez pas atteindre autrement</strong>. Idéal pour la découverte et le retargeting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLEAU COMPARATIF -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Comparaison détaillée</p>
+      <h2 class="section-title">Google Ads vs Facebook Ads — le face-à-face</h2>
+      <div class="comp-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Critère</th>
+              <th>Google Ads</th>
+              <th>Facebook / Meta Ads</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Type d'intention</td>
+              <td><div class="cell-content"><span class="tag-win">✓ Avantage</span>Intention d'achat directe (Search) — prospect chaud</div></td>
+              <td><div class="cell-content"><span class="tag-neutral">Neutre</span>Interruption — prospect froid ou tiède</div></td>
+            </tr>
+            <tr>
+              <td>Taux de conversion moyen</td>
+              <td><div class="cell-content"><span class="tag-win">✓ Avantage</span>3-5% (Shopping), 2-3% (Search)</div></td>
+              <td><div class="cell-content"><span class="tag-neutral">Neutre</span>1-2% e-commerce en moyenne</div></td>
+            </tr>
+            <tr>
+              <td>Coût par clic</td>
+              <td><div class="cell-content"><span class="tag-neutral">Variable</span>1€ à 5€+ selon la concurrence</div></td>
+              <td><div class="cell-content"><span class="tag-win">✓ Avantage</span>0.50€ à 2€ selon l'audience</div></td>
+            </tr>
+            <tr>
+              <td>Ciblage</td>
+              <td><div class="cell-content"><span class="tag-neutral">Neutre</span>Mots-clés, audiences similaires, remarketing</div></td>
+              <td><div class="cell-content"><span class="tag-win">✓ Avantage</span>Intérêts, comportements, lookalike, démographie précise</div></td>
+            </tr>
+            <tr>
+              <td>Format visuel</td>
+              <td><div class="cell-content"><span class="tag-neutral">Limité</span>Shopping (photos produit), Display, YouTube</div></td>
+              <td><div class="cell-content"><span class="tag-win">✓ Avantage</span>Vidéo, Carousel, Stories, Reels — formats riches</div></td>
+            </tr>
+            <tr>
+              <td>Courbe d'apprentissage</td>
+              <td><div class="cell-content"><span class="tag-neutral">Modéré</span>Complexe côté Search, plus simple avec Smart Shopping</div></td>
+              <td><div class="cell-content"><span class="tag-neutral">Modéré</span>Interface intuitive mais optimisation créative exigeante</div></td>
+            </tr>
+            <tr>
+              <td>Retargeting</td>
+              <td><div class="cell-content"><span class="tag-neutral">Bon</span>Google Display + YouTube — bonne portée</div></td>
+              <td><div class="cell-content"><span class="tag-win">✓ Avantage</span>Facebook/Instagram — meilleure fréquence et engagement</div></td>
+            </tr>
+            <tr>
+              <td>Budget minimum efficace</td>
+              <td><div class="cell-content"><span class="tag-neutral">Neutre</span>300-500€/mois pour avoir des données</div></td>
+              <td><div class="cell-content"><span class="tag-neutral">Neutre</span>300-500€/mois pour optimiser l'algorithme</div></td>
+            </tr>
+            <tr>
+              <td>Idéal pour</td>
+              <td><div class="cell-content">Produits avec forte demande existante, niches de commodité</div></td>
+              <td><div class="cell-content">Produits coup de cœur, mode, lifestyle, nouveautés</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVANTAGES / LIMITES -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Points forts et limites</p>
+      <h2 class="section-title">Ce que chaque plateforme fait bien — et mal</h2>
+
+      <div style="margin-bottom:2rem">
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin-bottom:0.75rem">Google Ads</p>
+        <div class="pc-grid">
+          <div class="pc-block pc-pro">
+            <div class="pc-head"><div class="pc-icon-wrap">✓</div><span class="pc-title">Points forts</span></div>
+            <div class="pc-item"><span class="pc-dot"></span>Trafic à forte intention d'achat — prospects chauds</div>
+            <div class="pc-item"><span class="pc-dot"></span>Google Shopping : visuel produit + prix directement dans les résultats</div>
+            <div class="pc-item"><span class="pc-dot"></span>ROAS souvent plus élevé sur les niches avec forte demande</div>
+            <div class="pc-item"><span class="pc-dot"></span>Performance Max + Shopping automatisé — facile à démarrer</div>
+            <div class="pc-item"><span class="pc-dot"></span>Moins sensible aux changements de politique de confidentialité</div>
+          </div>
+          <div class="pc-block pc-con">
+            <div class="pc-head"><div class="pc-icon-wrap">⚠</div><span class="pc-title">Limites</span></div>
+            <div class="pc-item"><span class="pc-dot"></span>CPC élevé sur les mots-clés concurrentiels</div>
+            <div class="pc-item"><span class="pc-dot"></span>Inutile si votre produit n'est pas recherché (innovation, niche émergente)</div>
+            <div class="pc-item"><span class="pc-dot"></span>Formats visuels limités vs les réseaux sociaux</div>
+            <div class="pc-item"><span class="pc-dot"></span>Gestion des mots-clés négatifs chronophage</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin-bottom:0.75rem">Facebook / Meta Ads</p>
+        <div class="pc-grid">
+          <div class="pc-block pc-pro">
+            <div class="pc-head"><div class="pc-icon-wrap">✓</div><span class="pc-title">Points forts</span></div>
+            <div class="pc-item"><span class="pc-dot"></span>Ciblage d'audience ultra-précis (intérêts, comportements, lookalike)</div>
+            <div class="pc-item"><span class="pc-dot"></span>Formats créatifs riches : vidéo, carousel, reels, stories</div>
+            <div class="pc-item"><span class="pc-dot"></span>Retargeting très performant — rappel de panier abandonné</div>
+            <div class="pc-item"><span class="pc-dot"></span>Idéal pour créer de la notoriété et toucher de nouvelles audiences</div>
+            <div class="pc-item"><span class="pc-dot"></span>CPC souvent plus bas à audience équivalente</div>
+          </div>
+          <div class="pc-block pc-con">
+            <div class="pc-head"><div class="pc-icon-wrap">⚠</div><span class="pc-title">Limites</span></div>
+            <div class="pc-item"><span class="pc-dot"></span>Taux de conversion plus bas (prospect froid)</div>
+            <div class="pc-item"><span class="pc-dot"></span>Forte dépendance à la qualité des créatifs (vidéos, visuels)</div>
+            <div class="pc-item"><span class="pc-dot"></span>Impact iOS 14+ sur le tracking — attribution moins précise</div>
+            <div class="pc-item"><span class="pc-dot"></span>Saturation des audiences — les coûts augmentent avec le temps</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELON VOTRE SITUATION -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Selon votre situation</p>
+      <h2 class="section-title">Quelle plateforme choisir selon votre niche ?</h2>
+      <div class="sit-wrap">
+        <table class="sit-table">
+          <thead>
+            <tr><th>Votre situation</th><th>Recommandation</th><th>Pourquoi</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mode, beauté, lifestyle</td>
+              <td><span class="rec-badge rec-meta">Meta Ads en priorité</span></td>
+              <td>Produits coup de cœur — la découverte visuelle fonctionne mieux sur Instagram/Facebook.</td>
+            </tr>
+            <tr>
+              <td>High-tech, outillage, pièces détachées</td>
+              <td><span class="rec-badge rec-google">Google Ads en priorité</span></td>
+              <td>Les acheteurs cherchent un produit précis — fort intent de recherche.</td>
+            </tr>
+            <tr>
+              <td>Alimentation, compléments, santé</td>
+              <td><span class="rec-badge rec-both">Les deux</span></td>
+              <td>Google pour capter les recherches produit, Meta pour l'éducation et la découverte.</td>
+            </tr>
+            <tr>
+              <td>Budget < 500€/mois</td>
+              <td><span class="rec-badge rec-google">Google Shopping</span></td>
+              <td>Meilleur ROAS à petit budget. Simple à configurer avec Performance Max.</td>
+            </tr>
+            <tr>
+              <td>Produit innovant / peu recherché</td>
+              <td><span class="rec-badge rec-meta">Meta Ads</span></td>
+              <td>Si personne ne cherche encore votre produit sur Google, il faut créer la demande via le social.</td>
+            </tr>
+            <tr>
+              <td>Fort taux de panier abandonné</td>
+              <td><span class="rec-badge rec-meta">Retargeting Meta</span></td>
+              <td>Les annonces de retargeting Facebook/Instagram ont un ROAS 3-5x supérieur aux campagnes froides.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="wrap">
+      <p class="section-label">Questions fréquentes</p>
+      <h2 class="section-title">FAQ — Google Ads vs Facebook Ads</h2>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:0 1.5rem;overflow:hidden;">
+        <details class="faq-item">
+          <summary class="faq-question">Quel canal offre le meilleur ROAS pour un e-commerce ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer"><strong>Google Shopping offre en moyenne le meilleur ROAS</strong> pour les e-commerçants avec des produits à forte demande (4x à 8x en moyenne). Facebook Ads excelle sur le retargeting (3x à 6x) mais les campagnes froides sont moins performantes. La réponse dépend surtout de votre niche et de la qualité de vos créatifs.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Peut-on utiliser les deux plateformes en même temps ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Oui — c'est même la stratégie optimale à maturité. <strong>Google capte la demande existante, Facebook crée et nurture la demande.</strong> En pratique, commencez par celui qui correspond le mieux à votre niche, atteignez la rentabilité, puis ajoutez l'autre en complément.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Quel budget minimum pour tester ces deux canaux ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Comptez <strong>300 à 500€/mois minimum</strong> par plateforme pour avoir suffisamment de données et laisser les algorithmes s'optimiser. En dessous, les résultats sont trop aléatoires pour tirer des conclusions. Avec 300€/mois sur Google Shopping, vous pouvez obtenir des résultats intéressants dès le premier mois.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">L'impact iOS 14 est-il encore problématique sur Meta ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Moins qu'en 2021-2022, mais <strong>le tracking reste imparfait</strong>. Meta a développé des solutions alternatives (Conversions API, modélisation statistique) qui récupèrent une bonne partie des données perdues. En pratique, comptez 20-30% de conversions non tracées côté Meta — ajustez votre évaluation du ROAS en conséquence.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Faut-il gérer ses campagnes soi-même ou faire appel à une agence ?<span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Pour des budgets < 1000€/mois, gérez vous-même avec <strong>Google Performance Max et Meta Advantage+</strong> — les campagnes automatisées donnent de bons résultats sans expertise avancée. Au-delà, un spécialiste peut optimiser significativement le ROAS. L'alternative : apprendre en 2-3 mois avec les ressources Google Skillshop et Meta Blueprint.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="section">
+    <div class="wrap">
+      <div class="verdict-final">
+        <h3>Le verdict</h3>
+        <p>Pour la plupart des e-commerçants, <strong>Google Shopping est le meilleur point d'entrée</strong> — trafic qualifié, intention d'achat directe, ROAS plus prévisible. Facebook Ads entre en jeu pour la découverte, le retargeting et les produits lifestyle où le visuel prime. <strong>La combinaison des deux crée une machine d'acquisition complète</strong> : Google pour capter, Meta pour relancer et fidéliser.</p>
+      </div>
+      <div>
+        <p class="section-label">Ressources liées</p>
+        <div class="related-grid">
+          <a href="/cro-calculator/" class="related-card"><div><div class="rc-label">Outil gratuit</div><div class="rc-title">Calculateur CRO</div></div><div class="rc-arrow">→</div></a>
+          <a href="/cro-calculator/comparatifs/cro-vs-acquisition.html" class="related-card"><div><div class="rc-label">Comparatif</div><div class="rc-title">CRO vs Acquisition</div></div><div class="rc-arrow">→</div></a>
+          <a href="/cro-calculator/ressources/benchmarks.html" class="related-card"><div><div class="rc-label">Ressource</div><div class="rc-title">Benchmarks CVR par niche</div></div><div class="rc-arrow">→</div></a>
+        </div>
+      </div>
+      <div class="cta-block">
+        <h3>Votre site convertit-il assez avant d'investir en pub ?</h3>
+        <p>Avant d'augmenter votre budget Google ou Meta, vérifiez que votre taux de conversion est au niveau de votre niche.</p>
+        <a href="/cro-calculator/" class="cta-btn">Calculer mon potentiel CRO →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--accent)">Julian Caillé</span>
+        <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="/cro-calculator/ressources/benchmarks.html">Benchmarks CVR</a></li>
+          <li><a href="/cro-calculator/ressources/checklist-ux.html">Checklist UX</a></li>
+          <li><a href="/cro-calculator/ressources/glossaire-cro.html">Glossaire CRO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/cro-calculator/guides/calculer-taux-de-conversion.html">Calculer son taux de conversion</a></li>
+          <li><a href="/cro-calculator/guides/reduire-abandon-panier.html">Réduire l'abandon panier</a></li>
+          <li><a href="/cro-calculator/guides/optimiser-checkout-shopify.html">Optimiser le checkout Shopify</a></li>
+          <li><a href="/cro-calculator/guides/ameliorer-fiches-produit.html">Améliorer ses fiches produit</a></li>
+          <li><a href="/cro-calculator/guides/optimiser-pages-categories.html">Optimiser ses pages catégories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Comparatifs</h4>
+        <ul>
+          <li><a href="/cro-calculator/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
+          <li><a href="/cro-calculator/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a></li>
+          <li><a href="/cro-calculator/comparatifs/ab-testing-vs-audit-cro.html">A/B Testing vs Audit CRO</a></li>
+          <li><a href="/cro-calculator/comparatifs/google-ads-vs-facebook-ads.html">Google Ads vs Facebook Ads</a></li>
+          <li><a href="/cro-calculator/comparatifs/klaviyo-vs-mailchimp.html">Klaviyo vs Mailchimp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank">Prendre un appel</a></li>
+          <li><a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-expand">
+      <button class="footer-expand-btn" onclick="toggleFooterExpand(this)" aria-expanded="false">
+        <span>Toutes les niches e-commerce</span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="footer-expand-content" id="footer-niches-expand">
+        <div class="footer-niches-grid">
+          <a href="/cro-calculator/niches/cro-mode-vetements.html">Mode &amp; Vêtements</a>
+          <a href="/cro-calculator/niches/cro-accessoires-tech.html">Accessoires &amp; Tech</a>
+          <a href="/cro-calculator/niches/cro-beaute-cosmetique.html">Beauté &amp; Cosmétique</a>
+          <a href="/cro-calculator/niches/cro-sport-fitness.html">Sport &amp; Fitness</a>
+          <a href="/cro-calculator/niches/cro-maison-decoration.html">Maison &amp; Décoration</a>
+          <a href="/cro-calculator/niches/cro-animaux-compagnie.html">Animaux de compagnie</a>
+          <a href="/cro-calculator/niches/cro-bebe.html">Bébé</a>
+          <a href="/cro-calculator/niches/cro-sante-bien-etre.html">Santé &amp; Bien-être</a>
+          <a href="/cro-calculator/niches/cro-bricolage-outils.html">Bricolage &amp; Outils</a>
+          <a href="/cro-calculator/niches/cro-alimentation-nutrition.html">Alimentation &amp; Nutrition</a>
+          <a href="/cro-calculator/niches/cro-gaming-jeux-video.html">Gaming &amp; Jeux vidéo</a>
+          <a href="/cro-calculator/niches/cro-education-livres.html">Éducation &amp; Livres</a>
+          <a href="/cro-calculator/niches/cro-voyage-bagages.html">Voyage &amp; Bagages</a>
+          <a href="/cro-calculator/niches/cro-jardinage-plantes.html">Jardinage &amp; Plantes</a>
+          <a href="/cro-calculator/niches/cro-bijoux-accessoires.html">Bijoux &amp; Accessoires</a>
+          <a href="/cro-calculator/niches/cro-outdoor-aventure.html">Outdoor &amp; Aventure</a>
+          <a href="/cro-calculator/niches/cro-auto-moto.html">Auto &amp; Moto</a>
+          <a href="/cro-calculator/niches/cro-enfants.html">Enfants</a>
+          <a href="/cro-calculator/niches/cro-audio-son.html">Audio &amp; Son</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <a href="/cro-calculator/mentions-legales.html">Mentions légales</a>
+        <a href="/cro-calculator/politique-confidentialite.html">Confidentialité</a>
+        <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleFooterExpand(btn){var e=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!e);document.getElementById('footer-niches-expand').classList.toggle('open',!e);}
+</script>
+</body>
+</html>
