@@ -1951,71 +1951,33 @@
 
     if (data.error) throw new Error(data.error);
 
-    // L'API retourne { success: true, analyse: { ... } }
     const a = data.analyse || data;
 
     try {
-      // Mapper la structure API vers la structure attendue par le frontend
       const scoring = a.scoring || {};
       const resume = a.resume_executif || {};
-      const detail = a.analyse_detaillee || {};
 
-      // Construire data.scores
       const scores = {
-        global: resume.score_global || scoring.clarte_offre || 0,
+        global: resume.score_global || 0,
         copywriting: scoring.copywriting || 0,
         ux_structure: scoring.mobile_ux || 0,
         confiance: scoring.confiance || 0,
         conversion: scoring.persuasion || 0,
       };
 
-      // Construire data.synthese
       const synthese = resume.synthese || resume.plus_grande_opportunite || '';
 
-      // Construire data.sections depuis analyse_detaillee
-      const sectionMap = {
-        proposition_valeur: 'Proposition de valeur',
-        above_the_fold: 'Above the fold',
-        copywriting: 'Copywriting',
-        mobile_ux: 'Mobile UX',
-        fiche_produit: 'Fiche produit',
-        checkout: 'Checkout',
-        confiance: 'Confiance',
-      };
-
-      const frictions = (a.diagnostic && a.diagnostic.frictions_critiques) || [];
-      const critiqueSections = frictions.filter(f => f.priorite === 'critique').map(f => f.probleme);
-
-      const sections = Object.entries(sectionMap).map(([key, nom]) => {
-        const s = detail[key] || {};
-        const recos = (s.recommandations || []).map((r, i) => ({
-          titre: r,
-          probleme: (s.problemes || [])[i] || '',
-          solution: r,
-          impact: 'eleve',
-          effort: 'moyen',
-          tags: ['important'],
-        }));
-        return {
-          nom,
-          statut: critiqueSections.some(c => c && nom && c.toLowerCase().includes(nom.toLowerCase())) ? 'critique' : 'a-ameliorer',
-          recommandations: recos,
-        };
-      });
-
-      // Ajouter les quick_wins et leviers comme recos supplémentaires
-      const quickWins = (a.quick_wins || []).map(q => ({
-        titre: q.action,
-        probleme: '',
-        solution: q.action,
-        impact: q.facilite_implementation === 'élevée' ? 'eleve' : 'moyen',
-        effort: 'faible',
-        tags: ['quick-win'],
-        _section: 'Quick Wins',
-        _sectionStatut: 'a-ameliorer',
+      // Lire directement le tableau recommandations (structure API v3)
+      const allRecos = (a.recommandations || []).map(r => ({
+        titre: r.titre || '',
+        solution: r.solution || r.titre || '',
+        impact: r.impact || 'moyen',
+        effort: r.effort || 'moyen',
+        _section: r.section || '',
+        _sectionStatut: r.impact === 'eleve' ? 'severity-important' : 'severity-good',
       }));
 
-      return { scores, synthese, sections, _quickWins: quickWins, _raw: a };
+      return { scores, synthese, _allRecos: allRecos, _raw: a };
     } catch(e) {
       throw new Error('Reponse invalide. Reessaie dans quelques secondes.');
     }
@@ -2114,13 +2076,8 @@
       el('rapport-synthese-wrap').style.display = 'block';
     }
 
-    // Build all recos with section info
-    const sections = data.sections || [];
-    const allRecos = [];
-    sections.forEach(s => (s.recommandations || []).forEach(r => allRecos.push({ ...r, _section: s.nom, _sectionStatut: s.statut })));
-
-    // Ajouter les quick wins à la fin
-    (data._quickWins || []).forEach(q => allRecos.push(q));
+    // Recos depuis _allRecos (API v3 structure plate)
+    const allRecos = data._allRecos || [];
 
     const visibleRecos = allRecos.slice(0, 3);
     const hiddenRecos  = allRecos.slice(3);
