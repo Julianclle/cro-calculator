@@ -1725,8 +1725,8 @@
     return ''; // non bloquant si aucune page produit trouvée
   }
 
-  async function analyseWithClaude(homeContent, productContent, urlHome) {
-    const FUNCTION_URL = 'https://golden-bublanina-a09ce7.netlify.app/.netlify/functions/analyse';
+  async function analyseWithClaude(homeContent, productContent, urlHome, niche) {
+    const FUNCTION_URL = 'https://cro-api.vercel.app/api/analyse';
 
     const response = await fetch(FUNCTION_URL, {
       method: 'POST',
@@ -1785,7 +1785,7 @@
       setStep(2, 'done');
 
       setStep(3, 'active');
-      const rapport = await analyseWithClaude(homeContent, productContent, urlHome);
+      const rapport = await analyseWithClaude(homeContent, productContent, urlHome, niche);
       setStep(3, 'done');
 
       setStep(4, 'active');
