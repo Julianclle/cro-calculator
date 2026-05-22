@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/cro-calculator/(.*)", "destination": "/$1" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
