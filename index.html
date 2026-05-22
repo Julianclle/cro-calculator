@@ -667,91 +667,145 @@
     background: var(--border);
   }
 
-  /* Reco item — ligne avec accent latéral, pas de card */
+  /* ── RECO CARDS v2 ── */
+  .reco-list { display: flex; flex-direction: column; gap: 10px; }
+
   .reco-item {
-    display: flex;
-    gap: 16px;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
     animation: fadeUp 0.35s ease both;
     position: relative;
+    transition: border-color 0.2s;
   }
-  .reco-item:last-child { border-bottom: none; }
+  .reco-item:hover { border-color: var(--border-hover); }
+  .reco-item:nth-child(1) { animation-delay: 0.05s; }
+  .reco-item:nth-child(2) { animation-delay: 0.1s; }
+  .reco-item:nth-child(3) { animation-delay: 0.15s; }
+
+  /* Barre colorée en haut */
   .reco-item::before {
     content: '';
     position: absolute;
-    left: -1.5rem;
-    top: 1.1rem;
-    bottom: 1.1rem;
-    width: 2px;
-    border-radius: 2px;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 14px 14px 0 0;
   }
   .reco-item.severity-critique::before { background: var(--red); }
-  .reco-item.severity-important::before { background: var(--orange); }
-  .reco-item.severity-good::before { background: var(--green); }
+  .reco-item.severity-important::before { background: linear-gradient(90deg, var(--orange), rgba(232,168,124,0.3)); }
+  .reco-item.severity-good::before { background: linear-gradient(90deg, var(--green), rgba(125,206,168,0.3)); }
+
+  /* Header de la card */
+  .reco-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px 12px;
+  }
+
+  .reco-header-left { display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 0; }
 
   .reco-num {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 11px;
+    font-weight: 500;
     color: var(--text-faint);
-    min-width: 24px;
-    padding-top: 2px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 7px;
     flex-shrink: 0;
+    margin-top: 1px;
+    letter-spacing: 0.04em;
   }
 
-  .reco-content { flex: 1; min-width: 0; }
+  .reco-title-block { flex: 1; min-width: 0; }
 
-  .reco-meta {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 5px;
-    flex-wrap: wrap;
+  .reco-section-pill {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin-bottom: 4px;
   }
 
   .reco-title {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 500;
     color: var(--text);
-    margin-bottom: 8px;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
-  /* Problème + Solution en prose, pas en cards */
-  .reco-problem {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 6px;
-    padding-left: 12px;
-    border-left: 2px solid rgba(200,60,60,0.35);
-  }
-  .reco-solution {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.65;
-    padding-left: 12px;
-    border-left: 2px solid rgba(125,206,168,0.35);
-  }
-  .reco-inline-label {
+  /* Badge impact à droite */
+  .reco-impact-badge {
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    margin-right: 5px;
+    padding: 3px 9px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    white-space: nowrap;
   }
-  .reco-problem .reco-inline-label { color: var(--red); }
-  .reco-solution .reco-inline-label { color: var(--green); }
+  .reco-impact-badge.impact-high { background: rgba(125,206,168,0.12); color: var(--green); border: 1px solid rgba(125,206,168,0.25); }
+  .reco-impact-badge.impact-med  { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
+  .reco-impact-badge.impact-low  { background: rgba(255,255,255,0.04); color: var(--text-faint); border: 1px solid var(--border); }
 
+  /* Body de la card */
+  .reco-body {
+    padding: 0 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .reco-solution-block {
+    background: rgba(125,206,168,0.05);
+    border: 1px solid rgba(125,206,168,0.12);
+    border-radius: 8px;
+    padding: 10px 13px;
+  }
+
+  .reco-solution-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .reco-solution-text {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Footer pills */
   .reco-footer {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 8px;
     flex-wrap: wrap;
+    padding-top: 2px;
   }
 
-  .reco-tag, .impact-badge, .effort-badge {
+  .reco-effort-pill {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-faint);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 2px 9px;
+    letter-spacing: 0.04em;
+  }
+
+  .reco-tag {
     font-size: 10px;
     font-weight: 500;
     text-transform: uppercase;
@@ -760,6 +814,14 @@
     border-radius: 100px;
   }
 
+  .impact-badge, .effort-badge {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
   .impact-badge.impact-high { background: rgba(125,206,168,0.1); color: var(--green); border: 1px solid rgba(125,206,168,0.2); }
   .impact-badge.impact-med  { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
   .impact-badge.impact-low  { background: rgba(255,255,255,0.04); color: var(--text-faint); border: 1px solid var(--border); }
@@ -1920,25 +1982,31 @@
     const buildRecoHTML = (recos, startIdx) => {
       return recos.map((r, i) => {
         const idx = startIdx + i;
-        const tags = (r.tags || []).map(t => `<span class="reco-tag ${TAG_CLASS[t] || 'tag-important'}">${TAG_LABEL[t] || t}</span>`).join('');
         const impactClass = r.impact === 'eleve' ? 'impact-high' : r.impact === 'moyen' ? 'impact-med' : 'impact-low';
-        const impactLabel = r.impact === 'eleve' ? 'Impact élevé' : r.impact === 'moyen' ? 'Impact moyen' : 'Impact faible';
+        const impactLabel = r.impact === 'eleve' ? '↑ Impact élevé' : r.impact === 'moyen' ? '→ Impact moyen' : '↓ Impact faible';
         const effortLabel = r.effort === 'faible' ? '⚡ Quick win' : r.effort === 'moyen' ? '⏱ Effort moyen' : '🔧 Effort élevé';
         const severityClass = r._sectionStatut === 'critique' ? 'severity-critique' : r._sectionStatut === 'a-ameliorer' ? 'severity-important' : 'severity-good';
+        const section = r._section || r.section || '';
+        const solution = r.solution || r.titre || '';
 
         return `<div class="reco-item ${severityClass}">
-          <span class="reco-num">${String(idx + 1).padStart(2,'0')}</span>
-          <div class="reco-content">
-            <div class="reco-meta">
-              ${r._section ? `<span class="reco-tag" style="background:rgba(255,255,255,0.04);color:var(--text-faint);border:1px solid var(--border)">${r._section}</span>` : ''}
-              ${tags}
+          <div class="reco-header">
+            <div class="reco-header-left">
+              <span class="reco-num">${String(idx + 1).padStart(2,'0')}</span>
+              <div class="reco-title-block">
+                ${section ? `<div class="reco-section-pill">${section}</div>` : ''}
+                <div class="reco-title">${r.titre || ''}</div>
+              </div>
             </div>
-            <div class="reco-title">${r.titre || ''}</div>
-            <div class="reco-problem"><span class="reco-inline-label">Problème</span>${r.probleme || r.description || ''}</div>
-            <div class="reco-solution" style="margin-top:6px"><span class="reco-inline-label">Correction</span>${r.solution || ''}</div>
+            <span class="reco-impact-badge ${impactClass}">${impactLabel}</span>
+          </div>
+          <div class="reco-body">
+            ${solution ? `<div class="reco-solution-block">
+              <div class="reco-solution-label">Correction</div>
+              <div class="reco-solution-text">${solution}</div>
+            </div>` : ''}
             <div class="reco-footer">
-              <span class="impact-badge ${impactClass}">${impactLabel}</span>
-              <span class="effort-badge">${effortLabel}</span>
+              <span class="reco-effort-pill">${effortLabel}</span>
             </div>
           </div>
         </div>`;
