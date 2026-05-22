@@ -564,53 +564,127 @@
 
   .paywall-pricing {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.25rem;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 480px;
   }
 
   .price-option {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 3px;
+    gap: 0;
     cursor: pointer;
-    padding: 12px 20px;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: 14px;
     border: 1px solid var(--border);
     background: var(--surface2);
     transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    text-align: left;
   }
 
-  .price-option.selected, .price-option:hover {
-    border-color: rgba(255,255,255,0.2);
+  .price-option:hover { border-color: rgba(255,255,255,0.18); }
+
+  .price-option.selected {
+    border-color: rgba(255,255,255,0.3);
     background: rgba(255,255,255,0.04);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  .p-popular-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #0a0a0a;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .price-option .p-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
   }
 
   .price-option .p-amount {
     font-family: 'Inter', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
+    font-weight: 300;
     color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 4px;
   }
 
-  .price-option .p-label { font-size: 11px; color: var(--text-faint); }
-  .price-option .p-badge { font-size: 10px; color: var(--green); background: var(--green-dim); padding: 2px 7px; border-radius: 100px; }
+  .price-option .p-amount span {
+    font-size: 13px;
+    color: var(--text-faint);
+    font-weight: 400;
+  }
+
+  .price-option .p-desc {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .price-option .p-features {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 0;
+  }
+
+  .price-option .p-feature {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .price-option .p-feature::before {
+    content: '✓';
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-option .p-badge {
+    display: none;
+  }
 
   .paywall-cta {
-    background: var(--accent);
+    background: linear-gradient(135deg, #ffffff, #d8d8d8);
     color: #0a0a0a;
     border: none;
     border-radius: 10px;
-    padding: 12px 28px;
+    padding: 13px 32px;
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.15s;
-    letter-spacing: 0.01em;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.02em;
+    width: 100%;
+    max-width: 480px;
   }
 
-  .paywall-cta:hover { opacity: 0.85; }
+  .paywall-cta:hover { opacity: 0.88; }
+  .paywall-cta:active { transform: scale(0.98); }
   .paywall-note { font-size: 11px; color: var(--text-faint); margin-top: 8px; }
 
   @media (max-width: 768px) {
@@ -1508,14 +1582,26 @@
             <p>Débloque l'analyse complète avec le scoring détaillé, les priorités d'implémentation et l'estimation d'impact sur ton CA.</p>
             <div class="paywall-pricing">
               <div class="price-option" onclick="selectPrice(this, 'one')" id="price-one">
-                <span class="p-amount">14€</span>
-                <span class="p-label">Rapport complet</span>
-                <span class="p-label">one-shot</span>
+                <div class="p-name">One-shot</div>
+                <div class="p-amount">14€</div>
+                <div class="p-desc">Accès unique au rapport</div>
+                <div class="p-features">
+                  <span class="p-feature">Rapport complet</span>
+                  <span class="p-feature">Scoring détaillé</span>
+                  <span class="p-feature">Tests A/B recommandés</span>
+                </div>
               </div>
               <div class="price-option selected" onclick="selectPrice(this, 'sub')" id="price-sub">
-                <span class="p-amount">29€<span style="font-size:13px;color:var(--text-faint)">/mois</span></span>
-                <span class="p-label">Monitoring mensuel</span>
-                <span class="p-badge">⭐ Recommandé</span>
+                <div class="p-popular-badge">⭐ Recommandé</div>
+                <div class="p-name">Mensuel</div>
+                <div class="p-amount">29€<span>/mois</span></div>
+                <div class="p-desc">Monitoring continu</div>
+                <div class="p-features">
+                  <span class="p-feature">Tout le one-shot</span>
+                  <span class="p-feature">Suivi mensuel</span>
+                  <span class="p-feature">Alertes régressions</span>
+                  <span class="p-feature">Comparatif mois/mois</span>
+                </div>
               </div>
             </div>
             <button class="paywall-cta" onclick="handlePaywall()">Débloquer le rapport complet →</button>
