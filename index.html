@@ -1257,6 +1257,7 @@
   }
 
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 <div class="page">
@@ -1740,6 +1741,13 @@
         <!-- 3 reco visibles -->
         <div class="reco-list" id="reco-visible"></div>
 
+        <!-- Bouton export PDF -->
+        <div id="export-pdf-wrap" style="display:none;margin:20px 0 8px;text-align:right;">
+          <button onclick="exportPDF()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:8px 18px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
+            ↓ Télécharger le rapport PDF
+          </button>
+        </div>
+
         <!-- Paywall -->
         <div class="paywall-wrap" id="paywall-wrap">
 
@@ -1752,7 +1760,7 @@
           <!-- CTA en flow normal, sous les recos -->
           <div class="paywall-cta-block">
             <div class="paywall-badge">🔒 Rapport complet</div>
-            <h3>+5 recommandations masquées</h3>
+            <h3 id="paywall-hidden-count">+5 recommandations masquées</h3>
             <p>Débloque l'analyse complète avec le scoring détaillé, les priorités d'implémentation et l'estimation d'impact sur ton CA.</p>
             <div class="paywall-social-proof">
               <div class="paywall-avatars">
@@ -2083,7 +2091,456 @@
     elBtn.classList.add('selected');
   }
 
-  function checkLeadForm() {
+  function exportPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true });
+    const data    = window._rapportData || {};
+    const siteUrl = window._rapportUrl  || '';
+    const niche   = window._rapportNiche || '';
+    const allRecos = data._allRecos || [];
+
+    const PAGE_W = 210, PAGE_H = 297, MARGIN = 18, PAD = 6;
+    const TEXT_X = MARGIN + PAD;
+    const TEXT_W = PAGE_W - MARGIN * 2 - PAD * 2;
+
+    function clean(s) {
+      return (s || '')
+        .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
+        .replace(/[\u{2600}-\u{27BF}]/gu, '')
+        .replace(/[^\u0000-\u00FF]/g, '')
+        .trim();
+    }
+
+    function split(text, w) {
+      return doc.splitTextToSize(clean(text), w || TEXT_W);
+    }
+
+    const C = {
+      bg:      [13,  13,  13],
+      surface: [26,  26,  26],
+      surface2:[36,  36,  36],
+      accent:  [130, 210, 170],
+      text:    [235, 235, 235],
+      muted:   [120, 120, 120],
+      faint:   [50,  50,  50],
+      green:   [130, 210, 170],
+      orange:  [255, 185, 80],
+      red:     [255, 95,  95],
+    };
+
+    let y = 0, pageNum = 0;
+
+    function bgFill() {
+      doc.setFillColor(...C.bg);
+      doc.rect(0, 0, PAGE_W, PAGE_H, 'F');
+    }
+
+    function newPage() {
+      if (pageNum > 0) doc.addPage();
+      pageNum++;
+      bgFill();
+      y = 20;
+    }
+
+    function checkY(needed) {
+      if (y + needed > 274) newPage();
+    }
+
+    function scoreColor(s) {
+      return s >= 65 ? C.green : s >= 40 ? C.orange : C.red;
+    }
+
+    function drawFooter() {
+      const total = doc.getNumberOfPages();
+      for (let p = 1; p <= total; p++) {
+        doc.setPage(p);
+        doc.setFillColor(...C.bg);
+        doc.rect(0, 283, PAGE_W, 14, 'F');
+        doc.setDrawColor(...C.faint);
+        doc.setLineWidth(0.2);
+        doc.line(MARGIN, 285, PAGE_W - MARGIN, 285);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(6);
+        doc.setTextColor(...C.muted);
+        doc.text('audit-ecommerce.com  |  LinkedIn: julian-caille  |  Instagram: @julian.clle', MARGIN, 291);
+        doc.text(p + ' / ' + total, PAGE_W - MARGIN, 291, { align: 'right' });
+        // Confidentiel + date expiration
+        const expDate = new Date();
+        expDate.setMonth(expDate.getMonth() + 3);
+        const expStr = "Confidentiel - valable jusqu'au " + expDate.toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' });
+        doc.setFontSize(5.5);
+        doc.setTextColor(...C.faint);
+        doc.text(expStr + '  |  Genere pour: ' + clean(siteUrl), PAGE_W / 2, 295, { align: 'center' });
+      }
+    }
+
+    const scoreLabels = { global:'Score global', copywriting:'Copywriting', ux_structure:'UX & Structure', confiance:'Confiance', conversion:'Conversion' };
+    const scores = data.scores || {};
+    const globalScore = scores.global || 0;
+    const scoreColor0 = scoreColor(globalScore);
+    const dateStr = new Date().toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' });
+
+    // ── COVER ─────────────────────────────────────────────────
+    newPage();
+
+    // Barre accent
+    doc.setFillColor(...C.accent);
+    doc.rect(0, 0, PAGE_W, 2, 'F');
+
+    // Label
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(...C.muted);
+    doc.text('AUDIT-ECOMMERCE.COM', MARGIN, 13);
+
+    // Score global en grand (droite)
+    const scoreCircleX = PAGE_W - MARGIN - 18;
+    const scoreCircleY = 42;
+    doc.setFillColor(...C.surface);
+    doc.circle(scoreCircleX, scoreCircleY, 18, 'F');
+    doc.setDrawColor(...scoreColor0);
+    doc.setLineWidth(1.5);
+    doc.circle(scoreCircleX, scoreCircleY, 18, 'S');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.setTextColor(...scoreColor0);
+    doc.text(String(globalScore), scoreCircleX, scoreCircleY + 2, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(...C.muted);
+    doc.text('/100', scoreCircleX, scoreCircleY + 8, { align: 'center' });
+    doc.setFontSize(6);
+    doc.text('SCORE GLOBAL', scoreCircleX, scoreCircleY + 13, { align: 'center' });
+
+    // Titre
+    y = 34;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(24);
+    doc.setTextColor(...C.text);
+    doc.text('Rapport CRO', MARGIN, y);
+    y += 9;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(24);
+    doc.setTextColor(150, 150, 150);
+    doc.text('& Audit UX', MARGIN, y);
+
+    y += 12;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...C.accent);
+    doc.text(clean(siteUrl) || 'Boutique analysee', MARGIN, y);
+
+    y += 5.5;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(...C.muted);
+    doc.text((clean(niche) ? clean(niche) + '  -  ' : '') + dateStr, MARGIN, y);
+
+    y += 4;
+    doc.setFontSize(7);
+    doc.setTextColor(100, 100, 100);
+    doc.text(String(allRecos.length) + ' recommandations identifiees', MARGIN, y);
+
+    // Separateur
+    y += 9;
+    doc.setDrawColor(...C.faint);
+    doc.setLineWidth(0.25);
+    doc.line(MARGIN, y, PAGE_W - MARGIN, y);
+    y += 9;
+
+    // Scores
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(...C.muted);
+    doc.text('SCORES PAR AXE', MARGIN, y);
+    y += 8;
+
+    const BAR_W = TEXT_W * 0.62;
+    Object.entries(scores).forEach(([k, v]) => {
+      if (k === 'global') return;
+      const col = scoreColor(v);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(...C.text);
+      doc.text(scoreLabels[k] || k, MARGIN, y + 3);
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.setTextColor(...col);
+      doc.text(String(v), MARGIN + BAR_W + 4, y + 3);
+      doc.setFontSize(6);
+      doc.setTextColor(...C.muted);
+      doc.text('/100', MARGIN + BAR_W + 11, y + 3);
+
+      doc.setFillColor(...C.faint);
+      doc.roundedRect(MARGIN, y + 5.5, BAR_W, 2.5, 1, 1, 'F');
+      doc.setFillColor(...col);
+      doc.roundedRect(MARGIN, y + 5.5, BAR_W * Math.min(v,100)/100, 2.5, 1, 1, 'F');
+      y += 15;
+    });
+
+    // Legende couleurs
+    y += 4;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6);
+    doc.setTextColor(...C.muted);
+    doc.text('LEGENDE :', MARGIN, y);
+    [[C.green,'Bon (65+)'], [C.orange,'A ameliorer (40-64)'], [C.red,'Critique (< 40)']].forEach(([col, label], i) => {
+      const lx = MARGIN + 22 + i * 46;
+      doc.setFillColor(...col);
+      doc.circle(lx, y - 1.2, 1.5, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6);
+      doc.setTextColor(...C.muted);
+      doc.text(label, lx + 3.5, y);
+    });
+    y += 8;
+
+    // Synthese
+    if (data.synthese) {
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      const synLines = split(data.synthese, TEXT_W);
+      const synH = synLines.length * 4.8 + 16;
+      checkY(synH + 6);
+      y += 2;
+
+      doc.setFillColor(...C.surface);
+      doc.roundedRect(MARGIN, y, TEXT_W + PAD * 2, synH, 3, 3, 'F');
+      doc.setFillColor(...C.accent);
+      doc.roundedRect(MARGIN, y, 2.5, synH, 1.2, 1.2, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(6.5);
+      doc.setTextColor(...C.accent);
+      doc.text('SYNTHESE', TEXT_X, y + 7);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.setTextColor(195, 195, 195);
+      doc.text(synLines, TEXT_X, y + 13);
+      y += synH + 6;
+    }
+
+    // ── SOMMAIRE ──────────────────────────────────────────────
+    newPage();
+
+    doc.setFillColor(...C.accent);
+    doc.rect(0, 0, PAGE_W, 2, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(...C.text);
+    doc.text('Sommaire', MARGIN, y);
+    y += 10;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(...C.muted);
+    doc.text('Ce rapport contient ' + allRecos.length + ' recommandations reparties sur les axes suivants :', MARGIN, y);
+    y += 10;
+
+    // Grouper recos par section
+    const bySection = {};
+    allRecos.forEach(r => {
+      const s = clean(r._section || r.section || 'Autres');
+      if (!bySection[s]) bySection[s] = [];
+      bySection[s].push(r);
+    });
+
+    // Stats par axe
+    Object.entries(bySection).forEach(([section, recos]) => {
+      const high   = recos.filter(r => r.impact === 'eleve').length;
+      const medium = recos.filter(r => r.impact === 'moyen').length;
+      const low    = recos.filter(r => r.impact === 'faible').length;
+      const rowH = 12;
+      checkY(rowH + 3);
+
+      doc.setFillColor(...C.surface);
+      doc.roundedRect(MARGIN, y, TEXT_W + PAD * 2, rowH, 2, 2, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(...C.text);
+      doc.text(section.toUpperCase(), TEXT_X, y + 7.5);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7);
+      doc.setTextColor(...C.muted);
+      doc.text(recos.length + ' reco' + (recos.length > 1 ? 's' : ''), MARGIN + TEXT_W + PAD - 4, y + 7.5, { align: 'right' });
+
+      // Badges impact
+      let bx = MARGIN + 80;
+      if (high)   { doc.setFillColor(...C.green);  doc.roundedRect(bx, y + 3, 16, 6, 1.5, 1.5, 'F'); doc.setFontSize(5.5); doc.setTextColor(...C.bg); doc.text(high + ' eleve', bx + 8, y + 7.2, {align:'center'}); bx += 20; }
+      if (medium) { doc.setFillColor(...C.orange); doc.roundedRect(bx, y + 3, 16, 6, 1.5, 1.5, 'F'); doc.setFontSize(5.5); doc.setTextColor(...C.bg); doc.text(medium + ' moyen', bx + 8, y + 7.2, {align:'center'}); bx += 20; }
+      if (low)    { doc.setFillColor(...C.red);    doc.roundedRect(bx, y + 3, 16, 6, 1.5, 1.5, 'F'); doc.setFontSize(5.5); doc.setTextColor(...C.bg); doc.text(low + ' faible', bx + 8, y + 7.2, {align:'center'}); }
+
+      y += rowH + 3;
+    });
+
+    // ── RECOS (groupées par section) ─────────────────────────
+    const IL = { eleve:'Impact eleve', moyen:'Impact moyen', faible:'Impact faible' };
+    const IC = { eleve:C.green, moyen:C.orange, faible:C.red };
+    const EL = { faible:'Quick win', moyen:'Effort moyen', eleve:'Effort eleve' };
+    const TITRE_W = TEXT_W - 28;
+
+    let globalIdx = 0;
+    Object.entries(bySection).forEach(([section, recos]) => {
+      newPage();
+      doc.setFillColor(...C.accent);
+      doc.rect(0, 0, PAGE_W, 2, 'F');
+
+      // Titre de section
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(14);
+      doc.setTextColor(...C.text);
+      doc.text(section, MARGIN, y);
+      y += 5;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.5);
+      doc.setTextColor(...C.muted);
+      doc.text(recos.length + ' recommandation' + (recos.length > 1 ? 's' : ''), MARGIN, y);
+      y += 10;
+
+      recos.forEach((r) => {
+        globalIdx++;
+        const col = IC[r.impact] || C.orange;
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        const titreLines = split(r.titre || '', TITRE_W);
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7.5);
+        const solLines = r.solution ? split(r.solution, TEXT_W) : [];
+
+        const cardH = 10
+          + titreLines.length * 5
+          + (solLines.length ? 9 + solLines.length * 4.3 : 0)
+          + 9;
+
+        checkY(cardH + 4);
+
+        doc.setFillColor(...C.surface);
+        doc.roundedRect(MARGIN, y, TEXT_W + PAD * 2, cardH, 2.5, 2.5, 'F');
+        doc.setFillColor(...col);
+        doc.roundedRect(MARGIN, y, 2.5, cardH, 1.2, 1.2, 'F');
+
+        // Numero
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7.5);
+        doc.setTextColor(...C.muted);
+        doc.text(String(globalIdx).padStart(2,'0'), TEXT_X, y + 7);
+
+        // Impact
+        doc.setFontSize(6.5);
+        doc.setTextColor(...col);
+        doc.text(IL[r.impact] || '', MARGIN + TEXT_W + PAD, y + 7, { align: 'right' });
+
+        // Titre
+        let iy = y + 13;
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        doc.setTextColor(...C.text);
+        doc.text(titreLines, TEXT_X, iy);
+        iy += titreLines.length * 5;
+
+        // Correction
+        if (solLines.length) {
+          iy += 3;
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(6);
+          doc.setTextColor(...C.muted);
+          doc.text('CORRECTION', TEXT_X, iy);
+          iy += 5;
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(7.5);
+          doc.setTextColor(180, 180, 180);
+          doc.text(solLines, TEXT_X, iy);
+          iy += solLines.length * 4.3;
+        }
+
+        // Effort
+        iy += 3;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(6.5);
+        doc.setTextColor(...C.muted);
+        doc.text(EL[r.effort] || '', TEXT_X, iy);
+
+        y += cardH + 4;
+      });
+    });
+
+    // ── PAGE FINALE ───────────────────────────────────────────
+    newPage();
+    doc.setFillColor(...C.accent);
+    doc.rect(0, 0, PAGE_W, 2, 'F');
+
+    y = 75;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.setTextColor(...C.text);
+    doc.text('Merci de ta confiance !', PAGE_W / 2, y, { align: 'center' });
+
+    y += 9;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(...C.muted);
+    const descLines = split('Ce rapport a ete genere par Julian Caille, UX/CRO Designer freelance specialise en e-commerce.', 120);
+    doc.text(descLines, PAGE_W / 2, y, { align: 'center' });
+    y += descLines.length * 5 + 14;
+
+    doc.setDrawColor(...C.faint);
+    doc.setLineWidth(0.25);
+    doc.line(PAGE_W / 2 - 25, y, PAGE_W / 2 + 25, y);
+    y += 12;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(...C.accent);
+    doc.text('Suis-moi sur les reseaux', PAGE_W / 2, y, { align: 'center' });
+    y += 12;
+
+    // LinkedIn card
+    doc.setFillColor(...C.surface);
+    doc.roundedRect(PAGE_W/2 - 52, y, 46, 22, 3, 3, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...C.text);
+    doc.text('LinkedIn', PAGE_W/2 - 29, y + 8, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(...C.muted);
+    doc.text('julian-caille', PAGE_W/2 - 29, y + 15, { align: 'center' });
+
+    // Instagram card
+    doc.setFillColor(...C.surface);
+    doc.roundedRect(PAGE_W/2 + 6, y, 46, 22, 3, 3, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...C.text);
+    doc.text('Instagram', PAGE_W/2 + 29, y + 8, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(...C.muted);
+    doc.text('@julian.clle', PAGE_W/2 + 29, y + 15, { align: 'center' });
+
+    y += 32;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(80, 80, 80);
+    doc.text('audit-ecommerce.com', PAGE_W / 2, y, { align: 'center' });
+
+    // ── FOOTER sur toutes les pages ───────────────────────────
+    drawFooter();
+
+    const fname = 'rapport-cro-' + (siteUrl
+      ? siteUrl.replace(/https?:\/\//, '').replace(/[\W]/g, '-')
+      : 'audit') + '.pdf';
+    doc.save(fname);
+  }
+
+    function checkLeadForm() {
     const fn = (el('lead-firstname')?.value || '').trim();
     const ln = (el('lead-lastname')?.value  || '').trim();
     const em = (el('lead-email')?.value     || '').trim();
@@ -2248,18 +2705,24 @@
       { titre: "Uniformiser la langue du site (choisir FR ou EN)", solution: "Décision stratégique à prendre en priorité : tout passer en FR ou EN ; implémenter une stratégie multilingue avec hreflang tags et URLs correctes", impact: "eleve", effort: "eleve", _section: "SEO on-page" },
       { titre: "Créer une section 'Pourquoi la noix de Grenoble' avec storytelling scientifiques", solution: "Section dédiée avec : Une accroche émotionnelle, 3 bénéfices clairs avec icônes infographie, comparaison, mention différences, lien vers page Notre démarche", impact: "moyen", effort: "moyen", _section: "Proposition de valeur" },
       { titre: "Ajouter un formulaire de capture email avec offre de bienvenue", solution: "Pop-up ou section dédiée : 'Rejoins +5000 clientes · -15% sur ta première commande CODE: BIENVENUE15 / Livraison offerte dès 50€'", impact: "eleve", effort: "moyen", _section: "Email capture" },
+      { titre: "Optimiser la page checkout en réduisant les étapes", solution: "Passer à un checkout 1 page avec autofill adresse, Apple Pay et résumé commande visible en permanence", impact: "eleve", effort: "eleve", _section: "Checkout" },
+      { titre: "Ajouter un bloc FAQ sur les fiches produit", solution: "Intégrer 5 questions fréquentes sous chaque fiche : livraison, retours, ingrédients, peaux sensibles, résultats attendus", impact: "moyen", effort: "faible", _section: "FAQ" },
+      { titre: "Afficher la livraison offerte dès X€ dans un bandeau sticky", solution: "Barre de progression type 'Plus que 12€ pour la livraison offerte' visible sur toutes les pages panier et produit", impact: "eleve", effort: "moyen", _section: "Livraison" },
+      { titre: "Ajouter des photos avant/après sur les fiches produit", solution: "Intégrer 2-3 photos clients avant/après avec consentement pour renforcer la preuve sociale et la crédibilité produit", impact: "eleve", effort: "moyen", _section: "Social Proof" },
+      { titre: "Créer une page dédiée 'Routine beauté' avec bundles", solution: "Page éditoriale avec 3 routines (peau sèche, mixte, sensible) + bundles pré-construits à prix réduit pour augmenter le panier moyen", impact: "eleve", effort: "eleve", _section: "Upsell" },
+      { titre: "Optimiser les meta-descriptions pour le SEO", solution: "Réécrire les meta-descriptions de toutes les pages catégories avec mots-clés longue traîne : 'crème visage noix grenoble', 'soin naturel peau sensible'", impact: "moyen", effort: "moyen", _section: "SEO on-page" },
     ]
   };
 
   function loadDemo() {
-    el('rapport-wrap').style.display = 'none';
     el('loading-state').style.display = 'none';
     renderRapport(DEMO_DATA);
+    setTimeout(() => el('rapport-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
   }
 
   // Auto-load demo si ?demo=true dans l'URL
   if (new URLSearchParams(window.location.search).get('demo') === 'true') {
-    setTimeout(loadDemo, 500);
+    setTimeout(loadDemo, 800);
   }
   // ────────────────────────────────────────────────────────────
 
@@ -2398,6 +2861,21 @@
 
     el('reco-visible').innerHTML = buildRecoHTML(visibleRecos, 0);
     el('reco-blurred').innerHTML = buildRecoHTML(hiddenRecos, 3);
+
+    // Titre dynamique paywall
+    const countEl = el('paywall-hidden-count');
+    if (countEl && hiddenRecos.length > 0) {
+      countEl.textContent = '+' + hiddenRecos.length + ' recommandation' + (hiddenRecos.length > 1 ? 's' : '') + ' masquée' + (hiddenRecos.length > 1 ? 's' : '');
+    }
+
+    // Afficher bouton export
+    const exportWrap = el('export-pdf-wrap');
+    if (exportWrap) exportWrap.style.display = 'block';
+
+    // Stocker les données pour l'export
+    window._rapportData = data;
+    window._rapportUrl = el('url-home')?.value?.trim() || '';
+    window._rapportNiche = el('niche-select')?.options[el('niche-select')?.selectedIndex]?.text || '';
 
     setTimeout(() => el('rapport-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
   }
