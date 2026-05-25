@@ -564,38 +564,41 @@
 
   .paywall-pricing {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     margin-bottom: 1.5rem;
     width: 100%;
-    max-width: 480px;
+    max-width: 560px;
   }
 
   .price-option {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0;
     cursor: pointer;
-    padding: 20px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    transition: border-color 0.2s, background 0.2s;
+    padding: 24px 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(20,20,20,0.92);
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
     position: relative;
     text-align: left;
   }
 
-  .price-option:hover { border-color: rgba(255,255,255,0.18); }
+  .price-option:hover {
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(25,25,25,0.95);
+    transform: translateY(-1px);
+  }
 
   .price-option.selected {
-    border-color: rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.04);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.28);
+    background: rgba(28,28,28,0.97);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.5);
   }
 
   .p-popular-badge {
     position: absolute;
-    top: -11px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--accent);
@@ -603,69 +606,99 @@
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 3px 10px;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
     border-radius: 100px;
     white-space: nowrap;
   }
 
   .price-option .p-name {
-    font-size: 12px;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text);
-    margin-bottom: 10px;
-    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+    letter-spacing: 0.01em;
   }
 
   .price-option .p-amount {
     font-family: 'Inter', sans-serif;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 300;
-    color: var(--accent);
-    letter-spacing: -0.02em;
+    color: var(--text);
+    letter-spacing: -0.03em;
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
 
   .price-option .p-amount span {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-faint);
     font-weight: 400;
+    letter-spacing: 0;
   }
 
   .price-option .p-desc {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-faint);
-    margin-bottom: 14px;
-    line-height: 1.4;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .p-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 16px;
+  }
+
+  .p-features-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-bottom: 10px;
   }
 
   .price-option .p-features {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-bottom: 0;
+    gap: 9px;
+    flex: 1;
   }
 
   .price-option .p-feature {
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--text-muted);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    line-height: 1.3;
   }
 
   .price-option .p-feature::before {
     content: '✓';
     color: var(--green);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    background: rgba(125,206,168,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
   }
 
   .price-option .p-badge {
     display: none;
   }
+
+  /* Empêcher les enfants de bloquer le clic sur la card */
+  .price-option * { pointer-events: none; }
 
   .p-price-row {
     display: flex;
@@ -967,9 +1000,12 @@
   .tag-technique { background: rgba(255,255,255,0.06); color: var(--text-faint); border: 1px solid var(--border); }
 
   /* ── PAYWALL v3 ── */
-  .paywall-wrap { margin-top: 10px; }
+  .paywall-wrap {
+    margin-top: 10px;
+    position: relative;
+  }
 
-  /* Recos blurrées avec fade vers le bas */
+  /* Recos blurrées en arrière-plan */
   .paywall-cards-blur {
     position: relative;
     pointer-events: none;
@@ -980,24 +1016,37 @@
 
   .paywall-cards-blur .reco-list {
     filter: blur(2.5px);
-    opacity: 0.75;
+    opacity: 0.6;
   }
 
+  /* Dégradé sur le haut et le bas */
   .paywall-fade {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 400px;
-    background: linear-gradient(to bottom, transparent, var(--bg));
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 15%,
+      rgba(10,10,10,0.6) 40%,
+      rgba(10,10,10,0.92) 65%,
+      var(--bg) 100%
+    );
     pointer-events: none;
   }
 
-  /* CTA block — en flow normal sous les recos blurrées */
+  /* CTA block — superposé au centre des recos */
   .paywall-cta-block {
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 1rem;
+    pointer-events: all;
+    z-index: 10;
   }
 
   .paywall-badge {
@@ -1027,12 +1076,53 @@
   .paywall-cta-block > p {
     font-size: 13px;
     color: var(--text-muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     max-width: 380px;
     line-height: 1.6;
   }
 
   .paywall-overlay { display: none; }
+
+  .paywall-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+    margin-bottom: 36px;
+  }
+
+  .paywall-avatars {
+    display: flex;
+    align-items: center;
+  }
+
+  .paywall-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -8px;
+    flex-shrink: 0;
+  }
+
+  .paywall-avatars .paywall-avatar:first-child { margin-left: 0; }
+
+  .paywall-social-text {
+    font-size: 12px;
+    color: var(--text-faint);
+    line-height: 1.4;
+  }
+
+  .paywall-social-text strong {
+    color: var(--text-muted);
+    font-weight: 600;
+  }
 
   @media (max-width: 768px) {
     .rapport-score-row { grid-template-columns: 1fr 1fr; }
@@ -1634,37 +1724,49 @@
             <div class="paywall-badge">🔒 Rapport complet</div>
             <h3>+5 recommandations masquées</h3>
             <p>Débloque l'analyse complète avec le scoring détaillé, les priorités d'implémentation et l'estimation d'impact sur ton CA.</p>
+            <div class="paywall-social-proof">
+              <div class="paywall-avatars">
+                <div class="paywall-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">M</div>
+                <div class="paywall-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">S</div>
+                <div class="paywall-avatar" style="background:linear-gradient(135deg,#10b981,#3b82f6)">A</div>
+                <div class="paywall-avatar" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">L</div>
+                <div class="paywall-avatar" style="background:linear-gradient(135deg,#14b8a6,#6366f1)">T</div>
+              </div>
+              <span class="paywall-social-text">Utilisé par <strong>100+ e-commerçants</strong> & équipes</span>
+            </div>
             <div class="paywall-pricing">
               <div class="price-option" onclick="selectPrice(this, 'one')" id="price-one">
                 <div class="p-name">One-shot</div>
-                <div class="p-price-row">
-                  <div class="p-amount">14,99€</div>
-                  <div class="p-original">21,41€</div>
-                  <div class="p-discount">-30%</div>
+                <div class="p-amount">14,99€</div>
+                <div class="p-desc">
+                  <span style="text-decoration:line-through;opacity:0.45;margin-right:6px">21,41€</span>
+                  <span style="background:rgba(125,206,168,0.12);color:var(--green);border:1px solid rgba(125,206,168,0.2);border-radius:100px;padding:1px 7px;font-size:10px;font-weight:700">-30%</span>
                 </div>
-                <div class="p-desc">Accès unique au rapport</div>
+                <div class="p-divider"></div>
+                <div class="p-features-label">Inclus</div>
                 <div class="p-features">
                   <span class="p-feature">Rapport CRO complet</span>
-                  <span class="p-feature">Scoring sur 5 axes</span>
+                  <span class="p-feature">Scoring sur 5 axes UX/CRO</span>
                   <span class="p-feature">Tests A/B recommandés</span>
                   <span class="p-feature">Quick wins actionnables</span>
                 </div>
               </div>
               <div class="price-option selected" onclick="selectPrice(this, 'sub')" id="price-sub">
-                <div class="p-popular-badge">⭐ Recommandé</div>
+                <div class="p-popular-badge">LE PLUS POPULAIRE</div>
                 <div class="p-name">Mensuel</div>
-                <div class="p-price-row">
-                  <div class="p-amount">24,99€<span>/mois</span></div>
-                  <div class="p-original">49,98€</div>
-                  <div class="p-discount">-50%</div>
+                <div class="p-amount">24,99€<span>/mois</span></div>
+                <div class="p-desc">
+                  <span style="text-decoration:line-through;opacity:0.45;margin-right:6px">49,98€</span>
+                  <span style="background:rgba(125,206,168,0.12);color:var(--green);border:1px solid rgba(125,206,168,0.2);border-radius:100px;padding:1px 7px;font-size:10px;font-weight:700">-50%</span>
                 </div>
-                <div class="p-desc">Analyses illimitées + monitoring automatique</div>
+                <div class="p-divider"></div>
+                <div class="p-features-label">Tout le one-shot, plus</div>
                 <div class="p-features">
-                  <span class="p-feature">Tout le one-shot inclus</span>
                   <span class="p-feature">Analyses illimitées</span>
-                  <span class="p-feature">Monitoring mensuel auto</span>
-                  <span class="p-feature">Alertes régressions</span>
-                  <span class="p-feature">Comparatif mois/mois</span>
+                  <span class="p-feature">Monitoring mensuel automatique</span>
+                  <span class="p-feature">Rapport comparatif mois/mois</span>
+                  <span class="p-feature">Alertes régressions UX</span>
+                  <span class="p-feature">Email de suivi mensuel</span>
                 </div>
               </div>
             </div>
@@ -1944,8 +2046,8 @@
 
   function handlePaywall() {
     const urls = {
-      one: 'https://whop.com/checkout/plan_YWN9dDScPPYqi',
-      sub: 'https://whop.com/checkout/plan_6n59rgtNxCf3i',
+      one: 'https://whop.com/checkout/plan_6n59rgtNxCf3i',
+      sub: 'https://whop.com/checkout/plan_YWN9dDScPPYqi',
     };
     window.open(urls[selectedPrice] || urls.sub, '_blank');
   }
