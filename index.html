@@ -744,7 +744,37 @@
 
   .paywall-cta:hover { opacity: 0.88; }
   .paywall-cta:active { transform: scale(0.98); }
+  .paywall-cta:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+  }
   .paywall-note { font-size: 11px; color: var(--text-faint); margin-top: 8px; }
+
+  .paywall-lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 12px;
+  }
+  .paywall-lead-row { display: flex; gap: 10px; }
+  .paywall-lead-input {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .paywall-lead-input::placeholder { color: var(--text-faint); }
+  .paywall-lead-input:focus { border-color: rgba(255,255,255,0.3); }
+  .paywall-lead-input.error { border-color: rgba(200,60,60,0.6); }
 
   @media (max-width: 768px) {
     .analyse-inputs { grid-template-columns: 1fr; }
@@ -1770,7 +1800,14 @@
                 </div>
               </div>
             </div>
-            <button class="paywall-cta" onclick="handlePaywall()">Débloquer le rapport complet →</button>
+            <div class="paywall-lead-form">
+              <div class="paywall-lead-row">
+                <input class="paywall-lead-input" id="lead-firstname" type="text" placeholder="Prénom" oninput="checkLeadForm()" />
+                <input class="paywall-lead-input" id="lead-lastname" type="text" placeholder="Nom" oninput="checkLeadForm()" />
+              </div>
+              <input class="paywall-lead-input" id="lead-email" type="email" placeholder="Adresse email" style="width:100%;box-sizing:border-box;" oninput="checkLeadForm()" />
+            </div>
+            <button class="paywall-cta" id="paywall-btn" onclick="handlePaywall()" disabled>Débloquer le rapport complet →</button>
             <p class="paywall-note">Paiement sécurisé · Accès immédiat</p>
           </div>
 
@@ -2035,6 +2072,8 @@
   compute();
 
   // ── Analyse IA ───────────────────────────────────────────────────────────
+  const SUPABASE_URL = 'https://eijmnsphfhaqlwditjtd.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_9DAHwfDoEU_Q2t7kLfI25w_YGFlOqR3';
   let selectedPrice = 'sub';
 
   function selectPrice(elBtn, type) {
@@ -2044,12 +2083,50 @@
     elBtn.classList.add('selected');
   }
 
+  function checkLeadForm() {
+    const fn = (el('lead-firstname')?.value || '').trim();
+    const ln = (el('lead-lastname')?.value  || '').trim();
+    const em = (el('lead-email')?.value     || '').trim();
+    const btn = el('paywall-btn');
+    if (btn) btn.disabled = !(fn && ln && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em));
+  }
+
   function handlePaywall() {
+    const firstName = (el('lead-firstname')?.value || '').trim();
+    const lastName  = (el('lead-lastname')?.value  || '').trim();
+    const email     = (el('lead-email')?.value     || '').trim();
+
+    // Validation
+    let hasError = false;
+    ['lead-firstname','lead-lastname','lead-email'].forEach(id => {
+      const input = el(id);
+      if (input && !input.value.trim()) {
+        input.classList.add('error');
+        hasError = true;
+      } else if (input) {
+        input.classList.remove('error');
+      }
+    });
+    if (hasError) return;
+
+    // Save to Supabase
+    const source = new URLSearchParams(window.location.search).get('ref') || 'direct';
+    fetch(SUPABASE_URL + '/rest/v1/analyses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      },
+      body: JSON.stringify({ first_name: firstName, last_name: lastName, email, source })
+    }).catch(e => console.warn('Lead save failed:', e));
+
+    // Redirect to Whop
     const urls = {
       one: 'https://whop.com/checkout/plan_6n59rgtNxCf3i',
       sub: 'https://whop.com/checkout/plan_YWN9dDScPPYqi',
     };
-    window.open(urls[selectedPrice] || urls.sub, '_blank');
+    window.location.href = urls[selectedPrice] || urls.sub;
   }
 
   function setStep(n, state) {
