@@ -1962,6 +1962,85 @@
   @media (max-width: 768px) {
     .footer-niches-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* Modal succes paiement */
+  .success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .success-overlay.active { display: flex; }
+  .success-card {
+    background: #141414;
+    border: 1px solid rgba(130,210,170,0.3);
+    border-radius: 20px;
+    padding: 40px 36px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(130,210,170,0.08);
+    animation: fadeUp 0.3s ease both;
+  }
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(130,210,170,0.12);
+    border: 1.5px solid rgba(130,210,170,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+  }
+  .success-card h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #f0ede8;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .success-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .success-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #82d2aa, #5fb890);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 12px;
+    transition: opacity 0.15s;
+  }
+  .success-download-btn:hover { opacity: 0.88; }
+  .success-close {
+    font-size: 12px;
+    color: var(--text-faint);
+    cursor: pointer;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .success-close:hover { color: var(--text-muted); }
 </style>
 
 <script>
@@ -2720,6 +2799,29 @@
     setTimeout(() => el('rapport-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
   }
 
+  // Succes paiement
+  window.closeSuccess = function closeSuccess() {
+    el('success-overlay').classList.remove('active');
+  }
+
+  window.showSuccess = function showSuccess() {
+    if (window._rapportData) {
+      el('success-overlay').classList.add('active');
+    } else {
+      loadDemo();
+      setTimeout(() => el('success-overlay').classList.add('active'), 1200);
+    }
+  }
+
+  if (new URLSearchParams(window.location.search).get('payment') === 'success') {
+    // Attendre que la page soit complètement chargée
+    if (document.readyState === 'complete') {
+      setTimeout(window.showSuccess, 800);
+    } else {
+      window.addEventListener('load', () => setTimeout(window.showSuccess, 800));
+    }
+  }
+
   // Auto-load demo si ?demo=true dans l'URL
   if (new URLSearchParams(window.location.search).get('demo') === 'true') {
     setTimeout(loadDemo, 800);
@@ -2899,5 +3001,18 @@
   }
 
 </script>
+  <!-- Modal succes paiement -->
+  <div class="success-overlay" id="success-overlay">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h2>Paiement confirmé !</h2>
+      <p>Ton rapport CRO est prêt. Tu peux le télécharger maintenant ou y revenir plus tard depuis cette page.</p>
+      <button class="success-download-btn" onclick="exportPDF(); closeSuccess();">
+        ↓ Télécharger mon rapport PDF
+      </button>
+      <button class="success-close" onclick="closeSuccess()">Fermer et voir le rapport</button>
+    </div>
+  </div>
+
 </body>
 </html>
