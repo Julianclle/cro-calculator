@@ -1773,7 +1773,7 @@
               <span class="paywall-social-text">Utilisé par <strong>100+ e-commerçants</strong> & équipes</span>
             </div>
             <div class="paywall-pricing">
-              <div class="price-option" onclick="selectPrice(this, 'one')" id="price-one">
+              <div onclick="selectPrice(this, 'one')" id="price-one" class="price-option selected">
                 <div class="p-name">One-shot</div>
                 <div class="p-amount">14,99€</div>
                 <div class="p-desc">
@@ -1789,24 +1789,7 @@
                   <span class="p-feature">Quick wins actionnables</span>
                 </div>
               </div>
-              <div class="price-option selected" onclick="selectPrice(this, 'sub')" id="price-sub">
-                <div class="p-popular-badge">LE PLUS POPULAIRE</div>
-                <div class="p-name">Mensuel</div>
-                <div class="p-amount">24,99€<span>/mois</span></div>
-                <div class="p-desc">
-                  <span style="text-decoration:line-through;opacity:0.45;margin-right:6px">49,98€</span>
-                  <span style="background:rgba(125,206,168,0.12);color:var(--green);border:1px solid rgba(125,206,168,0.2);border-radius:100px;padding:1px 7px;font-size:10px;font-weight:700">-50%</span>
-                </div>
-                <div class="p-divider"></div>
-                <div class="p-features-label">Tout le one-shot, plus</div>
-                <div class="p-features">
-                  <span class="p-feature">Analyses illimitées</span>
-                  <span class="p-feature">Monitoring mensuel automatique</span>
-                  <span class="p-feature">Rapport comparatif mois/mois</span>
-                  <span class="p-feature">Alertes régressions UX</span>
-                  <span class="p-feature">Email de suivi mensuel</span>
-                </div>
-              </div>
+
             </div>
             <div class="paywall-lead-form">
               <div class="paywall-lead-row">
@@ -2161,12 +2144,11 @@
   // ── Analyse IA ───────────────────────────────────────────────────────────
   const SUPABASE_URL = 'https://eijmnsphfhaqlwditjtd.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_9DAHwfDoEU_Q2t7kLfI25w_YGFlOqR3';
-  let selectedPrice = 'sub';
+  let selectedPrice = 'one';
 
   function selectPrice(elBtn, type) {
     selectedPrice = type;
     el('price-one').classList.remove('selected');
-    el('price-sub').classList.remove('selected');
     elBtn.classList.add('selected');
   }
 
@@ -2658,11 +2640,7 @@
     }).catch(e => console.warn('Lead save failed:', e));
 
     // Redirect to Whop
-    const urls = {
-      one: 'https://whop.com/checkout/plan_6n59rgtNxCf3i',
-      sub: 'https://whop.com/checkout/plan_YWN9dDScPPYqi',
-    };
-    window.location.href = urls[selectedPrice] || urls.sub;
+    window.location.href = 'https://whop.com/checkout/plan_6n59rgtNxCf3i';
   }
 
   function setStep(n, state) {
