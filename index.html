@@ -2639,6 +2639,10 @@
       body: JSON.stringify({ first_name: firstName, last_name: lastName, email, source })
     }).catch(e => console.warn('Lead save failed:', e));
 
+    // Envoyer email de confirmation (après paiement via redirect)
+    // On stocke les infos en sessionStorage pour les récupérer après le retour
+    sessionStorage.setItem('pendingEmail', JSON.stringify({ email, firstName, lastName }));
+
     // Redirect to Whop
     window.location.href = 'https://whop.com/checkout/plan_6n59rgtNxCf3i';
   }
@@ -2788,6 +2792,25 @@
     } else {
       loadDemo();
       setTimeout(() => el('success-overlay').classList.add('active'), 1200);
+    }
+
+    // Envoyer l'email de confirmation si on a les infos
+    const pending = sessionStorage.getItem('pendingEmail');
+    if (pending) {
+      try {
+        const { email, firstName, lastName } = JSON.parse(pending);
+        fetch('https://cro-api.vercel.app/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            firstName,
+            lastName,
+            reportUrl: window.location.href
+          })
+        }).catch(e => console.warn('Email send failed:', e));
+        sessionStorage.removeItem('pendingEmail');
+      } catch(e) {}
     }
   }
 
