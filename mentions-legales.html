@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="title" content="Mentions légales | audit-ecommerce.com">
+<meta name="description" content="Mentions légales du site audit-ecommerce.com — éditeur, hébergeur et informations légales.">
+<meta name="robots" content="noindex, follow">
+<title>Mentions légales | audit-ecommerce.com</title>
+<link rel="canonical" href="https://www.audit-ecommerce.com/mentions-legales.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a; --surface: #111111; --surface2: #181818;
+    --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.16);
+    --text: #f0ede8; --text-muted: rgba(240,237,232,0.5); --text-faint: rgba(240,237,232,0.28);
+    --accent: #e8e8e8; --accent-dim: rgba(255,255,255,0.08); --accent-dim2: rgba(255,255,255,0.04);
+    --green: #7dcea8; --green-dim: rgba(125,206,168,0.1);
+    --orange: #e8a87c; --red: #e07070;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255,255,255,0.04) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 110%, rgba(125,206,168,0.04) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+  .page { position: relative; z-index: 1; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  /* NAV */
+  .nav-wrapper { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); width: calc(100% - 3rem); max-width: 1060px; z-index: 100; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1.5rem; background: rgba(12,12,12,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+  .nav-logo { font-family: 'Inter', sans-serif; font-size: 17px; color: var(--accent); text-decoration: none; }
+  .nav-tag { font-size: 11px; color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+  .nav-cta { display: inline-flex; align-items: center; gap: 7px; background: var(--accent); color: #0a0a0a; border: none; border-radius: 10px; padding: 8px 16px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: opacity 0.15s; white-space: nowrap; }
+  .nav-cta:hover { opacity: 0.82; }
+
+  /* BREADCRUMB */
+  .breadcrumb { max-width: 820px; margin: 0 auto; padding: 6.5rem 2.5rem 0; }
+  .breadcrumb a { font-size: 12px; color: var(--text-faint); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { font-size: 12px; color: var(--text-faint); margin: 0 6px; }
+
+  /* HERO PAGE */
+  .page-hero { max-width: 820px; margin: 0 auto; padding: 2rem 2.5rem 2.5rem; }
+  .page-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 4px 12px; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .page-hero h1 { font-family: 'Inter', sans-serif; font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+  .page-hero .meta { font-size: 12px; color: var(--text-faint); }
+
+  /* CONTENT */
+  .content { max-width: 820px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+  h2.block-title { font-family: 'Inter', sans-serif; font-size: 1.25rem; line-height: 1.2; color: var(--text); margin: 2.5rem 0 1rem; }
+  .prose { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.1rem; }
+  .prose strong { color: var(--text); font-weight: 500; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .prose ul { margin: 0.5rem 0 1.1rem; padding-left: 1.1rem; }
+  .prose li { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 4px; }
+  .divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.75rem; margin: 1.25rem 0; }
+  .card dl { display: grid; grid-template-columns: 180px 1fr; gap: 10px 1.5rem; }
+  .card dt { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .card dd { font-size: 14px; color: var(--text); }
+  .todo { background: rgba(232,168,124,0.12); border: 1px solid rgba(232,168,124,0.4); color: var(--orange); border-radius: 4px; padding: 1px 7px; font-size: 13px; font-weight: 500; white-space: nowrap; }
+  .note { background: var(--accent-dim2); border: 1px solid rgba(255,255,255,0.08); border-left: 2px solid var(--orange); border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+
+  /* FOOTER */
+  .site-footer { border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; padding: 4rem 2.5rem 2rem; }
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem;border-top:1px solid var(--border);padding-top:3rem}
+  .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 0.75rem; max-width: 280px; }
+  .footer-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul li a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-expand { border-top: 1px solid var(--border); margin-bottom: 2rem; }
+  .footer-expand-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 0; background: none; border: none; color: var(--text-faint); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: color 0.2s; }
+  .footer-expand-btn:hover { color: var(--text-muted); }
+  .footer-expand-btn .chevron { transition: transform 0.3s ease; }
+  .footer-expand-btn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+  .footer-expand-content { display: none; padding-bottom: 1.5rem; }
+  .footer-expand-content.open { display: block; }
+  .footer-niches-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px 16px; }
+  .footer-niches-grid a { font-size: 12px; color: var(--text-faint); text-decoration: none; padding: 4px 0; transition: color 0.15s; }
+  .footer-niches-grid a:hover { color: var(--accent); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .footer-bottom p { font-size: 12px; color: var(--text-faint); }
+  .footer-bottom a { font-size: 12px; color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .nav-wrapper { width: calc(100% - 1.5rem); }
+    .nav-tag { display: none; }
+    .breadcrumb, .page-hero, .content { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .card dl { grid-template-columns: 1fr; gap: 2px; }
+    .card dt { margin-top: 8px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-brand { grid-column: span 2; }
+    .footer-niches-grid { grid-template-columns: repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="nav-wrapper">
+    <nav>
+      <a href="/" class="nav-logo">Julian Caillé</a>
+      <span class="nav-tag">UX/CRO Specialist</span>
+      <a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank" class="nav-cta">
+        <span style="width:5px;height:5px;background:rgba(10,10,10,0.5);border-radius:50%;animation:pulse 2s infinite"></span>
+        Prendre un rendez-vous
+      </a>
+    </nav>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="/">Accueil</a>
+    <span>→</span>
+    <a href="/mentions-legales.html">Mentions légales</a>
+  </div>
+
+  <div class="page-hero">
+    <span class="page-tag">Informations légales</span>
+    <h1>Mentions légales</h1>
+    <p class="meta">Dernière mise à jour : 10 juin 2026</p>
+  </div>
+
+  <div class="content">
+    <p class="prose">
+      Conformément à l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN),
+      les présentes mentions légales précisent l'identité des intervenants dans la mise en œuvre et le suivi du site
+      <strong>audit-ecommerce.com</strong>.
+    </p>
+
+    <div class="note">
+      ⚠️ Les champs marqués <span class="todo">[À COMPLÉTER]</span> doivent être renseignés avec tes informations réelles
+      (statut juridique, SIRET, adresse). Ils sont légalement obligatoires : un site éditant un service en ligne doit
+      afficher l'identité complète de son éditeur.
+    </div>
+
+    <h2 class="block-title">1. Éditeur du site</h2>
+    <div class="card">
+      <dl>
+        <dt>Éditeur</dt><dd>Julian Caillé</dd>
+        <dt>Statut juridique</dt><dd><span class="todo">[À COMPLÉTER]</span> (ex. : Entrepreneur individuel / micro-entreprise)</dd>
+        <dt>Adresse</dt><dd><span class="todo">[À COMPLÉTER — adresse postale]</span></dd>
+        <dt>SIRET</dt><dd><span class="todo">[À COMPLÉTER]</span></dd>
+        <dt>N° TVA intracom.</dt><dd><span class="todo">[À COMPLÉTER ou « Non applicable — TVA non applicable, art. 293 B du CGI »]</span></dd>
+        <dt>E-mail</dt><dd>contact@audit-ecommerce.com</dd>
+      </dl>
+    </div>
+
+    <h2 class="block-title">2. Directeur de la publication</h2>
+    <p class="prose">
+      Le directeur de la publication est <strong>Julian Caillé</strong>, en sa qualité d'éditeur du site.
+    </p>
+
+    <h2 class="block-title">3. Hébergement</h2>
+    <p class="prose">Le site et son API sont hébergés par :</p>
+    <div class="card">
+      <dl>
+        <dt>Hébergeur</dt><dd>Vercel Inc.</dd>
+        <dt>Adresse</dt><dd>340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</dd>
+        <dt>Site web</dt><dd><a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></dd>
+      </dl>
+    </div>
+    <p class="prose">
+      La base de données est hébergée par <strong>Supabase</strong> (Supabase, Inc., États-Unis). Le traitement des paiements
+      est assuré par <strong>Whop</strong> (Whop Inc., États-Unis). Pour le détail des prestataires et des transferts de
+      données, voir la <a href="/politique-confidentialite.html">politique de confidentialité</a>.
+    </p>
+
+    <h2 class="block-title">4. Propriété intellectuelle</h2>
+    <p class="prose">
+      L'ensemble des contenus présents sur le site (structure, textes, visuels, logos, éléments graphiques, code) est, sauf
+      mention contraire, la propriété exclusive de Julian Caillé. Toute reproduction, représentation, modification ou
+      exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite et constituerait une contrefaçon
+      sanctionnée par le Code de la propriété intellectuelle.
+    </p>
+
+    <h2 class="block-title">5. Nature du service et responsabilité</h2>
+    <p class="prose">
+      Le site propose un service d'analyse automatisée de pages e-commerce générant des recommandations d'optimisation du
+      taux de conversion (CRO). Ces recommandations sont produites à titre indicatif, à l'aide d'outils d'intelligence
+      artificielle, et ne constituent ni un audit certifié, ni une garantie de résultat. L'éditeur ne saurait être tenu
+      responsable des décisions prises ou des résultats obtenus à partir de ces analyses.
+    </p>
+    <p class="prose">
+      L'éditeur s'efforce de fournir des informations exactes et à jour, mais ne garantit ni l'exhaustivité, ni l'absence
+      d'erreurs, ni la disponibilité permanente du service.
+    </p>
+
+    <h2 class="block-title">6. Liens hypertextes</h2>
+    <p class="prose">
+      Le site peut contenir des liens vers des sites tiers. L'éditeur n'exerce aucun contrôle sur ces sites et décline toute
+      responsabilité quant à leur contenu ou à l'usage qui pourrait en être fait.
+    </p>
+
+    <h2 class="block-title">7. Données personnelles</h2>
+    <p class="prose">
+      Le traitement des données personnelles collectées sur le site est détaillé dans la
+      <a href="/politique-confidentialite.html">politique de confidentialité</a>, qui précise les finalités, les bases
+      légales, les durées de conservation et les modalités d'exercice de vos droits.
+    </p>
+
+    <h2 class="block-title">8. Droit applicable</h2>
+    <p class="prose">
+      Les présentes mentions légales sont régies par le droit français. En cas de litige, et à défaut de résolution amiable,
+      compétence est attribuée aux tribunaux français compétents.
+    </p>
+  </div>
+
+</div><!-- .page -->
+
+<footer>
+  <div class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;color:#e8e8e8">Julian Caillé</span>
+        <p>UX/CRO Designer freelance spécialisé en e-commerce. J'aide les boutiques à augmenter leur taux de conversion sans augmenter leur budget pub.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="/ressources/benchmarks.html">Benchmarks CVR</a></li>
+          <li><a href="/ressources/checklist-ux.html">Checklist UX</a></li>
+          <li><a href="/ressources/glossaire-cro.html">Glossaire CRO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/guides/calculer-taux-de-conversion.html">Calculer son taux de conversion</a></li>
+          <li><a href="/guides/reduire-abandon-panier.html">Réduire l'abandon panier</a></li>
+          <li><a href="/guides/optimiser-checkout-shopify.html">Optimiser le checkout Shopify</a></li>
+          <li><a href="/guides/ameliorer-fiches-produit.html">Améliorer ses fiches produit</a></li>
+          <li><a href="/guides/optimiser-pages-categories.html">Optimiser ses pages catégories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Comparatifs</h4>
+        <ul>
+          <li><a href="/comparatifs/cro-vs-acquisition.html">CRO vs Acquisition</a></li>
+          <li><a href="/comparatifs/shopify-vs-woocommerce.html">Shopify vs WooCommerce</a></li>
+          <li><a href="/comparatifs/ab-testing-vs-audit-cro.html">A/B Testing vs Audit CRO</a></li>
+          <li><a href="/comparatifs/google-ads-vs-facebook-ads.html">Google Ads vs Facebook Ads</a></li>
+          <li><a href="/comparatifs/klaviyo-vs-mailchimp.html">Klaviyo vs Mailchimp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendly.com/juliancaille/appel-decouverte" target="_blank">Prendre un appel</a></li>
+          <li><a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-expand">
+      <button class="footer-expand-btn" onclick="toggleFooterExpand(this)" aria-expanded="false">
+        <span>Toutes les niches e-commerce</span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="footer-expand-content" id="footer-niches-expand">
+        <div class="footer-niches-grid">
+          <a href="/niches/cro-mode-vetements.html">Mode &amp; Vêtements</a>
+          <a href="/niches/cro-accessoires-tech.html">Accessoires &amp; Tech</a>
+          <a href="/niches/cro-beaute-cosmetique.html">Beauté &amp; Cosmétique</a>
+          <a href="/niches/cro-sport-fitness.html">Sport &amp; Fitness</a>
+          <a href="/niches/cro-maison-decoration.html">Maison &amp; Décoration</a>
+          <a href="/niches/cro-animaux-compagnie.html">Animaux de compagnie</a>
+          <a href="/niches/cro-bebe.html">Bébé</a>
+          <a href="/niches/cro-sante-bien-etre.html">Santé &amp; Bien-être</a>
+          <a href="/niches/cro-bricolage-outils.html">Bricolage &amp; Outils</a>
+          <a href="/niches/cro-alimentation-nutrition.html">Alimentation &amp; Nutrition</a>
+          <a href="/niches/cro-gaming-jeux-video.html">Gaming &amp; Jeux vidéo</a>
+          <a href="/niches/cro-education-livres.html">Éducation &amp; Livres</a>
+          <a href="/niches/cro-voyage-bagages.html">Voyage &amp; Bagages</a>
+          <a href="/niches/cro-jardinage-plantes.html">Jardinage &amp; Plantes</a>
+          <a href="/niches/cro-bijoux-accessoires.html">Bijoux &amp; Accessoires</a>
+          <a href="/niches/cro-outdoor-aventure.html">Outdoor &amp; Aventure</a>
+          <a href="/niches/cro-auto-moto.html">Auto &amp; Moto</a>
+          <a href="/niches/cro-enfants.html">Enfants</a>
+          <a href="/niches/cro-audio-son.html">Audio &amp; Son</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Julian Caillé — UX/CRO Designer Freelance</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+        <a href="https://www.linkedin.com/in/julian-caille/" target="_blank">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFooterExpand(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  document.getElementById('footer-niches-expand').classList.toggle('open', !expanded);
+}
+</script>
+</body>
+</html>
