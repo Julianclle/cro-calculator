@@ -611,5 +611,12 @@ function calcScore() {
   else { ctx.textContent = '✦ Fiche produit excellente — continuez à optimiser via les avis et le copywriting'; disp.style.color = 'var(--green)'; }
 }
 </script>
+<script>
+function toggleFooterExpand(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  document.getElementById('footer-niches-expand').classList.toggle('open', !expanded);
+}
+</script>
 </body>
 </html>
