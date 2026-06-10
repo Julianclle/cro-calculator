@@ -80,12 +80,23 @@
   .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid var(--border); }
   .footer-bottom p { font-size: 12px; color: var(--text-faint); }
   .footer-bottom a { font-size: 12px; color: var(--accent); text-decoration: none; }
+  .footer-expand { border-top: 1px solid var(--border); margin-bottom: 2rem; }
+  .footer-expand-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 0; background: none; border: none; color: var(--text-faint); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: color 0.2s; }
+  .footer-expand-btn:hover { color: var(--text-muted); }
+  .footer-expand-btn .chevron { transition: transform 0.3s ease; }
+  .footer-expand-btn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+  .footer-expand-content { display: none; padding-bottom: 1.5rem; }
+  .footer-expand-content.open { display: block; }
+  .footer-niches-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px 16px; }
+  .footer-niches-grid a { font-size: 12px; color: var(--text-faint); text-decoration: none; padding: 4px 0; transition: color 0.15s; }
+  .footer-niches-grid a:hover { color: var(--accent); }
 
   @media (max-width: 768px) {
     .nav-wrapper { width: calc(100% - 1.5rem); }
     .page-hero, .content, .breadcrumb { padding-left: 1.25rem; padding-right: 1.25rem; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .footer-brand { grid-column: span 2; }
+    .footer-niches-grid { grid-template-columns: repeat(2,1fr); }
     .nav-tag { display: none; }
   }
 </style>
@@ -476,5 +487,12 @@
   </div>
 </footer>
 </div>
+<script>
+function toggleFooterExpand(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  document.getElementById('footer-niches-expand').classList.toggle('open', !expanded);
+}
+</script>
 </body>
 </html>
