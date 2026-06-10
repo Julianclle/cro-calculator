@@ -339,5 +339,12 @@
   </div>
 </footer>
 </div>
+<script>
+function toggleFooterExpand(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  document.getElementById('footer-niches-expand').classList.toggle('open', !expanded);
+}
+</script>
 </body>
 </html>
